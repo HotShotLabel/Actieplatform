@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    /* Extra mobiel-styling (hamburger + knoppen)  */
+    /* Mobiel menu + knoppen */
     .menu{display:flex;gap:12px}
     .menu a{text-decoration:none;padding:6px 10px;border-radius:6px;color:#fff}
     .hamburger{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:#fff}
@@ -21,10 +21,16 @@
     }
     .btn{display:inline-block;padding:12px 20px;font-size:1rem;border-radius:8px;background:#d62828;color:#fff;text-align:center}
     .btn.outline{background:transparent;border:2px solid #d62828;color:#d62828}
-    /* Tabelstijl voor incidenten-lijst */
-    table#incidents th, table#incidents td{padding:8px;border-bottom:1px solid #222}
-    table#incidents th{text-align:left;border-bottom:1px solid #333}
-    input#search{background:#0f141a;border:1px solid #222;color:#e7eef8;border-radius:8px}
+
+    /* Tabel-stijl */
+    table#incidents{width:100%;border-collapse:collapse}
+    table#incidents th,table#incidents td{padding:8px;border-bottom:1px solid #222}
+    table#incidents th{border-bottom:1px solid #333;text-align:left}
+    input#search{background:#0f141a;border:1px solid #222;color:#e7eef8;border-radius:8px;padding:10px;width:100%}
+
+    /* Helpers */
+    .muted{opacity:.8}
+    .placeholder{padding:14px;border:1px dashed #333;border-radius:12px;background:#0f141a}
   </style>
   <meta name="description" content="Meldingen van politiegeweld direct omzetten in actie: veilig uploaden, juridische opvolging, en een kaart met incidenten.">
 </head>
@@ -60,7 +66,6 @@
     </div>
   </header>
 
-  <!-- Main -->
   <main class="container">
     <!-- Meldformulier -->
     <section id="meld" class="section grid">
@@ -111,11 +116,14 @@
       <div class="card">
         <span class="badge">Transparantie</span>
         <h3>Incidenten (doorzoekbaar)</h3>
-        <input id="search" placeholder="Zoek op stad / type / omschrijving…" style="margin:6px 0;padding:10px;width:100%;border-radius:10px;border:1px solid #222;background:#0f141a;color:#e7eef8">
-        <div style="overflow:auto">
-          <table id="incidents" class="small" style="width:100%;border-collapse:collapse"></table>
+        <input id="search" placeholder="Zoek op stad / type / omschrijving…">
+        <div id="incWrap" style="overflow:auto;margin-top:8px">
+          <div class="placeholder muted" id="incPlaceholder">
+            <strong>Nog instellen:</strong> publiceer je Sheet-tab <em>Gepubliceerd</em> als CSV en plak de link in <span class="code">CSV_URL</span> (onderaan dit bestand). Daarna verschijnt hier de tabel.
+          </div>
+          <table id="incidents" class="small" style="display:none"></table>
         </div>
-        <p class="small" style="margin-top:8px">Data bron: tab <em>Gepubliceerd</em> in onze Google Sheet.</p>
+        <p class="small muted" style="margin-top:8px">Databron: tab <em>Gepubliceerd</em> in onze Google Sheet.</p>
       </div>
     </section>
 
@@ -143,14 +151,13 @@
         <span class="badge">Meedoen</span>
         <h2>Vrijwilligers & Professionals</h2>
         <p class="small">Wil je bijdragen als advocaat/jurist, onderzoeker, ontwikkelaar, data-analist of in communicatie/organisatie? Meld je hieronder aan. We verwerken gegevens volgens onze <a href="privacy.html">privacyverklaring</a>.</p>
-        <div style="margin-top:14px">
-          <!-- VERVANG door jouw Google Forms embed-URL -->
-          <iframe
-            src="GOOGLE_FORM_URL"
-            width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
-            style="border:none;border-radius:12px;background:#0b0f14">
-            Laden…
-          </iframe>
+
+        <div id="volWrap" style="margin-top:14px">
+          <div class="placeholder muted" id="volPlaceholder">
+            <strong>Nog instellen:</strong> maak een Google Form voor aanmeldingen en vul de embed-URL in <span class="code">VOL_FORM_URL</span> (onderaan dit bestand). Dan verschijnt het formulier hier.
+          </div>
+          <iframe id="volFrame" title="Aanmelden" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
+                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
         </div>
       </div>
     </section>
@@ -203,46 +210,57 @@
 
   <!-- Scripts -->
   <script>
+    // ---------- Config: VUL DIT IN ----------
+    // TODO 1) Vrijwilligers: Google Forms EMBED-URL (Verzenden -> </> -> URL)
+    const VOL_FORM_URL = ''; // bv. "https://docs.google.com/forms/d/e/xxx/viewform?embedded=true"
+    // TODO 2) Incidenten-lijst: gepubliceerde CSV van tab "Gepubliceerd"
+    const CSV_URL = ''; // bv. "https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv"
+    // ----------------------------------------
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
     }
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // ------- Incidenten-lijst (CSV -> tabel) -------
-    // 1) Publiceer je Sheet-tab "Gepubliceerd" als CSV (Bestand -> Publiceren op het web -> CSV)
-    // 2) Plak hier de gegenereerde CSV-link:
-    const CSV_URL = 'https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv'; // <-- VERVANGEN
+    // Vrijwilligers-embed veilig laden (geen 404 als leeg)
+    (function(){
+      const f = document.getElementById('volFrame');
+      const ph = document.getElementById('volPlaceholder');
+      if (VOL_FORM_URL && /^https?:\/\//.test(VOL_FORM_URL)) {
+        f.src = VOL_FORM_URL;
+        f.style.display = 'block';
+        ph.style.display = 'none';
+      }
+    })();
 
+    // Incidenten CSV -> tabel (alleen als link is ingevuld)
     async function loadCSV() {
+      if (!CSV_URL || !/^https?:\/\//.test(CSV_URL)) return; // nog niet ingesteld
+      const ph = document.getElementById('incPlaceholder');
+      const table = document.getElementById('incidents');
       try {
         const res = await fetch(CSV_URL);
         const text = await res.text();
         const rows = text.split(/\r?\n/).map(r =>
           r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c => c.replace(/^"|"$/g,''))
-        );
-        const cleaned = rows.filter(r => r.length > 1);
-        if (!cleaned.length) return;
-        const [head, ...data] = cleaned;
-        renderTable(head, data);
-      } catch(e) {
-        console.error('CSV laden mislukt:', e);
-      }
-    }
-    function renderTable(head, data){
-      const table = document.getElementById('incidents');
-      if (!table) return;
-      const thead = `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
-      const tbody = data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
-      table.innerHTML = thead + tbody;
+        ).filter(r => r.length > 1);
+        if (!rows.length) return;
+        const [head, ...data] = rows;
+        const thead = `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+        const tbody = data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+        table.innerHTML = thead + tbody;
+        table.style.display = 'table';
+        ph.style.display = 'none';
 
-      const input = document.getElementById('search');
-      if (input){
+        const input = document.getElementById('search');
         input.oninput = () => {
           const q = input.value.toLowerCase();
           const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
           const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
           table.innerHTML = thead + tbodyF;
         };
+      } catch (e) {
+        console.error('CSV laden mislukt:', e);
       }
     }
     loadCSV();
