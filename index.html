@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f14">
   <title>Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" href="/icons/icon-192.png">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="assets/style.css">
   <meta name="description" content="Meldingen van politiegeweld direct omzetten in actie: veilig uploaden, juridische opvolging, en een kaart met incidenten.">
 </head>
 <body>
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="/icons/icon-192.png" alt="Logo">
+        <img src="icons/icon-192.png" alt="Logo">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
@@ -49,11 +49,11 @@
         </div>
         <div style="margin-top:14px">
           <!-- Zoho Form Embed -->
-          <iframe aria-label='Contact with file'
+          <iframe aria-label="Contact with file"
                   frameborder="0"
                   allow="camera;microphone"
-                  style="height:500px;width:99%;border:none;"
-                  src='https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true'>
+                  style="height:600px;width:100%;border:none;"
+                  src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
           </iframe>
         </div>
       </div>
@@ -76,7 +76,7 @@
         <span class="badge">Transparantie</span>
         <h2>Kaart met incidenten</h2>
         <p class="small">Hier tonen we geanonimiseerde incidenten (datum, locatie, type geweld, korte omschrijving). Identificerende gegevens worden alleen gedeeld na juridische toetsing.</p>
-        <!-- Vervang UMAP_EMBED_URL door de uMap embed link -->
+        <!-- Vervang UMAP_EMBED_URL door de uMap-embedlink zodra je die hebt -->
         <iframe title="Incidentenkaart" src="UMAP_EMBED_URL" style="width:100%;height:500px;border:none"></iframe>
       </div>
     </section>
@@ -136,7 +136,7 @@
         <h2>Privacy & Verantwoord gebruik</h2>
         <p class="small">
           Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.
-          Onrechtmatig materiaal wordt verwijderd. Zie ook <a href="/privacy.html">onze privacyverklaring</a>.
+          Onrechtmatig materiaal wordt verwijderd. Zie ook <a href="privacy.html">onze privacyverklaring</a>.
         </p>
       </div>
     </section>
@@ -149,7 +149,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('sw.js');
     });
   }
   document.getElementById('y').textContent = new Date().getFullYear();
