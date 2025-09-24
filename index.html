@@ -226,3 +226,37 @@
 </script>
 </body>
 </html>
+<div class="card" id="lijst">
+  <h3>Incidenten (doorzoekbaar)</h3>
+  <input id="search" placeholder="Zoek op stad/type/omschrijving…" style="margin:6px 0;padding:8px;width:100%">
+  <div style="overflow:auto">
+    <table id="incidents" class="small" style="width:100%;border-collapse:collapse"></table>
+  </div>
+</div>
+<script>
+// VERVANG door jouw gepubliceerde CSV-link:
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv';
+
+async function loadCSV() {
+  const res = await fetch(CSV_URL);
+  const text = await res.text();
+  const rows = text.split(/\r?\n/).map(r => r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'')));
+  const [head,...data] = rows.filter(r=>r.length>1);
+  renderTable(head, data);
+}
+function renderTable(head, data){
+  const table = document.getElementById('incidents');
+  table.innerHTML = '';
+  const thead = `<tr>${head.map(h=>`<th style="text-align:left;border-bottom:1px solid #333;padding:6px">${h}</th>`).join('')}</tr>`;
+  const tbody = data.map(r=>`<tr>${r.map(c=>`<td style="padding:6px;border-bottom:1px solid #222">${c}</td>`).join('')}</tr>`).join('');
+  table.innerHTML = thead + tbody;
+  const input = document.getElementById('search');
+  input.oninput = () => {
+    const q = input.value.toLowerCase();
+    const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
+    const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td style="padding:6px;border-bottom:1px solid #222">${c}</td>`).join('')}</tr>`).join('');
+    table.innerHTML = thead + tbodyF;
+  };
+}
+loadCSV();
+</script>
