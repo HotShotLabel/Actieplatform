@@ -10,58 +10,23 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    /* Extra mobiel-styling */
-    .menu {
-      display: flex;
-      gap: 12px;
+    /* Extra mobiel-styling (hamburger + knoppen)  */
+    .menu{display:flex;gap:12px}
+    .menu a{text-decoration:none;padding:6px 10px;border-radius:6px;color:#fff}
+    .hamburger{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:#fff}
+    @media (max-width:768px){
+      .menu{display:none;flex-direction:column;background:#0b0f14;position:absolute;top:60px;right:10px;padding:10px;border-radius:8px}
+      .menu.show{display:flex}
+      .hamburger{display:block}
     }
-    .menu a {
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      color: white;
-    }
-    .hamburger {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: white;
-    }
-    @media (max-width: 768px) {
-      .menu {
-        display: none;
-        flex-direction: column;
-        background: #0b0f14;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-        padding: 10px;
-        border-radius: 8px;
-      }
-      .menu.show {
-        display: flex;
-      }
-      .hamburger {
-        display: block;
-      }
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      background: #d62828;
-      color: #fff;
-      text-align: center;
-    }
-    .btn.outline {
-      background: transparent;
-      border: 2px solid #d62828;
-      color: #d62828;
-    }
+    .btn{display:inline-block;padding:12px 20px;font-size:1rem;border-radius:8px;background:#d62828;color:#fff;text-align:center}
+    .btn.outline{background:transparent;border:2px solid #d62828;color:#d62828}
+    /* Tabelstijl voor incidenten-lijst */
+    table#incidents th, table#incidents td{padding:8px;border-bottom:1px solid #222}
+    table#incidents th{text-align:left;border-bottom:1px solid #333}
+    input#search{background:#0f141a;border:1px solid #222;color:#e7eef8;border-radius:8px}
   </style>
+  <meta name="description" content="Meldingen van politiegeweld direct omzetten in actie: veilig uploaden, juridische opvolging, en een kaart met incidenten.">
 </head>
 <body>
   <!-- Navigatie -->
@@ -75,7 +40,9 @@
       <div class="menu">
         <a href="#meld">Melden</a>
         <a href="#kaart">Kaart</a>
+        <a href="#lijst">Incidenten</a>
         <a href="#juridisch">Juridische steun</a>
+        <a href="#vrijwilligers">Vrijwilligers</a>
         <a href="#privacy">Privacy</a>
         <a href="#install">App</a>
       </div>
@@ -105,9 +72,7 @@
           <strong>Tip:</strong> versleutel met 7-Zip (AES-256) of Cryptomator. Zie <a href="#encryptie">encryptie-handleiding</a> hieronder.
         </div>
         <div style="margin-top:14px">
-          <iframe aria-label="Contact with file"
-                  frameborder="0"
-                  allow="camera;microphone"
+          <iframe aria-label="Contact with file" frameborder="0" allow="camera;microphone"
                   style="height:600px;width:100%;border:none;"
                   src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
           </iframe>
@@ -121,9 +86,7 @@
           <li>Korte omschrijving (1–2 zinnen)</li>
           <li>Dienstnummer agent(en) (optioneel)</li>
         </ul>
-        <p class="small">
-          Wij publiceren geen onnodige persoonsgegevens. Juristen bepalen of/wanneer identificerende info (zoals dienstnummers) publiek kan worden gemaakt.
-        </p>
+        <p class="small">Wij publiceren geen onnodige persoonsgegevens. Juristen bepalen of/wanneer identificerende info (zoals dienstnummers) publiek kan worden gemaakt.</p>
       </aside>
     </section>
 
@@ -132,17 +95,27 @@
       <div class="card">
         <span class="badge">Transparantie</span>
         <h2>Kaart met incidenten</h2>
-        <p class="small">Hier tonen we geanonimiseerde incidenten (datum, locatie, type geweld, korte omschrijving). Identificerende gegevens worden alleen gedeeld na juridische toetsing.</p>
+        <p class="small">Kleur = type geweld. Meldingen verschijnen na korte controle. Ververs de pagina om nieuwe pins te zien.</p>
         <div style="margin:10px 0 16px">
-          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform" target="_blank" rel="noopener">
-            Meld voor de kaart
-          </a>
-          <span class="small" style="margin-left:10px">Na versturen verschijnt je melding op de kaart (ververs de pagina).</span>
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform" target="_blank" rel="noopener">Meld voor de kaart</a>
         </div>
         <iframe
           src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
-          width="100%" height="500" style="border:none; border-radius:12px;">
+          width="100%" height="500" style="border:none;border-radius:12px;">
         </iframe>
+      </div>
+    </section>
+
+    <!-- Incidenten-lijst (CSV -> tabel) -->
+    <section id="lijst" class="section">
+      <div class="card">
+        <span class="badge">Transparantie</span>
+        <h3>Incidenten (doorzoekbaar)</h3>
+        <input id="search" placeholder="Zoek op stad / type / omschrijving…" style="margin:6px 0;padding:10px;width:100%;border-radius:10px;border:1px solid #222;background:#0f141a;color:#e7eef8">
+        <div style="overflow:auto">
+          <table id="incidents" class="small" style="width:100%;border-collapse:collapse"></table>
+        </div>
+        <p class="small" style="margin-top:8px">Data bron: tab <em>Gepubliceerd</em> in onze Google Sheet.</p>
       </div>
     </section>
 
@@ -164,13 +137,31 @@
       </aside>
     </section>
 
+    <!-- Vrijwilligers / Professionals -->
+    <section id="vrijwilligers" class="section">
+      <div class="card">
+        <span class="badge">Meedoen</span>
+        <h2>Vrijwilligers & Professionals</h2>
+        <p class="small">Wil je bijdragen als advocaat/jurist, onderzoeker, ontwikkelaar, data-analist of in communicatie/organisatie? Meld je hieronder aan. We verwerken gegevens volgens onze <a href="privacy.html">privacyverklaring</a>.</p>
+        <div style="margin-top:14px">
+          <!-- VERVANG door jouw Google Forms embed-URL -->
+          <iframe
+            src="GOOGLE_FORM_URL"
+            width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
+            style="border:none;border-radius:12px;background:#0b0f14">
+            Laden…
+          </iframe>
+        </div>
+      </div>
+    </section>
+
     <!-- Encryptie -->
     <section id="encryptie" class="section grid">
       <div class="card">
         <span class="badge">Bescherm jezelf</span>
         <h2>Encryptie-handleiding (korte versie)</h2>
         <ol class="list">
-          <li><strong>7-Zip (Windows/macOS/Linux):</strong> Klik rechts op je bestand → “Toevoegen aan archief” → kies <span class="code">.7z</span> of <span class="code">.zip</span> → Encryptiemethode <span class="code">AES-256</span> → sterk wachtwoord → upload het versleutelde archief.</li>
+          <li><strong>7-Zip (Windows/macOS/Linux):</strong> Rechtsklik → “Toevoegen aan archief” → kies <span class="code">.7z</span> of <span class="code">.zip</span> → Encryptiemethode <span class="code">AES-256</span> → sterk wachtwoord → upload het versleutelde archief.</li>
           <li><strong>Cryptomator:</strong> Installeer → maak een “vault” → zet je bestanden erin → vergrendel → upload de versleutelde map/archief.</li>
           <li><strong>Wachtwoord delen:</strong> Deel het wachtwoord <em>nooit</em> in hetzelfde formulier. Gebruik een apart kanaal (bijv. Signal) of wacht op ons antwoord per e-mail.</li>
         </ol>
@@ -186,27 +177,21 @@
       </aside>
     </section>
 
-    <!-- Installatie -->
+    <!-- PWA / App -->
     <section id="install" class="section">
       <div class="card">
         <span class="badge">App zonder kosten</span>
         <h2>Installeer als app (PWA)</h2>
-        <p class="small">
-          Deze site is een <strong>Progressive Web App</strong>. Op Android verschijnt een “Installeren” of “Toevoegen aan startscherm”-prompt. Op iOS: Deel-icoon → “Zet op beginscherm”.
-          Publicatie in de Play Store kan later via een wrapper, maar vereist een betaald ontwikkelaarsaccount.
-        </p>
+        <p class="small">Deze site is een <strong>Progressive Web App</strong>. Op Android verschijnt een “Installeren” of “Toevoegen aan startscherm”-prompt. Op iOS: Deel-icoon → “Zet op beginscherm”. Publicatie in de Play Store kan later via een wrapper, maar vereist een betaald ontwikkelaarsaccount.</p>
       </div>
     </section>
 
-    <!-- Privacy -->
+    <!-- Privacy-link blok -->
     <section id="privacy" class="section">
       <div class="card">
         <span class="badge">Beleid</span>
         <h2>Privacy & Verantwoord gebruik</h2>
-        <p class="small">
-          Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.
-          Onrechtmatig materiaal wordt verwijderd. Zie ook <a href="privacy.html">onze privacyverklaring</a>.
-        </p>
+        <p class="small">Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak. Onrechtmatig materiaal wordt verwijderd. Zie ook <a href="privacy.html">onze privacyverklaring</a>.</p>
       </div>
     </section>
   </main>
@@ -216,47 +201,51 @@
     © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js');
-    });
-  }
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+  <!-- Scripts -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ------- Incidenten-lijst (CSV -> tabel) -------
+    // 1) Publiceer je Sheet-tab "Gepubliceerd" als CSV (Bestand -> Publiceren op het web -> CSV)
+    // 2) Plak hier de gegenereerde CSV-link:
+    const CSV_URL = 'https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv'; // <-- VERVANGEN
+
+    async function loadCSV() {
+      try {
+        const res = await fetch(CSV_URL);
+        const text = await res.text();
+        const rows = text.split(/\r?\n/).map(r =>
+          r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c => c.replace(/^"|"$/g,''))
+        );
+        const cleaned = rows.filter(r => r.length > 1);
+        if (!cleaned.length) return;
+        const [head, ...data] = cleaned;
+        renderTable(head, data);
+      } catch(e) {
+        console.error('CSV laden mislukt:', e);
+      }
+    }
+    function renderTable(head, data){
+      const table = document.getElementById('incidents');
+      if (!table) return;
+      const thead = `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+      const tbody = data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+      table.innerHTML = thead + tbody;
+
+      const input = document.getElementById('search');
+      if (input){
+        input.oninput = () => {
+          const q = input.value.toLowerCase();
+          const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
+          const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+          table.innerHTML = thead + tbodyF;
+        };
+      }
+    }
+    loadCSV();
+  </script>
 </body>
 </html>
-<div class="card" id="lijst">
-  <h3>Incidenten (doorzoekbaar)</h3>
-  <input id="search" placeholder="Zoek op stad/type/omschrijving…" style="margin:6px 0;padding:8px;width:100%">
-  <div style="overflow:auto">
-    <table id="incidents" class="small" style="width:100%;border-collapse:collapse"></table>
-  </div>
-</div>
-<script>
-// VERVANG door jouw gepubliceerde CSV-link:
-const CSV_URL = 'https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv';
-
-async function loadCSV() {
-  const res = await fetch(CSV_URL);
-  const text = await res.text();
-  const rows = text.split(/\r?\n/).map(r => r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'')));
-  const [head,...data] = rows.filter(r=>r.length>1);
-  renderTable(head, data);
-}
-function renderTable(head, data){
-  const table = document.getElementById('incidents');
-  table.innerHTML = '';
-  const thead = `<tr>${head.map(h=>`<th style="text-align:left;border-bottom:1px solid #333;padding:6px">${h}</th>`).join('')}</tr>`;
-  const tbody = data.map(r=>`<tr>${r.map(c=>`<td style="padding:6px;border-bottom:1px solid #222">${c}</td>`).join('')}</tr>`).join('');
-  table.innerHTML = thead + tbody;
-  const input = document.getElementById('search');
-  input.oninput = () => {
-    const q = input.value.toLowerCase();
-    const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
-    const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td style="padding:6px;border-bottom:1px solid #222">${c}</td>`).join('')}</tr>`).join('');
-    table.innerHTML = thead + tbodyF;
-  };
-}
-loadCSV();
-</script>
