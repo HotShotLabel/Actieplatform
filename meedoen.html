@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Meedoen — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigatie -->
+  <nav class="nav">
+    <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
+      <div class="brand" style="display:flex;align-items:center;gap:8px">
+        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px">
+        <strong>Actieplatform Politiegeweld</strong>
+      </div>
+      <button class="hamburger" onclick="document.querySelector('.menu').classList.toggle('show')">☰</button>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="kaart.html">Meld & LIVE Kaart</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="juridisch.html">Juridische steun</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="#install">App</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <header class="container hero">
+    <h1>Doe mee & versterk ons netwerk</h1>
+    <p>
+      Het Actieplatform is opgericht omdat politiegeweld toeneemt, slachtoffers vaak alleen staan,
+      en de overheid de politie onvoldoende controleert. 
+      Samen bouwen we een netwerk van burgers, vrijwilligers en professionals om onrecht aan te vechten.
+    </p>
+  </header>
+
+  <main class="container">
+    <!-- Vrijwilligers -->
+    <section class="section">
+      <div class="card">
+        <span class="badge">Vrijwilligers</span>
+        <h2>Sluit je aan als vrijwilliger</h2>
+        <p>
+          Wil je helpen bij communicatie, dossiervorming, contact met slachtoffers of technische ondersteuning?
+          Meld je aan en draag bij aan een eerlijkere samenleving.
+        </p>
+        <iframe 
+          src="https://forms.zohopublic.eu/hotshotlabel1/form/Vrijwilligersaanmelding/formperma/XXXXXXXXX" 
+          style="width:100%;height:600px;border:none" 
+          frameborder="0">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Professionals -->
+    <section class="section">
+      <div class="card">
+        <span class="badge">Professionals</span>
+        <h2>Advocaten, juristen & onderzoekers</h2>
+        <p>
+          Wij zoeken mensenrechtenadvocaten, strafrechtjuristen, onderzoekers en ontwikkelaars
+          die hun expertise willen inzetten om slachtoffers bij te staan en structurele verandering af te dwingen.
+        </p>
+        <iframe 
+          src="https://forms.zohopublic.eu/hotshotlabel1/form/Professionalsaanmelding/formperma/YYYYYYYYY" 
+          style="width:100%;height:600px;border:none" 
+          frameborder="0">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © <span id="y"></span> Actieplatform Politiegeweld — 
+    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+  </footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
