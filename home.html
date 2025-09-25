@@ -6,16 +6,13 @@
   <meta name="theme-color" content="#0b0f14">
   <title>Home — Actieplatform Politiegeweld</title>
 
-  <!-- PWA & icons -->
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/logo.png">
   <link rel="apple-touch-icon" href="icons/logo.png">
-
-  <!-- Stijlen -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATIE (identiek op alle pagina's) -->
+  <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
@@ -38,26 +35,21 @@
   <header class="container hero">
     <span class="kicker">Meldpunt &amp; Actie</span>
     <h1>Actieplatform Politiegeweld</h1>
-    <p>
-      Er vallen steeds meer doden en gewonden door politiegeweld, terwijl onafhankelijk toezicht tekortschiet.
-      Daarom verzamelen we meldingen, bouwen we dossiers en koppelen we juridische steun — voor echte verandering.
-    </p>
+    <p>Er vallen steeds meer doden en gewonden door politiegeweld, terwijl onafhankelijk toezicht tekortschiet.
+      Daarom verzamelen we meldingen, bouwen we dossiers en koppelen we juridische steun — voor echte verandering.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
       <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
       <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen &amp; kaart</a>
     </div>
   </header>
 
-  <!-- INHOUD -->
+  <!-- CONTENT -->
   <main class="container">
     <section class="section grid">
       <div class="card">
         <span class="badge">Waarom dit platform?</span>
         <h2>Collectieve bescherming</h2>
-        <p>
-          We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging en publieke verantwoording.
-          We publiceren geen onnodige persoonsgegevens en werken samen met juristen en onderzoekers.
-        </p>
+        <p>We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging en publieke verantwoording.</p>
       </div>
       <aside class="card">
         <h3>Wat jij kunt doen</h3>
@@ -73,37 +65,27 @@
       <div class="card">
         <span class="badge">Transparantie</span>
         <h2>Meldingen &amp; Live Kaart</h2>
-        <p class="small">
-          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart wanneer het formulier is verzonden.
-        </p>
+        <p class="small">Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart.</p>
         <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
       </div>
       <aside class="card">
         <h3>Privacy</h3>
-        <p class="small">
-          We volgen dataminimalisatie en delen niets zonder juridische noodzaak of toestemming.
-          Bekijk onze <a href="privacy.html">privacyverklaring</a>.
-        </p>
+        <p class="small">We volgen dataminimalisatie en delen niets zonder juridische noodzaak of toestemming.
+          Zie onze <a href="privacy.html">privacyverklaring</a>.</p>
       </aside>
     </section>
   </main>
 
   <!-- FOOTER -->
   <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld —
-    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 
-  <!-- ===================== CHAT WIDGET (overlay) ===================== -->
-  <!-- launcher knop -->
+  <!-- === CHAT WIDGET (enkel 1x!) === -->
   <button class="chat-launcher" aria-label="Open chat" id="chatOpen">?</button>
-  <!-- backdrop -->
   <div class="chat-backdrop" id="chatBackdrop"></div>
-  <!-- panel -->
   <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Chat">
     <div class="chat-header">
       <div class="chat-title">
@@ -132,30 +114,22 @@
     </div>
   </div>
 
-  <!-- ===================== CHAT SCRIPT ===================== -->
   <script>
-    // >>> VUL HIER JE WORKER-URL IN <<<
+    // >>> vul hier je eigen Worker-URL in <<<
     const AI_ENDPOINT = "https://politiegeweld-chat.suleyman-m-guerrouj.workers.dev/";
 
-    // Elementen
+    // UI refs
     const openBtn = document.getElementById('chatOpen');
-    const panel = document.getElementById('chatPanel');
-    const backdrop = document.getElementById('chatBackdrop');
-    const closeBtn = document.getElementById('chatClose');
-    const clearBtn = document.getElementById('chatClear');
-    const input = document.getElementById('chatInput');
+    const panel   = document.getElementById('chatPanel');
+    const backdrop= document.getElementById('chatBackdrop');
+    const closeBtn= document.getElementById('chatClose');
+    const clearBtn= document.getElementById('chatClear');
+    const input   = document.getElementById('chatInput');
     const sendBtn = document.getElementById('chatSend');
-    const bodyEl = document.getElementById('chatBody');
+    const bodyEl  = document.getElementById('chatBody');
 
-    function openChat(){
-      panel.style.display = 'block';
-      backdrop.style.display = 'block';
-      input.focus();
-    }
-    function closeChat(){
-      panel.style.display = 'none';
-      backdrop.style.display = 'none';
-    }
+    function openChat(){ panel.style.display='block'; backdrop.style.display='block'; input.focus(); }
+    function closeChat(){ panel.style.display='none';  backdrop.style.display='none'; }
     function addMsg(html, who='bot'){
       const el = document.createElement('div');
       el.className = 'chat-msg ' + (who==='user' ? 'user' : 'bot');
@@ -163,21 +137,19 @@
       bodyEl.appendChild(el);
       bodyEl.scrollTop = bodyEl.scrollHeight;
     }
-    function clearChat(){
-      bodyEl.innerHTML = '<div class="chat-msg bot">Nieuw gesprek gestart. Hoe kan ik helpen?</div>';
-    }
+    function clearChat(){ bodyEl.innerHTML = '<div class="chat-msg bot">Nieuw gesprek gestart. Hoe kan ik helpen?</div>'; }
 
     openBtn.addEventListener('click', openChat);
-    closeBtn.addEventListener('click', closeChat);
     backdrop.addEventListener('click', closeChat);
+    closeBtn.addEventListener('click', closeChat);
     clearBtn.addEventListener('click', clearChat);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeChat(); });
 
     async function handleSend(){
-      const text = (input.value || '').trim();
+      const text = (input.value||'').trim();
       if(!text) return;
-      addMsg(text, 'user');
-      input.value = '';
+      addMsg(text,'user');
+      input.value='';
 
       try{
         const r = await fetch(AI_ENDPOINT, {
@@ -186,14 +158,13 @@
           body: JSON.stringify({ question: text })
         });
         const data = await r.json();
-        addMsg(data.answer || 'Ik kon geen antwoord genereren.', 'bot');
+        addMsg(data.answer || 'Ik kon geen antwoord genereren.','bot');
       }catch(e){
-        addMsg('Geen verbinding met de chatdienst. Probeer later opnieuw.', 'bot');
+        addMsg('Geen verbinding met de chatdienst. Probeer later opnieuw.','bot');
       }
     }
-
     sendBtn.addEventListener('click', handleSend);
-    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleSend(); }});
+    input.addEventListener('keydown', e => { if(e.key==='Enter') handleSend(); });
   </script>
 </body>
 </html>
