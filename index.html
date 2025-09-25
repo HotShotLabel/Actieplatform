@@ -6,20 +6,20 @@
   <meta name="theme-color" content="#0b0f14">
   <title>Home — Actieplatform Politiegeweld</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/logo.png">
+  <link rel="apple-touch-icon" href="icons/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATIE (identiek op alle pagina's) -->
+  <!-- NAVIGATIE -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
+        <img src="icons/logo.png" alt="Logo" style="width:40px;height:40px;border-radius:6px">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
-        <a href="index.html"><strong>Home</strong></a>
+        <a href="home.html"><strong>Home</strong></a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
         <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
@@ -84,9 +84,12 @@
 
   <!-- FOOTER -->
   <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+    © <span id="y"></span> Actieplatform Politiegeweld — 
+    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
