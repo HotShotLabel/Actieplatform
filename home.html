@@ -1,130 +1,101 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0f14" />
-  <title>Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,.06); }
-    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
-    .container{ max-width:1100px; margin:0 auto; padding:20px; }
-
-    nav.nav{ position:sticky; top:0; z-index:50; background:rgba(11,15,20,.9); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
-    .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
-    .brand{ display:flex; align-items:center; gap:10px; }
-    .brand img{ width:32px; height:32px; border-radius:6px; }
-    .menu{ display:flex; gap:10px; align-items:center; }
-    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
-    .menu a:hover{ background:var(--glass); }
-
-    header.hero{ padding:60px 20px; text-align:center; }
-    header.hero h1{ margin:0 0 12px 0; font-size:2.2rem; }
-    header.hero p{ margin:0 auto; color:var(--muted); max-width:760px; }
-    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
-    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
-    .btn-group{ display:flex; justify-content:center; gap:12px; margin-top:18px; flex-wrap:wrap; }
-
-    .section{ margin:40px 0; }
-    .card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); margin:18px 0; }
-    .badge{ display:inline-block; background:rgba(255,255,255,.06); padding:4px 8px; border-radius:8px; font-size:.85rem; color:#cfd6df; margin-bottom:6px; }
-    .small{ color:var(--muted); }
-    a.link{ color:#fff; text-decoration:underline; }
-    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Home — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAV -->
-<nav class="nav">
-  <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
-    <div class="brand" style="display:flex;align-items:center;gap:8px">
-      <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
-      <strong>Actieplatform Politiegeweld</strong>
+
+  <!-- Navigatie -->
+  <nav class="nav">
+    <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
+      <div class="brand" style="display:flex;align-items:center;gap:8px">
+        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
+        <strong>Actieplatform Politiegeweld</strong>
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
     </div>
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a href="kaart.html">Meld & LIVE Kaart</a>
-      <a href="meedoen.html">Meedoen</a>
-      <a href="juridisch.html">Juridisch</a>
-      <a href="privacy.html">Privacy</a>
-    </div>
-  </div>
-</nav>
-  <!-- HERO -->
-  <header class="hero container">
+  </nav>
+
+  <!-- Hero -->
+  <header class="container hero">
     <span class="kicker">Meldpunt & Actie</span>
-    <h1>Meldingen omzetten in <em>daadwerkelijke actie</em></h1>
+    <h1>Actieplatform Politiegeweld</h1>
     <p>
-      Het aantal slachtoffers door politiegeweld neemt toe, terwijl de overheid tekortschiet in onafhankelijk toezicht.
-      Daarom is dit platform opgericht: om meldingen te verzamelen, netwerken te bouwen, en samen onrecht aan te vechten.
+      Er vallen steeds meer doden en gewonden door politiegeweld. De overheid laat de politie grotendeels buiten onafhankelijk toezicht.  
+      Daarom zijn wij opgericht: om feiten te verzamelen, incidenten te documenteren en onze mensenrechten te beschermen.  
+      We bouwen een netwerk om samen onrecht aan te vechten.
     </p>
-    <div class="btn-group">
-      <a class="btn" href="melden.html">Uitgebreid melden</a>
-      <a class="btn outline" href="kaart.html">Meld & LIVE Kaart</a>
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+      <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
+      <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen & kaart</a>
     </div>
   </header>
 
-  <!-- Secties -->
+  <!-- Intro secties -->
   <main class="container">
-    <section id="juridisch" class="section">
+    <section class="section grid">
       <div class="card">
-        <span class="badge">Actie & steun</span>
-        <h2>Juridische opvolging</h2>
-        <p>We helpen bij strafzaken waarin geweld is gebruikt tegen burgers en waar mogelijk in het proces-verbaal onjuist is gerapporteerd. Meldingen worden—met toestemming—gedeeld met mensenrechtenadvocaten en strafrechtjuristen voor beoordeling en vervolg.</p>
-        <ul>
-          <li>Beoordeling door juristen (pro bono waar mogelijk)</li>
-          <li>Dossiervorming en bewijsbeheer</li>
-          <li>Doorverwijzing naar passende procedures (strafrecht, klacht, civiel)</li>
+        <span class="badge">Waarom dit platform?</span>
+        <h2>Collectieve bescherming</h2>
+        <p>
+          Het Actieplatform brengt meldingen samen en koppelt deze aan juridische ondersteuning.  
+          Zo zorgen we dat incidenten niet verdwijnen, maar worden gebruikt om verandering af te dwingen.
+        </p>
+      </div>
+      <aside class="card">
+        <h3>Wat je bijdraagt</h3>
+        <ul class="list">
+          <li>Meld een incident (kort of uitgebreid)</li>
+          <li>Upload bewijsmateriaal (foto, video, audio)</li>
+          <li>Sluit je aan als vrijwilliger of jurist</li>
         </ul>
-      </div>
+      </aside>
     </section>
 
-    <section id="encryptie" class="section">
+    <section class="section grid">
       <div class="card">
-        <span class="badge">Bescherm jezelf</span>
-        <h2>Encryptie-handleiding</h2>
+        <span class="badge">Transparantie</span>
+        <h2>Meldingen & Live Kaart</h2>
         <p class="small">
-          Voor je veiligheid raden we aan je bestanden te versleutelen voor upload. Gebruik 7-Zip (AES-256) of Cryptomator.
-          Deel wachtwoorden nooit via hetzelfde formulier.
+          Alle meldingen komen samen op de live kaart. Daar kun je zien waar incidenten plaatsvinden en hoe vaak dit voorkomt.
         </p>
+        <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
       </div>
-    </section>
-
-    <section id="vrijwilligers" class="section">
-      <div class="card">
-        <span class="badge">Samen sterk</span>
-        <h2>Word vrijwilliger of sluit je aan</h2>
-        <p>Mensenrechten- en strafrechtadvocaten, onderzoekers, ontwikkelaars en betrokken burgers kunnen zich aanmelden. Samen bouwen we een netwerk dat onrecht aanpakt.</p>
-        <a class="btn" href="vrijwilligers.html">Aanmelden</a>
-      </div>
-    </section>
-
-    <section id="privacy" class="section">
-      <div class="card">
-        <span class="badge">Beleid</span>
-        <h2>Privacy & Verantwoord gebruik</h2>
+      <aside class="card">
+        <h3>Meedoen</h3>
         <p class="small">
-          Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.
-          Onrechtmatig materiaal wordt verwijderd. Zie ook <a class="link" href="privacy.html">onze privacyverklaring</a>.
+          Wil je bijdragen als vrijwilliger, onderzoeker of advocaat?  
+          Ga naar <a href="meedoen.html">de meedoen-pagina</a>.
         </p>
-      </div>
+      </aside>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    © <span id="y"></span> Actieplatform Politiegeweld —
-    <a class="link" href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+  <!-- Footer -->
+  <footer class="container footer">
+    © <span id="y"></span> Actieplatform Politiegeweld — 
+    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
     }
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
