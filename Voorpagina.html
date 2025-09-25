@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Actieplatform Politiegeweld</title>
+  <!-- PWA & iconen -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <!-- Jouw dark theme -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Consistente basisstijl voor deze one-pager (bouwt voort op jouw style.css) */
+    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,0.05); }
+    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+    .container{ max-width:1100px; margin:0 auto; padding:20px; }
+    /* Nav */
+    nav.nav{ position:sticky; top:0; z-index:50; background:rgba(11,15,20,0.85); backdrop-filter: blur(6px); border-bottom:1px solid rgba(255,255,255,0.06); }
+    .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand img{ width:32px; height:32px; border-radius:6px; }
+    .menu{ display:flex; gap:10px; align-items:center; }
+    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
+    .menu a:hover{ background:rgba(255,255,255,0.06); }
+    /* Hero */
+    header.hero{ padding:48px 20px; }
+    .hero-inner{ display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:start; }
+    @media(max-width:900px){ .hero-inner{ grid-template-columns:1fr; } }
+    h1{ font-size:2rem; margin:0 0 10px 0; line-height:1.05; }
+    .kicker{ display:inline-block; background:var(--glass); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:.85rem; margin-bottom:10px; }
+    p.lead{ color:var(--muted); margin:0 0 18px 0; }
+    /* Cards/knoppen */
+    .card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); margin:18px 0; }
+    .badge{ display:inline-block; background:rgba(255,255,255,0.06); padding:4px 8px; border-radius:8px; font-size:.85rem; color:#cfd6df; margin-bottom:6px; }
+    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
+    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
+    .small{ color:var(--muted); }
+    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:900px){ .grid-3{ grid-template-columns:1fr; } }
+    /* Inputs/tabel */
+    input[type="text"], input[type="search"]{
+      width:100%; padding:10px; border:1px solid #222; border-radius:10px; background:#0f141a; color:#e7eef8;
+    }
+    table{ width:100%; border-collapse:collapse; }
+    th, td{ padding:8px; border-bottom:1px solid #222; }
+    th{ border-bottom:1px solid #333; text-align:left; }
+    .placeholder{ padding:14px; border:1px dashed #333; border-radius:12px; background:#0f141a; color:#cfd6df; }
+    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <!-- Navigatie -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="icons/icon-192.png" alt="Logo">
+        <strong>Actieplatform Politiegeweld</strong>
+      </div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#melden">Melden</a>
+        <a href="#kaart">Kaart</a>
+        <a href="#meedoen">Meedoen</a>
+        <a href="#juridisch">Juridisch</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero container">
+    <div class="hero-inner">
+      <div>
+        <span class="kicker">Meldpunt & Actie</span>
+        <h1>Politiegeweld onder het vergrootglas — wij handelen nu</h1>
+        <p class="lead">
+          We zien meer meldingen en dodelijke incidenten bij politieoptreden. Waar onafhankelijk toezicht tekortschiet,
+          blijven klachten te vaak zonder gevolg. Daarom zijn wij opgericht: om bewijsmateriaal veilig te verzamelen,
+          juridische opvolging te organiseren en samen een netwerk te bouwen dat onrecht aanpakt.
+        </p>
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Onze missie</h3>
+          <p class="small">
+            We documenteren politiegeweld, beschermen melders, koppelen door naar juristen en publiceren een
+            geanonimiseerde kaart voor transparantie en verantwoording. We komen in actie wanneer bestaande
+            mechanismen falen of onvoldoende onafhankelijk zijn.
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" href="#melden">Direct melden</a>
+            <a class="btn outline" href="#meedoen">Meedoen</a>
+            <a class="btn outline" href="#kaart">Bekijk kaart</a>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="card"><h3 style="margin:0 0 6px 0">Veilig uploaden</h3><p class="small">Upload video, foto of audio. Versleutel waar mogelijk (7-Zip / Cryptomator).</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Juridische opvolging</h3><p class="small">Met jouw toestemming koppelen wij aan mensenrechten- en strafrechtjuristen.</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Open kaart & data</h3><p class="small">Geanonimiseerde incidenten zichtbaar na korte controle.</p></div>
+        </div>
+      </div>
+      <aside class="card">
+        <h3 style="margin-top:0">Waarom dit nodig is</h3>
+        <p class="small">Als toezicht ontbreekt en meldingen stilvallen, blijven patronen bestaan. Wij willen dat meldingen leiden tot onderzoek, gerechtigheid en verandering — niet tot stilstand.</p>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn" href="#meedoen">Word vrijwilliger</a>
+          <a class="btn outline" href="#juridisch">Juridisch netwerk</a>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- MELDEN -->
+    <section id="melden" class="card">
+      <span class="badge">Veilig uploaden</span>
+      <h2>Meldformulier (video, foto, audio)</h2>
+      <p class="small">Deel geen namen/adressen/BSN. Dienstnummer(s) van agent(en) mag je noteren indien bekend. Versleutel bestanden bij voorkeur vooraf (7-Zip / Cryptomator).</p>
+      <!-- Zoho Form (werkend) -->
+      <iframe
+        aria-label="Meldformulier"
+        frameborder="0"
+        allow="camera;microphone"
+        style="height:750px;width:100%;border:none;border-radius:12px"
+        src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
+      </iframe>
+    </section>
+
+    <!-- KAART -->
+    <section id="kaart" class="card">
+      <span class="badge">Transparantie</span>
+      <h2>Incidentenkaart (live)</h2>
+      <p class="small">Nieuwe meldingen verschijnen geanonimiseerd na korte controle. Ververs de pagina om nieuwe pins te zien.</p>
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
+        width="100%" height="520" style="border:none;border-radius:12px">
+      </iframe>
+    </section>
+
+    <!-- INCIDENTEN-LIJST (optioneel CSV) -->
+    <section class="card" id="lijst">
+      <h3>Incidenten (doorzoekbaar)</h3>
+      <input id="search" type="search" placeholder="Zoek op stad / type / omschrijving…" />
+      <div id="incWrap" style="overflow:auto;margin-top:8px">
+        <div class="placeholder" id="incPlaceholder">
+          <strong>Nog instellen:</strong> publiceer je Google Sheet-tab <em>Gepubliceerd</em> als CSV en plak de link in <code>CSV_URL</code> (onderaan dit bestand). Daarna verschijnt hier de tabel.
+        </div>
+        <table id="incidents" style="display:none"></table>
+      </div>
+    </section>
+
+    <!-- MEEDOEN -->
+    <section id="meedoen" class="card">
+      <span class="badge">Netwerk</span>
+      <h2>Vrijwilligers & Advocaten</h2>
+      <p class="small">Kies het juiste formulier. Gegevens worden verwerkt volgens de <a href="#privacy" style="color:#fff;text-decoration:underline">privacyverklaring</a>.</p>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+        <button id="tab-vol" class="btn" type="button">Vrijwilliger / Professional</button>
+        <button id="tab-law" class="btn outline" type="button">Advocaat / Jurist</button>
+      </div>
+
+      <!-- Vrijwilliger -->
+      <div id="volWrap" style="margin-top:8px">
+        <div class="placeholder" id="volPlaceholder">
+          Plak de embed-URL van je vrijwilligersformulier in <code>VOL_FORM_URL</code> (onderaan dit bestand).
+        </div>
+        <iframe id="volFrame" title="Aanmelden Vrijwilliger"
+                width="100%" height="900" frameborder="0"
+                style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
+      </div>
+
+      <!-- Advocaat -->
+      <div id="lawWrap" style="margin-top:8px;display:none">
+        <div class="placeholder" id="lawPlaceholder">
+          Plak de embed-URL van je advocatenformulier in <code>LAW_FORM_URL</code>.
+        </div>
+        <iframe id="lawFrame" title="Aanmelden Advocaat"
+                width="100%" height="980" frameborder="0"
+                style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
+      </div>
+    </section>
+
+    <!-- JURIDISCH -->
+    <section id="juridisch" class="card">
+      <span class="badge">Actie & steun</span>
+      <h2>Juridische opvolging</h2>
+      <ul class="small" style="margin:0 0 0 18px">
+        <li>Beoordeling door juristen (pro bono waar mogelijk)</li>
+        <li>Dossiervorming en bewijsbeheer</li>
+        <li>Doorverwijzing: strafrecht, klacht, civiel, bestuursrecht</li>
+      </ul>
+      <p class="small" style="margin-top:10px">Professionals kunnen zich aanmelden via <a href="#meedoen" style="color:#fff;text-decoration:underline">Meedoen</a> of mailen naar <a href="mailto:label@hot-shot.com" style="color:#fff;text-decoration:underline">label@hot-shot.com</a>.</p>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="card">
+      <span class="badge">Beleid</span>
+      <h2>Privacy & Verantwoord gebruik</h2>
+      <ul class="small" style="margin:0 0 0 18px">
+        <li><strong>Dataminimalisatie:</strong> we vragen alleen wat nodig is (datum, locatie, korte omschrijving).</li>
+        <li><strong>Geen onnodige persoonsgegevens:</strong> geen namen/BSN; dienstnummer agent mag worden genoteerd.</li>
+        <li><strong>Encryptie-first:</strong> advise 7-Zip of Cryptomator; wachtwoorden nooit in hetzelfde formulier.</li>
+        <li><strong>Delen:</strong> alleen met toestemming of juridische noodzaak.</li>
+        <li><strong>Bewaartermijnen:</strong> ruwe uploads periodiek gearchiveerd of verwijderd als niet meer nodig.</li>
+        <li><strong>Publicatie:</strong> identificerende info alleen na juridische toetsing. Geen doxxing/smaad.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com" style="color:#fff;text-decoration:underline">label@hot-shot.com</a>
+  </footer>
+
+  <script>
+    // PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ---------- CONFIG: vul in wanneer beschikbaar ----------
+    // Vrijwilligersformulier (Google Forms of Zoho -> embed URL)
+    const VOL_FORM_URL = ''; // bijv. https://docs.google.com/forms/d/e/.../viewform?embedded=true
+    // Advocatenformulier
+    const LAW_FORM_URL = '';
+    // Incidentenlijst CSV (Google Sheet Tab "Gepubliceerd" -> Publiceren op het web -> CSV)
+    const CSV_URL = ''; // bijv. https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv
+    // --------------------------------------------------------
+
+    // Tabs voor Meedoen
+    (function(){
+      const btnVol = document.getElementById('tab-vol');
+      const btnLaw = document.getElementById('tab-law');
+      const volWrap = document.getElementById('volWrap');
+      const lawWrap = document.getElementById('lawWrap');
+      const volFrame = document.getElementById('volFrame');
+      const lawFrame = document.getElementById('lawFrame');
+      const volPh = document.getElementById('volPlaceholder');
+      const lawPh = document.getElementById('lawPlaceholder');
+
+      function setActive(which){
+        if(which === 'vol'){
+          btnVol.classList.remove('outline'); btnLaw.classList.add('outline');
+          volWrap.style.display = 'block'; lawWrap.style.display = 'none';
+        } else {
+          btnLaw.classList.remove('outline'); btnVol.classList.add('outline');
+          lawWrap.style.display = 'block'; volWrap.style.display = 'none';
+        }
+      }
+      btnVol.addEventListener('click', ()=>setActive('vol'));
+      btnLaw.addEventListener('click', ()=>setActive('law'));
+      setActive('vol');
+
+      if (VOL_FORM_URL && /^https?:\/\//.test(VOL_FORM_URL)) {
+        volFrame.src = VOL_FORM_URL; volFrame.style.display='block'; volPh.style.display='none';
+      }
+      if (LAW_FORM_URL && /^https?:\/\//.test(LAW_FORM_URL)) {
+        lawFrame.src = LAW_FORM_URL; lawFrame.style.display='block'; lawPh.style.display='none';
+      }
+    })();
+
+    // Incidenten CSV -> tabel
+    async function loadCSV(){
+      if(!CSV_URL || !/^https?:\/\//.test(CSV_URL)) return;
+      const ph = document.getElementById('incPlaceholder');
+      const table = document.getElementById('incidents');
+      const res = await fetch(CSV_URL);
+      const text = await res.text();
+      const rows = text.split(/\r?\n/)
+        .map(r => r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,'')))
+        .filter(r => r.length > 1);
+      if (!rows.length) return;
+      const [head, ...data] = rows;
+      const thead = `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+      const tbody = data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+      table.innerHTML = thead + tbody;
+      table.style.display = 'table';
+      ph.style.display = 'none';
+
+      const input = document.getElementById('search');
+      input.oninput = () => {
+        const q = input.value.toLowerCase();
+        const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
+        const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+        table.innerHTML = thead + tbodyF;
+      };
+    }
+    loadCSV();
+  </script>
+</body>
+</html>
