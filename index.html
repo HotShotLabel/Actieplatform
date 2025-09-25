@@ -11,62 +11,11 @@
   <link rel="icon" href="icons/logo.png">
   <link rel="apple-touch-icon" href="icons/logo.png">
 
-  <!-- Jouw site-styling -->
+  <!-- Site styles -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Mini CSS voor de chat-widget (overrulet niets van style.css) -->
-  <style>
-    .chat-launcher{
-      position:fixed; right:18px; bottom:18px; z-index:10000;
-      width:56px; height:56px; border-radius:50%;
-      background:#d62828; color:#fff; border:none; cursor:pointer;
-      font-weight:800; font-size:22px; box-shadow:0 10px 28px rgba(0,0,0,.35);
-    }
-    .chat-backdrop{
-      position:fixed; inset:0; background:rgba(0,0,0,.45);
-      display:none; z-index:10000;
-    }
-    .chat-panel{
-      position:fixed; right:18px; bottom:86px; width:360px; max-width:92vw;
-      background:#121821; border:1px solid rgba(255,255,255,.08);
-      border-radius:16px; display:none; z-index:10001; overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,.5);
-    }
-    .chat-header{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.06); background:#0d131b;
-    }
-    .chat-header .chat-title{ display:flex; align-items:center; gap:8px }
-    .chat-header img{ width:22px; height:22px; border-radius:6px }
-    .chat-body{
-      max-height:min(60vh, 560px); overflow:auto; padding:12px;
-      background:#0b0f14;
-    }
-    .chat-msg{ padding:10px 12px; border-radius:12px; margin:8px 0; line-height:1.5 }
-    .chat-msg.bot{ background:#0f1720; border:1px solid rgba(255,255,255,.06) }
-    .chat-msg.user{ background:#16324c; border:1px solid rgba(77,163,255,.25) }
-    .chat-input{
-      display:flex; gap:8px; padding:10px; background:#0d131b; border-top:1px solid rgba(255,255,255,.06)
-    }
-    .chat-input input{
-      flex:1; background:#0b0f14; color:#eaf2ff; border:1px solid rgba(255,255,255,.12);
-      border-radius:10px; padding:10px
-    }
-    .chat-input button{
-      background:#4da3ff; color:#001627; border:none; border-radius:10px; padding:10px 12px;
-      font-weight:700; cursor:pointer
-    }
-    .chat-disclaimer{
-      padding:8px 12px; font-size:12px; color:#9fb3c8; border-top:1px dashed rgba(255,255,255,.08)
-    }
-    @media (max-width:560px){
-      .chat-panel{ left:10px; right:10px; bottom:86px; width:auto }
-    }
-  </style>
 </head>
-
 <body>
-  <!-- NAVIGATIE (identiek op alle pagina's) -->
+  <!-- NAVIGATIE (zelfde op alle pagina's houden) -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
@@ -74,7 +23,7 @@
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
-        <a href="index.html"><strong>Home</strong></a>
+        <a href="index.html">Home</a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
         <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
@@ -91,7 +40,8 @@
     <h1>Actieplatform Politiegeweld</h1>
     <p>
       Er vallen steeds meer doden en gewonden door politiegeweld, terwijl onafhankelijk toezicht tekortschiet.
-      Daarom verzamelen we meldingen, bouwen we dossiers en koppelen we juridische steun — voor echte verandering.
+      Daarom zijn wij opgericht: om feiten te verzamelen, incidenten te documenteren en onze mensenrechten te beschermen.
+      We bouwen een netwerk om samen onrecht aan te vechten.
     </p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
       <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
@@ -106,7 +56,9 @@
         <span class="badge">Waarom dit platform?</span>
         <h2>Collectieve bescherming</h2>
         <p>
-          We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging en publieke verantwoording.
+          We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging
+          en publieke verantwoording. Zo zorgen we dat incidenten niet verdwijnen, maar worden
+          gebruikt om verandering af te dwingen.
         </p>
       </div>
       <aside class="card">
@@ -124,7 +76,8 @@
         <span class="badge">Transparantie</span>
         <h2>Meldingen & Live Kaart</h2>
         <p class="small">
-          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart.
+          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart
+          zodra ze via het formulier zijn verstuurd.
         </p>
         <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
       </div>
@@ -133,6 +86,25 @@
         <p class="small">
           We volgen dataminimalisatie en delen niets zonder juridische noodzaak of toestemming.
           Bekijk onze <a href="privacy.html">privacyverklaring</a>.
+        </p>
+      </aside>
+    </section>
+
+    <section class="section grid">
+      <div class="card">
+        <span class="badge">Rechtspraak</span>
+        <h2>Rechterlijke uitspraken</h2>
+        <p class="small">
+          We verzamelen (publieke) uitspraken waarin agenten zijn onderzocht of veroordeeld. Dit helpt
+          slachtoffers, advocaten en onderzoekers bij vergelijkbare zaken.
+        </p>
+        <a class="btn outline" href="uitspraken.html">Bekijk uitspraken</a>
+      </div>
+      <aside class="card">
+        <h3>Juridische steun</h3>
+        <p class="small">
+          Hulp nodig? Lees meer over klacht- en rechtsgangen, art. 12 Sv, en het veilig aanleveren
+          van bewijsmateriaal op de pagina <a href="juridisch.html">Juridisch (geschillen)</a>.
         </p>
       </aside>
     </section>
@@ -145,137 +117,13 @@
   </footer>
 
   <script>
+    // PWA service worker (optioneel, laat staan als je sw.js gebruikt)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(()=>{});
+      });
+    }
     document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- CHAT WIDGET (overlay) -->
-  <button class="chat-launcher" aria-label="Open chat" id="chatOpen">?</button>
-  <div class="chat-backdrop" id="chatBackdrop"></div>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Chat">
-    <div class="chat-header">
-      <div class="chat-title">
-        <img src="icons/logo.png" alt="logo">
-        <strong>AI Chat (pilot)</strong>
-      </div>
-      <div>
-        <button id="chatClear" title="Nieuw gesprek" style="background:transparent;color:#9fb3c8;border:none;margin-right:8px;cursor:pointer">↺</button>
-        <button id="chatClose" title="Sluiten" style="background:transparent;color:#fff;border:none;font-size:18px;cursor:pointer">×</button>
-      </div>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-msg bot">
-        Welkom! Stel je vraag over politiegeweld, melden of (algemene) rechtspraak.
-        <div class="small" style="margin-top:6px;color:#9fb3c8">
-          Let op: dit is géén persoonlijk juridisch advies. Deel geen persoonsgegevens.
-        </div>
-      </div>
-    </div>
-    <div class="chat-input">
-      <input id="chatInput" placeholder="Bijv. ‘Hoe dien ik aangifte in?’">
-      <button id="chatSend">Stuur</button>
-    </div>
-    <div class="chat-disclaimer">
-      Hulpfunctie, geen vervanging van juridisch advies. Bij spoed: bel je advocaat.
-    </div>
-  </div>
-
-  <script>
-    // ====== VUL HIER JE WORKER-URL IN ======
-    const AI_ENDPOINT = 'https://politiegeweld-chat.suleyman-m-guerrouj.workers.dev';
-
-    // Elements
-    const openBtn   = document.getElementById('chatOpen');
-    const panel     = document.getElementById('chatPanel');
-    const backdrop  = document.getElementById('chatBackdrop');
-    const closeBtn  = document.getElementById('chatClose');
-    const clearBtn  = document.getElementById('chatClear');
-    const input     = document.getElementById('chatInput');
-    const sendBtn   = document.getElementById('chatSend');
-    const bodyEl    = document.getElementById('chatBody');
-
-    function openChat(){
-      panel.style.display = 'block';
-      backdrop.style.display = 'block';
-      input.focus();
-    }
-    function closeChat(){
-      panel.style.display = 'none';
-      backdrop.style.display = 'none';
-    }
-    function addMsg(text, who='bot'){
-      const el = document.createElement('div');
-      el.className = 'chat-msg ' + who;
-      el.innerHTML = text;
-      bodyEl.appendChild(el);
-      bodyEl.scrollTop = bodyEl.scrollHeight;
-    }
-    function clearChat(){
-      bodyEl.innerHTML = '<div class="chat-msg bot">Nieuw gesprek gestart. Hoe kan ik helpen?</div>';
-    }
-
-    openBtn.addEventListener('click', openChat);
-    closeBtn.addEventListener('click', closeChat);
-    backdrop.addEventListener('click', closeChat);
-    clearBtn.addEventListener('click', clearChat);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeChat(); });
-
-    // Kleine NL-FAQ fallback voor als AI_ENDPOINT (nog) niet werkt
-    const FAQ = [
-      {
-        q: /(hoe\s*(doe|dien)\s*ik\s*een?\s*aangifte)|(^aangifte\s*doen)|\baangifte\b/i,
-        a: `<strong>Aangifte doen:</strong><br>1) Verzamel bewijs (tijdlijn, locatie, getuigen, medisch, beeldmateriaal).<br>2) Maak afspraak bij politie (je mag aangifte doen).<br>3) Vraag om aangiftebevestiging & PV-nummer.<br>4) Bij weigering/geen actie: noteer namen/tijden en overweeg klacht of art. 12 Sv (zie ‘Juridisch’).`
-      },
-      {
-        q: /klacht|ombudsman|klachtenprocedure|OM/i,
-        a: `<strong>Klacht indienen:</strong> bij politieorganisatie (klachtenregeling) of Nationale Ombudsman; strafrechtelijk: aangifte doen en bij sepot art. 12 Sv overwegen.`
-      },
-      {
-        q: /proces[- ]?verbaal|valse pv|leugen/i,
-        a: `<strong>Twijfel aan PV:</strong> vraag dossierinzage (incl. bodycam), leg tegenstrijdigheden vast, verzamel onafhankelijk bewijs, meld uitgebreid via ‘Uitgebreid melden’.`
-      },
-      {
-        q: /video|audio|foto|bewijs|upload/i,
-        a: `Bewijs aanleveren? Kort: ‘Meldingen & Live Kaart’. Uitgebreid (met bestanden): ‘Uitgebreid melden’. Tip: versleutel vooraf (7-Zip/Cryptomator).`
-      }
-    ];
-    function replyLocal(text){
-      const hit = FAQ.find(f => f.q.test(text));
-      if (hit){ addMsg(hit.a, 'bot'); }
-      else {
-        addMsg("Ik weet dit niet zeker. Formuleer specifieker (bijv. ‘Hoe dien ik aangifte in?’) — of bekijk ‘Uitgebreid melden’, ‘Meldingen & Live Kaart’, ‘Juridisch’ en ‘Rechterlijke uitspraken’.", 'bot');
-      }
-    }
-
-    async function handleSend(){
-      const text = (input.value||'').trim();
-      if(!text) return;
-      addMsg(text, 'user');
-      input.value = '';
-
-      try{
-        const r = await fetch(https://politiegeweld-chat.suleyman-m-guerrouj.workers.dev/, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({question: text})
-        });
-        const data = await r.json().catch(()=> ({}));
-
-        if(!r.ok){
-          addMsg(`Er ging iets mis (status ${r.status}).`, 'bot');
-          if (data?.detail) addMsg(`<small class="small">${data.detail}</small>`, 'bot');
-          replyLocal(text);
-          return;
-        }
-        addMsg(data.answer || 'Geen antwoord ontvangen.', 'bot');
-      }catch(e){
-        addMsg('Kon geen verbinding maken met de chatserver. Ik probeer lokaal te helpen…', 'bot');
-        replyLocal(text);
-        console.error(e);
-      }
-    }
-
-    sendBtn.addEventListener('click', handleSend);
-    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleSend(); }});
   </script>
 </body>
 </html>
