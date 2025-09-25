@@ -1,132 +1,177 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0f14">
-  <title>Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="style.css">
-  <meta name="description" content="Meldingen van politiegeweld direct omzetten in actie: veilig uploaden, juridische opvolging, en een kaart met incidenten.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Actieplatform Politiegeweld — Home</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra strakke laag bovenop je style.css */
+    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,.06); }
+    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+    .container{ max-width:1100px; margin:0 auto; padding:20px; }
+    /* Navigatie */
+    nav.nav{ position:sticky; top:0; z-index:50; background:rgba(11,15,20,.9); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
+    .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand img{ width:32px; height:32px; border-radius:6px; }
+    .menu{ display:flex; gap:10px; align-items:center; }
+    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
+    .menu a:hover{ background:var(--glass); }
+    /* Hero */
+    header.hero{ padding:48px 20px; }
+    .hero-inner{ display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:start; }
+    @media(max-width:900px){ .hero-inner{ grid-template-columns:1fr; } }
+    h1{ font-size:2rem; margin:0 0 10px 0; line-height:1.05; }
+    .kicker{ display:inline-block; background:rgba(255,255,255,.05); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:.85rem; margin-bottom:10px; }
+    p.lead{ color:var(--muted); margin:0 0 18px 0; }
+    /* Cards & knoppen */
+    .card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); margin:18px 0; }
+    .badge{ display:inline-block; background:rgba(255,255,255,.06); padding:4px 8px; border-radius:8px; font-size:.85rem; color:#cfd6df; margin-bottom:6px; }
+    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
+    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
+    .small{ color:var(--muted); }
+    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:900px){ .grid-3{ grid-template-columns:1fr; } }
+    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
+    a.link{ color:#fff; text-decoration:underline; }
+  </style>
 </head>
 <body>
-  <!-- Navigatie -->
+  <!-- NAV -->
   <nav class="nav">
-    <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
-      <div class="brand" style="display:flex;align-items:center;gap:8px">
-        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="icons/icon-192.png" alt="Logo">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
-        <a href="#meld">Melden</a>
-        <a href="#kaart">Kaart</a>
-        <a href="#juridisch">Juridische steun</a>
-        <a href="#vrijwilligers">Vrijwilligers</a>
-        <a href="#privacy">Privacy</a>
+        <!-- knoppen naar aparte pagina's -->
+        <a href="index.html">Home</a>
+        <a href="melden.html">Uitgebreid melden</a>
+        <a href="kaart.html">Kaart</a>
+        <a href="vrijwilligers.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="container hero">
-    <span class="kicker">Meldpunt & Actie</span>
-    <h1>Meldingen omzetten in <em>daadwerkelijke actie</em></h1>
-    <p>We verzamelen veilig bewijsmateriaal van politiegeweld en zorgen voor vervolg: juridische ondersteuning, dossiervorming en publieke verantwoording. Dit platform is bewust eenvoudig en toegankelijk voor jong en oud.</p>
-    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-      <a class="btn" href="#meld">Nu melden</a>
-      <a class="btn outline" href="#kaart">Bekijk kaart</a>
+  <!-- HERO -->
+  <header class="hero container">
+    <div class="hero-inner">
+      <div>
+        <span class="kicker">Meldpunt & Actie</span>
+        <h1>Politiegeweld onder het vergrootglas — wij handelen nu</h1>
+        <p class="lead">
+          We zien meer meldingen en dodelijke incidenten bij politieoptreden. Waar onafhankelijk toezicht tekortschiet,
+          blijven klachten te vaak zonder gevolg. Daarom zijn wij opgericht: om bewijsmateriaal veilig te verzamelen,
+          juridische opvolging te organiseren en samen een netwerk te bouwen dat onrecht aanpakt.
+        </p>
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Kies wat je wil doen</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" href="#meld-kaart">Snel melden voor de kaart</a>
+            <a class="btn outline" href="melden.html">Uitgebreid melden (uploaden)</a>
+            <a class="btn outline" href="#live-kaart">Live kaart bekijken</a>
+          </div>
+          <p class="small" style="margin-top:10px">
+            <strong>Snel melden</strong> = formulier hieronder voor locatie-incidenten (verschijnt op de kaart).<br>
+            <strong>Uitgebreid melden</strong> = op <a class="link" href="melden.html">deze pagina</a> kun je veilig video/foto/audio delen voor dossiervorming.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card"><h3 style="margin:0 0 6px 0">Veilig uploaden</h3><p class="small">Uitgebreid melden met bestanden: versleutel waar mogelijk (7-Zip / Cryptomator).</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Juridische opvolging</h3><p class="small">Met toestemming koppelen we aan mensenrechten- en strafrechtjuristen.</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Open kaart & data</h3><p class="small">Geanonimiseerde incidenten zichtbaar na korte controle.</p></div>
+        </div>
+      </div>
+      <aside class="card">
+        <h3 style="margin-top:0">Waarom dit nodig is</h3>
+        <p class="small">
+          Als toezicht ontbreekt en meldingen stilvallen, blijven patronen bestaan.
+          Wij willen dat meldingen leiden tot onderzoek, gerechtigheid en verandering — niet tot stilstand.
+        </p>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn" href="vrijwilligers.html">Word vrijwilliger</a>
+          <a class="btn outline" href="juridisch.html">Juridisch netwerk</a>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <!-- Meldsectie -->
   <main class="container">
-    <section id="meld" class="section grid">
-      <div class="card">
-        <span class="badge">Uploaden</span>
-        <h2>Upload je bewijs (video, foto, audio)</h2>
-        <iframe aria-label="Contact with file"
-                frameborder="0"
-                allow="camera;microphone"
-                style="height:600px;width:100%;border:none;"
-                src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
-        </iframe>
-      </div>
-
-      <div class="card">
-        <span class="badge">Voor de kaart</span>
-        <h2>Meld incident met locatie</h2>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform?embedded=true"
-                width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">
-          Laden…
-        </iframe>
+    <!-- SNEL MELDEN VOOR KAART (Google Form) -->
+    <section id="meld-kaart" class="card">
+      <span class="badge">Voor de kaart</span>
+      <h2>Meld incident met locatie (snel)</h2>
+      <p class="small">Gebruik dit formulier als je géén bestanden wilt uploaden maar wel een locatie-incident wilt melden dat op de kaart verschijnt.</p>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform?embedded=true"
+        width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0"
+        style="border:none; border-radius:12px; background:#0b0f14">
+        Laden…
+      </iframe>
+      <div style="margin-top:10px">
+        <a class="btn outline" href="kaart.html">Open de kaartpagina</a>
       </div>
     </section>
 
-    <!-- Kaart -->
-    <section id="kaart" class="section">
-      <div class="card">
-        <span class="badge">Transparantie</span>
-        <h2>Live kaart met incidenten</h2>
-        <iframe
-          src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
-          width="100%" height="500" style="border:none; border-radius:12px;">
-        </iframe>
+    <!-- LIVE KAART -->
+    <section id="live-kaart" class="card">
+      <span class="badge">Transparantie</span>
+      <h2>Live kaart met incidenten</h2>
+      <p class="small">Nieuwe meldingen verschijnen geanonimiseerd na korte controle. Ververs de pagina om nieuwe pins te zien.</p>
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
+        width="100%" height="520" style="border:none; border-radius:12px">
+      </iframe>
+      <div style="margin-top:10px">
+        <a class="btn" href="#meld-kaart">Meld voor de kaart</a>
+        <a class="btn outline" href="melden.html">Uitgebreid melden (upload)</a>
       </div>
     </section>
 
-    <!-- Juridisch -->
-    <section id="juridisch" class="section grid">
+    <!-- TEASERS NAAR OVERIGE PAGINA'S -->
+    <section class="grid-3">
       <div class="card">
-        <span class="badge">Actie & steun</span>
-        <h2>Juridische opvolging</h2>
-        <p>Meldingen worden—met toestemming—gedeeld met mensenrechtenadvocaten en strafrechtjuristen voor beoordeling en vervolg.</p>
-        <ul class="list">
-          <li>Beoordeling door juristen</li>
-          <li>Dossiervorming en bewijsbeheer</li>
-          <li>Doorverwijzing naar passende procedures</li>
-        </ul>
+        <span class="badge">Uitgebreid melden</span>
+        <h3>Bestanden uploaden</h3>
+        <p class="small">Video, foto, audio en extra details voor een volledig dossier. Veilig en gericht op juridische opvolging.</p>
+        <a class="btn" href="melden.html">Naar uitgebreid melden</a>
       </div>
-    </section>
-
-    <!-- Vrijwilligers -->
-    <section id="vrijwilligers" class="section">
       <div class="card">
         <span class="badge">Meedoen</span>
-        <h2>Word vrijwilliger of bied expertise</h2>
-        <p>Meld je aan als vrijwilliger, jurist, onderzoeker of ontwikkelaar.</p>
-        <iframe aria-label="Vrijwilligersformulier"
-                frameborder="0"
-                style="height:600px;width:100%;border:none;"
-                src="https://forms.zohopublic.eu/hotshotlabel1/form/Vrijwilligersformulier/formperma/xxxx">
-        </iframe>
+        <h3>Vrijwilligers & Advocaten</h3>
+        <p class="small">Sluit je aan als onderzoeker, jurist, ontwikkelaar of moderator en help onrecht aan te pakken.</p>
+        <a class="btn outline" href="vrijwilligers.html">Aanmelden</a>
       </div>
-    </section>
-
-    <!-- Privacy -->
-    <section id="privacy" class="section">
       <div class="card">
-        <span class="badge">Beleid</span>
-        <h2>Privacy & verantwoord gebruik</h2>
-        <p>Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.</p>
-        <p class="small">Lees onze volledige <a href="privacy.html">privacyverklaring</a>.</p>
+        <span class="badge">Juridisch</span>
+        <h3>Juridische opvolging</h3>
+        <p class="small">We koppelen meldingen aan mensenrechten- en strafrechtjuristen en bouwen sterke dossiers.</p>
+        <a class="btn outline" href="juridisch.html">Lees meer</a>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+  <footer>
+    © <span id="y"></span> Actieplatform Politiegeweld — 
+    <a class="link" href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+    &nbsp;·&nbsp;
+    <a class="link" href="privacy.html">Privacy</a>
   </footer>
 
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js');
-    });
-  }
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
