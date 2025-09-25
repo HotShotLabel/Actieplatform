@@ -4,163 +4,112 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0f14" />
-  <title>Actieplatform Politiegeweld</title>
+  <title>Actieplatform Politiegeweld — Home</title>
   <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="assets/style.css" />
   <style>
-    /* Kleine, strakke styling specifiek voor de voorpagina */
-    :root{
-      --bg:#0b0f14;
-      --card:#0f141a;
-      --accent:#d62828;
-      --muted:#9aa3ad;
-      --glass: rgba(255,255,255,0.03);
-    }
-    body{background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;}
-    .container{max-width:1100px;margin:0 auto;padding:20px;}
-    nav.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:36px;height:36px;border-radius:6px}
-    .menu{display:flex;gap:12px;align-items:center}
-    .menu a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:8px}
-    header.hero{padding:48px 20px;border-radius:12px;text-align:left}
-    .hero-inner{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
-    @media(max-width:880px){ .hero-inner{grid-template-columns:1fr; } .hero-right{order:-1} }
-    h1{font-size:2rem;margin:0 0 12px 0;line-height:1.05}
-    .kicker{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;color:var(--muted);font-size:0.85rem;margin-bottom:10px}
-    p.lead{color:var(--muted);margin:0 0 18px 0}
-    .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn.secondary{background:transparent;border:2px solid var(--accent);color:var(--accent)}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow: 0 6px 18px rgba(0,0,0,0.6)}
-    .stat-grid{display:flex;gap:12px;margin-top:18px}
-    .stat{flex:1;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
-    .stat .n{font-size:1.4rem;font-weight:700}
-    .muted{color:var(--muted);font-size:0.95rem}
-    .mission{margin-top:22px}
-    footer{padding:28px 20px;text-align:center;color:var(--muted);font-size:0.9rem}
-    /* quick list */
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    @media(max-width:880px){ .grid-3{grid-template-columns:1fr} }
-    .feature h3{margin:6px 0 8px 0}
-    .small{font-size:0.95rem;color:var(--muted)}
+    /* Consistente stijl (donker, witte letters, rode knoppen) */
+    :root { --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,0.03); }
+    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+    .container{ max-width:1100px; margin:0 auto; padding:20px; }
+    nav.nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .brand img{ width:36px; height:36px; border-radius:6px; }
+    .menu{ display:flex; gap:12px; align-items:center; }
+    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
+    .menu a:hover{ background:rgba(255,255,255,0.06); }
+    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
+    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
+    header.hero{ padding:48px 20px; }
+    .hero-inner{ display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:start; }
+    @media(max-width:880px){ .hero-inner{ grid-template-columns:1fr; } }
+    h1{ font-size:2rem; margin:0 0 12px 0; line-height:1.05; }
+    .kicker{ display:inline-block; background:var(--glass); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:.85rem; margin-bottom:10px; }
+    p.lead{ color:var(--muted); margin:0 0 18px 0; }
+    .card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); }
+    .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:880px){ .grid-3{ grid-template-columns:1fr; } }
+    .small{ color:var(--muted); }
+    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
   </style>
 </head>
 <body>
+  <!-- Navigatie (consistent op elke pagina) -->
   <nav class="nav container">
     <div class="brand">
       <img src="icons/icon-192.png" alt="Logo">
       <strong>Actieplatform Politiegeweld</strong>
     </div>
     <div class="menu">
+      <a href="index.html">Home</a>
       <a href="melden.html">Melden</a>
       <a href="kaart.html">Kaart</a>
       <a href="vrijwilligers.html">Meedoen</a>
+      <a href="juridisch.html">Juridisch</a>
       <a href="privacy.html">Privacy</a>
     </div>
   </nav>
 
+  <!-- Hero -->
   <header class="hero container">
     <div class="hero-inner">
       <div>
         <span class="kicker">Meldpunt & Actie</span>
         <h1>Politiegeweld onder het vergrootglas — wij handelen nu</h1>
         <p class="lead">
-          We zien een stijging van meldingen en dodelijke incidenten waarbij politie betrokken is.
-          Wanneer onafhankelijk toezicht ontbreekt en klachten niet leiden tot verandering, kunnen
-          burgers niet rekenen op bescherming. Daarom is dit platform opgericht: om bewijslast te verzamelen,
-          juridische opvolging te organiseren en een netwerk op te bouwen dat onrecht aanpakt.
+          We zien meer meldingen en dodelijke incidenten bij politieoptreden. Waar onafhankelijk toezicht
+          tekortschiet, blijven klachten te vaak zonder gevolg. Daarom zijn wij opgericht: om bewijsmateriaal
+          veilig te verzamelen, juridische opvolging te organiseren en samen een netwerk te bouwen dat onrecht aanpakt.
         </p>
-
-        <div class="card mission">
-          <h3>Onze missie</h3>
+        <div class="card" style="margin-top:14px">
+          <h3 style="margin:0 0 8px 0">Onze missie</h3>
           <p class="small">
-            Wij documenteren gevallen van politiegeweld, bieden veilige uploadmogelijkheden voor video/foto/audio,
-            verbinden melders met juristen en vrijwilligers, en zetten gerichte actie in om systemisch onrecht te bestrijden.
-            We treden op waar bestaande mechanismen falen of onvoldoende onafhankelijk zijn.
+            We documenteren politiegeweld, beschermen melders, koppelen door naar juristen en publiceren een
+            geanonimiseerde kaart voor transparantie en verantwoording. We komen in actie wanneer bestaande
+            mechanismen falen of onvoldoende onafhankelijk zijn.
           </p>
-          <div style="margin-top:12px" class="muted">
-            <strong>Urgent:</strong> Meer doden door politieoptreden is onaanvaardbaar. We willen structurele verandering en verantwoording.
-          </div>
-          <div style="margin-top:14px" class="cta">
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
             <a class="btn" href="melden.html">Direct melden</a>
-            <a class="btn secondary" href="vrijwilligers.html">Meedoen / Vrijwilliger</a>
-            <a class="btn secondary" href="kaart.html">Bekijk kaart</a>
+            <a class="btn outline" href="vrijwilligers.html">Meedoen</a>
+            <a class="btn outline" href="kaart.html">Bekijk kaart</a>
           </div>
         </div>
 
-        <div class="grid-3" style="margin-top:18px">
-          <div class="feature card">
-            <h3>Veilig uploaden</h3>
-            <p class="small">Upload bewijsmateriaal veilig via ons formulier (versleutel waar mogelijk — 7-Zip / Cryptomator).</p>
-          </div>
-          <div class="feature card">
-            <h3>Juridische opvolging</h3>
-            <p class="small">We koppelen meldingen (met toestemming) aan mensenrechtenadvocaten en strafrechtjuristen.</p>
-          </div>
-          <div class="feature card">
-            <h3>Open kaart & data</h3>
-            <p class="small">Transparante, geanonimiseerde kaart met incidenten — publiekelijk zichtbaar na korte controle.</p>
-          </div>
+        <div class="grid-3" style="margin-top:16px">
+          <div class="card"><h3 style="margin:0 0 6px 0">Veilig uploaden</h3><p class="small">Upload video, foto of audio. Versleutel waar mogelijk (7-Zip / Cryptomator).</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Juridische opvolging</h3><p class="small">Met jouw toestemming koppelen wij aan mensenrechten- en strafrechtjuristen.</p></div>
+          <div class="card"><h3 style="margin:0 0 6px 0">Open kaart & data</h3><p class="small">Geanonimiseerde incidenten zichtbaar op de kaart, na korte controle.</p></div>
         </div>
       </div>
 
-      <aside class="hero-right card">
+      <aside class="card">
         <h3 style="margin-top:0">Waarom dit nodig is</h3>
-        <p class="small">
-          Als klachten intern blijven en toezicht ontbreekt, krijgen patronen van geweld de ruimte.
-          Wij willen dat meldingen leiden tot onderzoek, gerechtigheid en verandering — niet tot stilstand.
-        </p>
-
-        <div class="stat-grid" style="margin-top:12px">
-          <div class="stat">
-            <div class="n">Onafhankelijkheid</div>
-            <div class="muted">Er is te weinig echt onafhankelijk toezicht</div>
-          </div>
-          <div class="stat">
-            <div class="n">Vertrouwen</div>
-            <div class="muted">Melders moeten veilig kunnen delen en geholpen worden</div>
-          </div>
-          <div class="stat">
-            <div class="n">Actie</div>
-            <div class="muted">We koppelen meldingen direct aan juridische stappen en acties</div>
-          </div>
-        </div>
-
-        <div style="margin-top:14px">
+        <p class="small">Als toezicht ontbreekt en meldingen stilvallen, blijven patronen bestaan. Wij willen dat meldingen leiden tot onderzoek, gerechtigheid en verandering — niet tot stilstand.</p>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
           <a class="btn" href="vrijwilligers.html">Word vrijwilliger</a>
+          <a class="btn outline" href="juridisch.html">Juridisch netwerk</a>
         </div>
       </aside>
     </div>
   </header>
 
-  <main class="container" aria-live="polite">
-    <section class="card" style="margin-top:18px">
-      <h3 style="margin-top:0">Hoe wij werken</h3>
-      <ol class="small">
-        <li><strong>Melding binnen:</strong> gebruiker uploadt materiaal via formulier.</li>
-        <li><strong>Veilige opslag & screening:</strong> we controleren op privacyrisico's en versleuteling.</li>
-        <li><strong>Juridische beoordeling:</strong> juristen beoordelen of en hoe te vervolgen.</li>
-        <li><strong>Open data & actie:</strong> geanonimiseerde incidenten worden op de kaart gepubliceerd; waar mogelijk volgt juridische actie.</li>
+  <main class="container">
+    <section class="card" style="margin-top:8px">
+      <h3 style="margin:0 0 8px 0">Hoe wij werken</h3>
+      <ol class="small" style="margin:0">
+        <li><strong>Melding:</strong> upload veilig via het formulier.</li>
+        <li><strong>Screening:</strong> we controleren privacy-risico’s en bewaarbeleid.</li>
+        <li><strong>Juridische beoordeling:</strong> juristen bepalen vervolgstappen.</li>
+        <li><strong>Transparantie:</strong> geanonimiseerde incidenten komen op de kaart; waar mogelijk volgt actie.</li>
       </ol>
-    </section>
-
-    <section class="card" style="margin-top:16px">
-      <h3 style="margin-top:0">Direct helpen</h3>
-      <p class="small">Wil je bijdragen? We zoeken advocaten, onderzoekers, ontwikkelaars en moderators. Samen bouwen we een netwerk dat slachtoffers ondersteunt en onrecht aan de kaak stelt.</p>
-      <div style="margin-top:10px" class="cta">
-        <a class="btn" href="vrijwilligers.html">Aanmelden — Vrijwilliger</a>
-        <a class="btn secondary" href="vrijwilligers.html#advocaat">Aanmelden — Advocaat</a>
-      </div>
     </section>
   </main>
 
   <footer>
-    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+    © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com" style="color:#fff;text-decoration:underline">label@hot-shot.com</a>
   </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
