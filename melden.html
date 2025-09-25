@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Uitgebreid melden — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <!-- Jouw globale stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Extra strakke laag voor deze pagina (bovenop style.css) */
+    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,.06); }
+    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+    .container{ max-width:1100px; margin:0 auto; padding:20px; }
+
+    /* Nav (consistent) */
+    nav.nav{ position:sticky; top:0; z-index:50; background:rgba(11,15,20,.9); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
+    .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
+    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand img{ width:32px; height:32px; border-radius:6px; }
+    .menu{ display:flex; gap:10px; align-items:center; }
+    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
+    .menu a:hover{ background:var(--glass); }
+
+    /* Subheader */
+    header.subhero{ padding:48px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
+    header.subhero h1{ margin:0 0 8px 0; font-size:2rem; line-height:1.1; }
+    header.subhero p{ margin:0; color:var(--muted); max-width:760px; }
+
+    /* Cards, knoppen, badges */
+    .card{ background:#0f141a; padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); margin:18px 0; }
+    .badge{ display:inline-block; background:rgba(255,255,255,.06); padding:4px 8px; border-radius:8px; font-size:.85rem; color:#cfd6df; margin-bottom:6px; }
+    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
+    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
+    .small{ color:var(--muted); }
+    a.link{ color:#fff; text-decoration:underline; }
+
+    /* Tips + details */
+    details{ background:#0f141a; border:1px solid #1a232d; border-radius:12px; padding:12px 14px; }
+    details + details{ margin-top:12px; }
+    summary{ cursor:pointer; font-weight:600; }
+    summary::marker{ color:#cfd6df; }
+
+    /* List compact */
+    ul.compact{ margin:8px 0 0 18px; }
+    ul.compact li{ margin:4px 0; }
+
+    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <!-- NAV (zelfde op elke pagina) -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="icons/icon-192.png" alt="Logo">
+        <strong>Actieplatform Politiegeweld</strong>
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="melden.html">Uitgebreid melden</a>
+        <a href="kaart.html">Kaart</a>
+        <a href="vrijwilligers.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Subheader -->
+  <header class="subhero container">
+    <h1>Uitgebreid melden & bewijsmateriaal uploaden</h1>
+    <p>
+      Gebruik dit formulier als je **video, foto of audio** wilt uploaden en meer details wilt geven.
+      Dit helpt bij dossiervorming en **juridische opvolging**. Deel geen namen/adressen/BSN.
+      Dienstnummer(s) van agent(en) mag je noteren indien bekend.
+    </p>
+  </header>
+
+  <!-- Inhoud -->
+  <main class="container">
+
+    <!-- CTA-blok -->
+    <section class="card">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn outline" href="index.html#meld-kaart">Snel melden voor de kaart</a>
+        <a class="btn" href="#upload">Direct naar uploadformulier</a>
+      </div>
+      <p class="small" style="margin-top:10px">
+        <strong>Tip:</strong> ga je bestanden uploaden? Versleutel ze bij voorkeur vooraf (7-Zip / Cryptomator)
+        en deel het wachtwoord nooit in hetzelfde formulier.
+      </p>
+    </section>
+
+    <!-- Uploadformulier -->
+    <section id="upload" class="card">
+      <span class="badge">Veilig uploaden</span>
+      <h2>Meldformulier met upload (video/foto/audio)</h2>
+
+      <!-- Zoho: vervang desnoods de src door jouw actuele embed-URL -->
+      <iframe
+        aria-label="Meldformulier upload"
+        frameborder="0"
+        allow="camera;microphone"
+        style="height:780px;width:100%;border:none;border-radius:12px;background:#0b0f14"
+        src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
+      </iframe>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn outline" href="kaart.html">Bekijk kaart</a>
+        <a class="btn outline" href="index.html#meld-kaart">Snel melden (kaart)</a>
+      </div>
+    </section>
+
+    <!-- Tips & veiligheid -->
+    <section class="card">
+      <h2 style="margin-top:0">Veiligheid & tips</h2>
+
+      <details open>
+        <summary>Bestanden versleutelen (aanbevolen)</summary>
+        <ul class="compact small">
+          <li><strong>7-Zip</strong> (Windows/macOS/Linux): Rechtsklik → “Toevoegen aan archief” → kies <code>.7z</code> of <code>.zip</code> → Encryptie <strong>AES-256</strong> → sterk wachtwoord.</li>
+          <li><strong>Crytptomator</strong>: Maak een “vault”, zet je bestanden erin en upload de versleutelde map/archief.</li>
+          <li><strong>Deel het wachtwoord nooit</strong> in hetzelfde formulier. Wacht ons antwoord af of gebruik een apart kanaal (bijv. Signal).</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Wat invullen bij je melding?</summary>
+        <ul class="compact small">
+          <li>Datum en (geschatte) tijd</li>
+          <li>Gemeente/buurt of exacte locatie</li>
+          <li>Korte omschrijving (1–2 zinnen)</li>
+          <li>Dienstnummer agent(en) (optioneel)</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Privacy</summary>
+        <p class="small" style="margin:8px 0 0 0">
+          We hanteren dataminimalisatie en publiceren geen onnodige persoonsgegevens. Identificerende info delen we alleen
+          na juridische afweging. Zie onze <a class="link" href="privacy.html">privacyverklaring</a>.
+        </p>
+      </details>
+    </section>
+
+    <!-- Hulp nodig -->
+    <section class="card">
+      <h2 style="margin-top:0">Hulp nodig?</h2>
+      <p class="small">Vragen over uploaden of versleutelen? Mail ons: <a class="link" href="mailto:label@hot-shot.com">label@hot-shot.com</a>.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="y"></span> Actieplatform Politiegeweld — 
+    <a class="link" href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); }); }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
