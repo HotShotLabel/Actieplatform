@@ -263,3 +263,50 @@ iframe {
   font-size:11px; color:#9fb3c8; padding:8px 12px 12px; border-top:1px dashed rgba(255,255,255,.08);
 }
 
+/* === Chat widget (overlay) === */
+.chat-launcher{
+  position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg,#ff2a2a,#ff6a6a);
+  color:#fff; display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:22px; border:none; cursor:pointer;
+  box-shadow: 0 10px 30px rgba(255,60,60,.35);
+}
+.chat-backdrop{
+  position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 9998; display:none;
+}
+.chat-panel{
+  position: fixed; right: 18px; bottom: 84px; width: 360px; max-width: 92vw;
+  background: #0f141b; color:#eaf2ff; border:1px solid rgba(255,255,255,.08);
+  border-radius:16px; box-shadow: 0 18px 50px rgba(0,0,0,.6); display:none; z-index: 10000;
+}
+.chat-header{
+  padding:12px 14px; border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+.chat-title{display:flex;align-items:center;gap:10px}
+.chat-title img{width:20px;height:20px}
+.chat-body{
+  padding:12px; height: 380px; overflow:auto; display:flex; flex-direction:column; gap:10px;
+}
+.chat-msg{ padding:10px 12px; border-radius:12px; max-width: 85%; line-height:1.45; }
+.chat-msg.user{ align-self:flex-end; background:#16324a; border:1px solid rgba(255,255,255,.08); }
+.chat-msg.bot { align-self:flex-start; background:#121821; border:1px solid rgba(255,255,255,.06); }
+.chat-input{
+  display:flex; gap:8px; padding:10px; border-top:1px solid rgba(255,255,255,.06);
+}
+.chat-input input{
+  flex:1; background:#0c1117; color:#eaf2ff; border:1px solid rgba(255,255,255,.08);
+  border-radius:10px; padding:10px;
+}
+.chat-input button{
+  background:#4da3ff; color:#001627; border:none; border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer;
+}
+.chat-disclaimer{
+  font-size:11px; color:#9fb3c8; padding:8px 12px 12px; border-top:1px dashed rgba(255,255,255,.08);
+}
+@media (max-height:700px){
+  .chat-body{height: 300px;}
+}
+.body-nosroll{overflow:hidden}
+
