@@ -5,23 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f14">
   <title>Home — Actieplatform Politiegeweld</title>
+
+  <!-- PWA & icons -->
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/logo.png">
   <link rel="apple-touch-icon" href="icons/logo.png">
+
+  <!-- Stijlen -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATIE -->
+  <!-- NAVIGATIE (identiek op alle pagina's) -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="icons/logo.png" alt="Logo" style="width:50px;height:50px;border-radius:6px">
+        <img src="icons/logo.png" alt="Logo" style="width:56px;height:56px;border-radius:8px">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
         <a href="index.html"><strong>Home</strong></a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
         <a href="juridisch.html">Juridisch (geschillen)</a>
         <a href="uitspraken.html">Rechterlijke uitspraken</a>
@@ -32,7 +36,7 @@
 
   <!-- HERO -->
   <header class="container hero">
-    <span class="kicker">Meldpunt & Actie</span>
+    <span class="kicker">Meldpunt &amp; Actie</span>
     <h1>Actieplatform Politiegeweld</h1>
     <p>
       Er vallen steeds meer doden en gewonden door politiegeweld, terwijl onafhankelijk toezicht tekortschiet.
@@ -40,7 +44,7 @@
     </p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
       <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen & kaart</a>
+      <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen &amp; kaart</a>
     </div>
   </header>
 
@@ -52,6 +56,7 @@
         <h2>Collectieve bescherming</h2>
         <p>
           We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging en publieke verantwoording.
+          We publiceren geen onnodige persoonsgegevens en werken samen met juristen en onderzoekers.
         </p>
       </div>
       <aside class="card">
@@ -67,9 +72,9 @@
     <section class="section grid">
       <div class="card">
         <span class="badge">Transparantie</span>
-        <h2>Meldingen & Live Kaart</h2>
+        <h2>Meldingen &amp; Live Kaart</h2>
         <p class="small">
-          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart.
+          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart wanneer het formulier is verzonden.
         </p>
         <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
       </div>
@@ -81,23 +86,11 @@
         </p>
       </aside>
     </section>
-
-    <!-- NIEUWE SECTIE: RECHTERLIJKE UITSPRAKEN -->
-    <section class="section">
-      <div class="card">
-        <span class="badge">Rechtspraak</span>
-        <h2>Rechterlijke uitspraken</h2>
-        <p class="small">
-          Overzicht van zaken waarin politieagenten zijn veroordeeld voor buitensporig geweld of machtsmisbruik.
-        </p>
-        <a class="btn" href="uitspraken.html">Bekijk uitspraken</a>
-      </div>
-    </section>
   </main>
 
   <!-- FOOTER -->
   <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld — 
+    © <span id="y"></span> Actieplatform Politiegeweld —
     <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
@@ -105,13 +98,16 @@
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 
-  <!-- ===================== CHAT WIDGET (overlay, één exemplaar) ===================== -->
+  <!-- ===================== CHAT WIDGET (overlay) ===================== -->
+  <!-- launcher knop -->
   <button class="chat-launcher" aria-label="Open chat" id="chatOpen">?</button>
+  <!-- backdrop -->
   <div class="chat-backdrop" id="chatBackdrop"></div>
+  <!-- panel -->
   <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Chat">
     <div class="chat-header">
       <div class="chat-title">
-        <img src="icons/logo.png" alt="logo" style="width:20px;height:20px">
+        <img src="icons/logo.png" alt="logo" style="width:20px;height:20px;border-radius:4px">
         <strong>AI Chat (pilot)</strong>
       </div>
       <div>
@@ -136,8 +132,12 @@
     </div>
   </div>
 
+  <!-- ===================== CHAT SCRIPT ===================== -->
   <script>
-    // ---------- Chat overlay gedrag ----------
+    // >>> VUL HIER JE WORKER-URL IN <<<
+    const AI_ENDPOINT = "https://politiegeweld-chat.suleyman-m-guerrouj.workers.dev/";
+
+    // Elementen
     const openBtn = document.getElementById('chatOpen');
     const panel = document.getElementById('chatPanel');
     const backdrop = document.getElementById('chatBackdrop');
@@ -150,18 +150,16 @@
     function openChat(){
       panel.style.display = 'block';
       backdrop.style.display = 'block';
-      document.body.classList.add('body-nosroll');
       input.focus();
     }
     function closeChat(){
       panel.style.display = 'none';
       backdrop.style.display = 'none';
-      document.body.classList.remove('body-nosroll');
     }
-    function addMsg(text, who='bot'){
+    function addMsg(html, who='bot'){
       const el = document.createElement('div');
-      el.className = 'chat-msg ' + who;
-      el.innerHTML = text;
+      el.className = 'chat-msg ' + (who==='user' ? 'user' : 'bot');
+      el.innerHTML = html;
       bodyEl.appendChild(el);
       bodyEl.scrollTop = bodyEl.scrollHeight;
     }
@@ -175,97 +173,23 @@
     clearBtn.addEventListener('click', clearChat);
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeChat(); });
 
-    // ---------- FAQ fallback ----------
-    const FAQ = [
-      {
-        q: /(hoe\s*(doe|dien)\s*ik\s*een?\s*aangifte)|(^aangifte\s*doen)|\baangifte\b/i,
-        a: `
-        <strong>Aangifte doen (strafbaar feit door politie):</strong><br>
-        1) Verzamel bewijs: tijdlijn, locatie, getuigen, medische info, beeldmateriaal.<br>
-        2) Ga naar het politiebureau of bel 0900-8844 voor een afspraak. Je hebt recht op het doen van aangifte.<br>
-        3) Vraag om een <em>aangiftebevestiging</em> en <em>proces-verbaalnummer</em> en bewaar kopieën.<br>
-        4) Stuur aanvullend bewijs later na onder vermelding van je kenmerk/zaaknummer.<br>
-        5) Wordt aangifte geweigerd? Noteer namen/tijden en overweeg klacht of art. 12 Sv-klacht (zie ‘Juridisch’).<br>
-        <em>Let op:</em> dit is geen persoonlijk advies; overleg met een strafrechtadvocaat.
-        `
-      },
-      {
-        q: /(klacht\s*OM)|(klacht\s*politie)|ombudsman|klachtenprocedure/i,
-        a: `
-        <strong>Klacht indienen:</strong><br>
-        • <u>Politieklacht</u>: via de klachtenregeling; bewaar ontvangstbevestiging.<br>
-        • <u>Nationale Ombudsman</u>: bij ontevredenheid over overheidsoptreden.<br>
-        • <u>OM</u>: voor strafrechtelijke beoordeling; bij sepot kun je art. 12 Sv overwegen.<br>
-        Tip: voeg bewijs toe en houd een tijdlijn bij.
-        `
-      },
-      {
-        q: /art(ikel)?\s*12\s*sv|artikel\s*12|art\.\s*12/i,
-        a: `
-        <strong>Art. 12 Sv (klacht tegen sepot):</strong><br>
-        1) Vraag het hof om vervolging te bevelen als het OM niet vervolgt.<br>
-        2) Dien een gemotiveerd klaagschrift in (feiten, bewijs, reden vervolging).<br>
-        3) Het hof kan zitting houden; licht je stukken toe. Overweeg advocaat.
-        `
-      },
-      {
-        q: /proces[- ]?verbaal|valse\s*pv|leugen\s*(in\s*)?pv/i,
-        a: `
-        <strong>Twijfel aan proces-verbaal:</strong><br>
-        • Vraag dossierinzage (incl. bodycam/radio/verslagen).<br>
-        • Leg tegenstrijdigheden vast en verzamel onafhankelijk bewijs.<br>
-        • Laat je advocaat onderzoekswensen indienen. Meld uitgebreid via ‘Uitgebreid melden’.
-        `
-      },
-      {
-        q: /video|audio|foto|bewijs|upload/i,
-        a: `
-        <strong>Bewijs aanleveren:</strong> Snel melden via ‘Meldingen & Live Kaart’. Uitgebreid melden met bestanden via ‘Uitgebreid melden’. 
-        Tip: versleutel bestanden vooraf (7-Zip/Cryptomator) en deel wachtwoorden via apart kanaal.
-        `
-      },
-      {
-        q: /privacy|anoniem|gegevens/i,
-        a: `
-        <strong>Privacy:</strong> dataminimalisatie, niets delen zonder toestemming of noodzaak. 
-        Zie ‘Privacy’. Deel geen BSN of andere gevoelige persoonsgegevens in de chat.
-        `
-      }
-    ];
-
-    // ---------- AI endpoint (Cloudflare Worker) ----------
-    // Vul HIER je Worker-URL in, bijv.:
-    // const AI_ENDPOINT = 'https://actieplatform-ai.username.workers.dev';
-    const AI_ENDPOINT = null; // laat op null = FAQ-modus; zet je Worker URL om AI te activeren
-
-    function replyLocal(text){
-      const hit = FAQ.find(f => f.q.test(text));
-      if (hit) addMsg(hit.a, 'bot');
-      else addMsg("Ik weet dit niet zeker. Probeer je vraag specifieker te maken (bijv. ‘Hoe dien ik aangifte in?’) — of bekijk ‘Uitgebreid melden’, ‘Meldingen & Live Kaart’, ‘Juridisch (geschillen)’ en ‘Rechterlijke uitspraken’.", 'bot');
-    }
-
     async function handleSend(){
-      const text = (input.value||'').trim();
+      const text = (input.value || '').trim();
       if(!text) return;
       addMsg(text, 'user');
       input.value = '';
 
-      if (AI_ENDPOINT){
-        try{
-          const r = await fetch(AI_ENDPOINT, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({question: text})
-          });
-          const data = await r.json();
-          if (data?.answer) addMsg(data.answer, 'bot');
-          else replyLocal(text);
-          return;
-        }catch(e){
-          addMsg('AI-verbinding faalde, ik probeer lokaal te antwoorden…','bot');
-        }
+      try{
+        const r = await fetch(AI_ENDPOINT, {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json' },
+          body: JSON.stringify({ question: text })
+        });
+        const data = await r.json();
+        addMsg(data.answer || 'Ik kon geen antwoord genereren.', 'bot');
+      }catch(e){
+        addMsg('Geen verbinding met de chatdienst. Probeer later opnieuw.', 'bot');
       }
-      replyLocal(text);
     }
 
     sendBtn.addEventListener('click', handleSend);
