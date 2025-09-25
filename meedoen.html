@@ -1,100 +1,70 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0f14" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
   <title>Meedoen — Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; }
-    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; }
-    .container{ max-width:1100px; margin:0 auto; padding:20px; }
-    nav.nav{ position:sticky; top:0; background:rgba(11,15,20,.9); border-bottom:1px solid rgba(255,255,255,.06); }
-    .card{ background:var(--card); padding:20px; border-radius:12px; margin:20px 0; }
-    .badge{ background:rgba(255,255,255,.08); padding:4px 10px; border-radius:8px; font-size:.85rem; color:#cfd6df; }
-    .btn{ background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:600; }
-    .small{ color:var(--muted); }
-    header.subhero{ padding:40px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
-    header.subhero h1{ margin:0 0 8px; font-size:2rem; }
-  </style>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Navigatie -->
   <nav class="nav">
-    <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
-      <div class="brand" style="display:flex;align-items:center;gap:8px">
+    <div class="container nav-inner">
+      <div class="brand">
         <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
         <a href="index.html">Home</a>
-        <a href="kaart.html">Meld & LIVE Kaart</a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-        <a href="juridisch.html">Juridische steun</a>
-        <a href="meedoen.html"><strong>Meedoen</strong></a>
+        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
         <a href="privacy.html">Privacy</a>
-        <a href="index.html#install">App</a>
       </div>
     </div>
   </nav>
 
-  <!-- Intro -->
-  <header class="subhero container">
-    <h1>Doe mee & versterk ons netwerk</h1>
-    <p>Sluit je aan als vrijwilliger of bied je expertise als professional (advocaat, jurist, onderzoeker, ontwikkelaar). Samen bouwen we aan een sterk netwerk tegen politiegeweld en voor mensenrechten.</p>
+  <header class="container hero">
+    <span class="kicker">Doe mee</span>
+    <h1>Sluit je aan bij het platform</h1>
+    <p>
+      Samen staan we sterker. Je kunt meedoen als vrijwilliger, jurist of onderzoeker.  
+      Meld je aan via de formulieren hieronder.
+    </p>
   </header>
 
   <main class="container">
+    <section class="section grid">
+      <div class="card">
+        <span class="badge">Vrijwilligers</span>
+        <h2>Aanmelden als vrijwilliger</h2>
+        <iframe 
+          src="https://forms.zohopublic.eu/hotshotlabel1/form/Vrijwilligers/formperma/xxxx" 
+          style="width:100%;height:600px;border:none;border-radius:12px">
+        </iframe>
+      </div>
 
-    <!-- Vrijwilligers -->
-    <section class="card">
-      <span class="badge">Vrijwilligers</span>
-      <h2>Word vrijwilliger</h2>
-      <p class="small">Help mee met communicatie, dossieropbouw, data-invoer, fact-checking, techniek of slachtofferondersteuning.</p>
-      <iframe
-        title="Vrijwilligersformulier"
-        src="https://forms.zohopublic.eu/hotshotlabel1/form/Vrijwilligersaanmelding/formperma/XXXXXXXX"
-        style="width:100%;height:760px;border:none;border-radius:12px;background:#0b0f14"
-        frameborder="0">
-      </iframe>
-    </section>
-
-    <!-- Professionals -->
-    <section class="card">
-      <span class="badge">Professionals</span>
-      <h2>Advocaten, juristen & onderzoekers</h2>
-      <p class="small">Bied juridische hulp, onderzoek of technische ondersteuning. We koppelen je expertise aan relevante casussen.</p>
-      <iframe
-        title="Professionalsformulier"
-        src="https://forms.zohopublic.eu/hotshotlabel1/form/Professionalsaanmelding/formperma/YYYYYYYY"
-        style="width:100%;height:760px;border:none;border-radius:12px;background:#0b0f14"
-        frameborder="0">
-      </iframe>
-    </section>
-
-    <!-- Privacy -->
-    <section class="card">
-      <h3>Privacy</h3>
-      <p class="small">Wij volgen dataminimalisatie. Gegevens worden alleen gedeeld met jouw toestemming of wanneer juridisch noodzakelijk. Zie ook onze <a href="privacy.html">privacyverklaring</a>.</p>
+      <div class="card">
+        <span class="badge">Advocaten & Professionals</span>
+        <h2>Aanmelden als professional</h2>
+        <iframe 
+          src="https://forms.zohopublic.eu/hotshotlabel1/form/Advocaten/formperma/yyyy" 
+          style="width:100%;height:600px;border:none;border-radius:12px">
+        </iframe>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld — 
-    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+    © <span id="y"></span> Actieplatform Politiegeweld
   </footer>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', ()=>navigator.serviceWorker.register('sw.js'));
-    }
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
