@@ -10,29 +10,18 @@
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    /* Mobiel menu + knoppen */
-    .menu{display:flex;gap:12px}
-    .menu a{text-decoration:none;padding:6px 10px;border-radius:6px;color:#fff}
-    .hamburger{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:#fff}
-    @media (max-width:768px){
-      .menu{display:none;flex-direction:column;background:#0b0f14;position:absolute;top:60px;right:10px;padding:10px;border-radius:8px}
-      .menu.show{display:flex}
-      .hamburger{display:block}
-    }
-    .btn{display:inline-block;padding:12px 20px;font-size:1rem;border-radius:8px;background:#d62828;color:#fff;text-align:center}
-    .btn.outline{background:transparent;border:2px solid #d62828;color:#d62828}
-
-    /* Tabel-stijl */
-    table#incidents{width:100%;border-collapse:collapse}
-    table#incidents th,table#incidents td{padding:8px;border-bottom:1px solid #222}
-    table#incidents th{border-bottom:1px solid #333;text-align:left}
-    input#search{background:#0f141a;border:1px solid #222;color:#e7eef8;border-radius:8px;padding:10px;width:100%}
-
-    /* Helpers */
-    .muted{opacity:.8}
-    .placeholder{padding:14px;border:1px dashed #333;border-radius:12px;background:#0f141a}
+    body { background:#0b0f14; color:#fff; margin:0; font-family:sans-serif; }
+    .btn { display:inline-block; padding:12px 20px; font-size:1rem; border-radius:8px; background:#d62828; color:#fff; border:none; cursor:pointer; }
+    .btn.outline { background:transparent; border:2px solid #d62828; color:#d62828; }
+    .card { background:#11161d; border-radius:12px; padding:20px; margin:20px 0; }
+    .badge { display:inline-block; background:#222; padding:4px 8px; font-size:0.8rem; border-radius:6px; margin-bottom:6px; }
+    .small { font-size:0.9rem; opacity:0.8; }
+    nav.nav { background:#0b0f14; padding:12px 0; }
+    nav .menu a { color:white; margin:0 8px; text-decoration:none; }
+    footer { padding:20px; font-size:0.85rem; text-align:center; color:#aaa; }
+    .placeholder { background:#222; padding:12px; border-radius:8px; }
+    .code { font-family:monospace; background:#333; padding:2px 4px; border-radius:4px; }
   </style>
-  <meta name="description" content="Meldingen van politiegeweld direct omzetten in actie: veilig uploaden, juridische opvolging, en een kaart met incidenten.">
 </head>
 <body>
   <!-- Navigatie -->
@@ -42,11 +31,9 @@
         <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
-      <button class="hamburger" onclick="document.querySelector('.menu').classList.toggle('show')">☰</button>
       <div class="menu">
         <a href="#meld">Melden</a>
         <a href="#kaart">Kaart</a>
-        <a href="#lijst">Incidenten</a>
         <a href="#juridisch">Juridische steun</a>
         <a href="#vrijwilligers">Vrijwilligers</a>
         <a href="#privacy">Privacy</a>
@@ -56,43 +43,32 @@
   </nav>
 
   <!-- Header -->
-  <header class="container hero">
+  <header class="container hero" style="padding:40px 20px;text-align:center">
     <span class="kicker">Meldpunt & Actie</span>
     <h1>Meldingen omzetten in <em>daadwerkelijke actie</em></h1>
     <p>We verzamelen veilig bewijsmateriaal van politiegeweld en zorgen voor vervolg: juridische ondersteuning, dossiervorming en publieke verantwoording. Dit platform is bewust eenvoudig en toegankelijk voor jong en oud.</p>
-    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;justify-content:center">
       <a class="btn" href="#meld">Nu melden</a>
       <a class="btn outline" href="#kaart">Bekijk kaart</a>
     </div>
   </header>
 
-  <main class="container">
+  <!-- Main -->
+  <main class="container" style="padding:0 20px">
+
     <!-- Meldformulier -->
     <section id="meld" class="section grid">
       <div class="card">
         <span class="badge">Veilig uploaden</span>
         <h2>Upload je materiaal (video, foto, audio)</h2>
-        <p class="small">Geen namen, adressen of burgerservicenummers. Dienstnummer van betrokken agent(en) mag je noteren indien bekend. Versleutel je bestanden liefst vooraf.</p>
-        <div class="notice small">
-          <strong>Tip:</strong> versleutel met 7-Zip (AES-256) of Cryptomator. Zie <a href="#encryptie">encryptie-handleiding</a> hieronder.
-        </div>
-        <div style="margin-top:14px">
-          <iframe aria-label="Contact with file" frameborder="0" allow="camera;microphone"
-                  style="height:600px;width:100%;border:none;"
-                  src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
-          </iframe>
-        </div>
+        <p class="small">Geen namen, adressen of BSN. Dienstnummer van betrokken agent(en) mag je noteren indien bekend. Versleutel bestanden liefst vooraf.</p>
+        <iframe aria-label="Contact with file"
+                frameborder="0"
+                allow="camera;microphone"
+                style="height:600px;width:100%;border:none;border-radius:12px"
+                src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
+        </iframe>
       </div>
-      <aside class="card">
-        <h3>Minimale velden (advies)</h3>
-        <ul class="list">
-          <li>Datum en (geschatte) tijd</li>
-          <li>Gemeente/buurt</li>
-          <li>Korte omschrijving (1–2 zinnen)</li>
-          <li>Dienstnummer agent(en) (optioneel)</li>
-        </ul>
-        <p class="small">Wij publiceren geen onnodige persoonsgegevens. Juristen bepalen of/wanneer identificerende info (zoals dienstnummers) publiek kan worden gemaakt.</p>
-      </aside>
     </section>
 
     <!-- Kaart -->
@@ -100,30 +76,41 @@
       <div class="card">
         <span class="badge">Transparantie</span>
         <h2>Kaart met incidenten</h2>
-        <p class="small">Kleur = type geweld. Meldingen verschijnen na korte controle. Ververs de pagina om nieuwe pins te zien.</p>
-        <div style="margin:10px 0 16px">
-          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform" target="_blank" rel="noopener">Meld voor de kaart</a>
-        </div>
-        <iframe
-          src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
-          width="100%" height="500" style="border:none;border-radius:12px;">
-        </iframe>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
+                width="100%" height="500" style="border:none;border-radius:12px;"></iframe>
       </div>
     </section>
 
-    <!-- Incidenten-lijst (CSV -> tabel) -->
-    <section id="lijst" class="section">
+    <!-- Vrijwilligers / Advocaten -->
+    <section id="vrijwilligers" class="section">
       <div class="card">
-        <span class="badge">Transparantie</span>
-        <h3>Incidenten (doorzoekbaar)</h3>
-        <input id="search" placeholder="Zoek op stad / type / omschrijving…">
-        <div id="incWrap" style="overflow:auto;margin-top:8px">
-          <div class="placeholder muted" id="incPlaceholder">
-            <strong>Nog instellen:</strong> publiceer je Sheet-tab <em>Gepubliceerd</em> als CSV en plak de link in <span class="code">CSV_URL</span> (onderaan dit bestand). Daarna verschijnt hier de tabel.
-          </div>
-          <table id="incidents" class="small" style="display:none"></table>
+        <span class="badge">Meedoen</span>
+        <h2>Vrijwilligers & Advocaten</h2>
+        <p class="small">
+          Meld je hieronder aan. Kies “Vrijwilliger/Professional” of “Advocaat/Jurist”.
+          Gegevens worden verwerkt volgens de <a href="privacy.html">privacyverklaring</a>.
+        </p>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+          <button id="tab-vol" class="btn" type="button">Vrijwilliger / Professional</button>
+          <button id="tab-law" class="btn outline" type="button">Advocaat / Jurist</button>
         </div>
-        <p class="small muted" style="margin-top:8px">Databron: tab <em>Gepubliceerd</em> in onze Google Sheet.</p>
+
+        <div id="volWrap" style="margin-top:8px">
+          <div class="placeholder muted" id="volPlaceholder">
+            <strong>Nog instellen:</strong> plak de embed-URL van je vrijwilligersformulier in <span class="code">VOL_FORM_URL</span>.
+          </div>
+          <iframe id="volFrame" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
+                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
+        </div>
+
+        <div id="lawWrap" style="margin-top:8px;display:none">
+          <div class="placeholder muted" id="lawPlaceholder">
+            <strong>Nog instellen:</strong> plak de embed-URL van je advocatenformulier in <span class="code">LAW_FORM_URL</span>.
+          </div>
+          <iframe id="lawFrame" width="100%" height="980" frameborder="0" marginheight="0" marginwidth="0"
+                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
+        </div>
       </div>
     </section>
 
@@ -132,73 +119,25 @@
       <div class="card">
         <span class="badge">Actie & steun</span>
         <h2>Juridische opvolging</h2>
-        <p>We helpen bij strafzaken waarin geweld is gebruikt tegen burgers en waar mogelijk in het proces-verbaal onjuist is gerapporteerd. Meldingen worden—met toestemming—gedeeld met mensenrechtenadvocaten en strafrechtjuristen voor beoordeling en vervolg.</p>
-        <ul class="list">
-          <li>Beoordeling door juristen (pro bono waar mogelijk)</li>
-          <li>Dossiervorming en bewijsbeheer</li>
-          <li>Doorverwijzing naar passende procedures (strafrecht, klacht, civiel)</li>
-        </ul>
-      </div>
-      <aside class="card">
-        <h3>Meedoen als professional?</h3>
-        <p class="small">Advocaten/juristen (mensenrechten, strafrecht, staatsaansprakelijkheid), onderzoekers en ontwikkelaars kunnen zich aanmelden via <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>.</p>
-      </aside>
-    </section>
-
-    <!-- Vrijwilligers / Professionals -->
-    <section id="vrijwilligers" class="section">
-      <div class="card">
-        <span class="badge">Meedoen</span>
-        <h2>Vrijwilligers & Professionals</h2>
-        <p class="small">Wil je bijdragen als advocaat/jurist, onderzoeker, ontwikkelaar, data-analist of in communicatie/organisatie? Meld je hieronder aan. We verwerken gegevens volgens onze <a href="privacy.html">privacyverklaring</a>.</p>
-
-        <div id="volWrap" style="margin-top:14px">
-          <div class="placeholder muted" id="volPlaceholder">
-            <strong>Nog instellen:</strong> maak een Google Form voor aanmeldingen en vul de embed-URL in <span class="code">VOL_FORM_URL</span> (onderaan dit bestand). Dan verschijnt het formulier hier.
-          </div>
-          <iframe id="volFrame" title="Aanmelden" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
-                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
-        </div>
+        <p>We helpen bij strafzaken waarin geweld is gebruikt tegen burgers en waar mogelijk in het proces-verbaal onjuist is gerapporteerd.</p>
       </div>
     </section>
 
-    <!-- Encryptie -->
-    <section id="encryptie" class="section grid">
-      <div class="card">
-        <span class="badge">Bescherm jezelf</span>
-        <h2>Encryptie-handleiding (korte versie)</h2>
-        <ol class="list">
-          <li><strong>7-Zip (Windows/macOS/Linux):</strong> Rechtsklik → “Toevoegen aan archief” → kies <span class="code">.7z</span> of <span class="code">.zip</span> → Encryptiemethode <span class="code">AES-256</span> → sterk wachtwoord → upload het versleutelde archief.</li>
-          <li><strong>Cryptomator:</strong> Installeer → maak een “vault” → zet je bestanden erin → vergrendel → upload de versleutelde map/archief.</li>
-          <li><strong>Wachtwoord delen:</strong> Deel het wachtwoord <em>nooit</em> in hetzelfde formulier. Gebruik een apart kanaal (bijv. Signal) of wacht op ons antwoord per e-mail.</li>
-        </ol>
-        <p class="small">Let op: metadata (zoals locatie/tijd in EXIF) kan gevoelige info bevatten. Overweeg deze te verwijderen voordat je uploadt.</p>
-      </div>
-      <aside class="card">
-        <h3>Privacy-kernpunten</h3>
-        <ul class="list">
-          <li>Geen onnodige persoonsgegevens in het formulier</li>
-          <li>Publicatie alleen na juridische afweging</li>
-          <li>Geen doxxing of smaad</li>
-        </ul>
-      </aside>
-    </section>
-
-    <!-- PWA / App -->
+    <!-- Installatie -->
     <section id="install" class="section">
       <div class="card">
         <span class="badge">App zonder kosten</span>
         <h2>Installeer als app (PWA)</h2>
-        <p class="small">Deze site is een <strong>Progressive Web App</strong>. Op Android verschijnt een “Installeren” of “Toevoegen aan startscherm”-prompt. Op iOS: Deel-icoon → “Zet op beginscherm”. Publicatie in de Play Store kan later via een wrapper, maar vereist een betaald ontwikkelaarsaccount.</p>
+        <p class="small">Deze site is een Progressive Web App. Op Android verschijnt een "Installeren"-prompt, op iOS via "Zet op beginscherm".</p>
       </div>
     </section>
 
-    <!-- Privacy-link blok -->
+    <!-- Privacy -->
     <section id="privacy" class="section">
       <div class="card">
         <span class="badge">Beleid</span>
         <h2>Privacy & Verantwoord gebruik</h2>
-        <p class="small">Wij verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak. Onrechtmatig materiaal wordt verwijderd. Zie ook <a href="privacy.html">onze privacyverklaring</a>.</p>
+        <p class="small">We verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.</p>
       </div>
     </section>
   </main>
@@ -208,62 +147,45 @@
     © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // ---------- Config: VUL DIT IN ----------
-    // TODO 1) Vrijwilligers: Google Forms EMBED-URL (Verzenden -> </> -> URL)
-    const VOL_FORM_URL = ''; // bv. "https://docs.google.com/forms/d/e/xxx/viewform?embedded=true"
-    // TODO 2) Incidenten-lijst: gepubliceerde CSV van tab "Gepubliceerd"
-    const CSV_URL = ''; // bv. "https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv"
-    // ----------------------------------------
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); });
+  // Vrijwilligers & Advocaten tab
+  const VOL_FORM_URL = ''; // <-- plak hier embed-URL van vrijwilligersformulier
+  const LAW_FORM_URL = ''; // <-- plak hier embed-URL van advocatenformulier
+
+  const btnVol = document.getElementById('tab-vol');
+  const btnLaw = document.getElementById('tab-law');
+  const volWrap = document.getElementById('volWrap');
+  const lawWrap = document.getElementById('lawWrap');
+  const volFrame = document.getElementById('volFrame');
+  const lawFrame = document.getElementById('lawFrame');
+  const volPh = document.getElementById('volPlaceholder');
+  const lawPh = document.getElementById('lawPlaceholder');
+
+  function setActive(which){
+    if(which==='vol'){
+      btnVol.classList.remove('outline'); btnLaw.classList.add('outline');
+      volWrap.style.display='block'; lawWrap.style.display='none';
+    } else {
+      btnLaw.classList.remove('outline'); btnVol.classList.add('outline');
+      lawWrap.style.display='block'; volWrap.style.display='none';
     }
-    document.getElementById('y').textContent = new Date().getFullYear();
+  }
+  btnVol.addEventListener('click', ()=>setActive('vol'));
+  btnLaw.addEventListener('click', ()=>setActive('law'));
+  setActive('vol');
 
-    // Vrijwilligers-embed veilig laden (geen 404 als leeg)
-    (function(){
-      const f = document.getElementById('volFrame');
-      const ph = document.getElementById('volPlaceholder');
-      if (VOL_FORM_URL && /^https?:\/\//.test(VOL_FORM_URL)) {
-        f.src = VOL_FORM_URL;
-        f.style.display = 'block';
-        ph.style.display = 'none';
-      }
-    })();
-
-    // Incidenten CSV -> tabel (alleen als link is ingevuld)
-    async function loadCSV() {
-      if (!CSV_URL || !/^https?:\/\//.test(CSV_URL)) return; // nog niet ingesteld
-      const ph = document.getElementById('incPlaceholder');
-      const table = document.getElementById('incidents');
-      try {
-        const res = await fetch(CSV_URL);
-        const text = await res.text();
-        const rows = text.split(/\r?\n/).map(r =>
-          r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c => c.replace(/^"|"$/g,''))
-        ).filter(r => r.length > 1);
-        if (!rows.length) return;
-        const [head, ...data] = rows;
-        const thead = `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
-        const tbody = data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
-        table.innerHTML = thead + tbody;
-        table.style.display = 'table';
-        ph.style.display = 'none';
-
-        const input = document.getElementById('search');
-        input.oninput = () => {
-          const q = input.value.toLowerCase();
-          const filtered = data.filter(r => r.join(' ').toLowerCase().includes(q));
-          const tbodyF = filtered.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
-          table.innerHTML = thead + tbodyF;
-        };
-      } catch (e) {
-        console.error('CSV laden mislukt:', e);
-      }
-    }
-    loadCSV();
-  </script>
+  if (VOL_FORM_URL) {
+    volFrame.src = VOL_FORM_URL;
+    volFrame.style.display='block';
+    volPh.style.display='none';
+  }
+  if (LAW_FORM_URL) {
+    lawFrame.src = LAW_FORM_URL;
+    lawFrame.style.display='block';
+    lawPh.style.display='none';
+  }
+</script>
 </body>
 </html>
