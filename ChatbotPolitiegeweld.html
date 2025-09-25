@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politiegeweld Advies Chatbot</title>
     <style>
-        /* Algemene stijlen */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,9 +13,9 @@
         }
         
         body {
-            background-color: #f5f5f5;
+            background-color: #f5f7fa;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         .container {
@@ -26,141 +25,164 @@
         }
         
         header {
-            background-color: #1a3a6b;
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
             color: white;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #e53e3e;
         }
         
         h1 {
             margin-bottom: 0.5rem;
+            font-size: 2rem;
         }
         
         .intro {
             text-align: center;
             margin: 2rem 0;
             padding: 0 1rem;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
-        /* Chatbot stijlen */
         .chatbot-container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
         
         .chat-header {
-            background-color: #1a3a6b;
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
             color: white;
-            padding: 15px;
-            text-align: center;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
             font-weight: bold;
+        }
+        
+        .chat-header-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         .chat-messages {
             height: 400px;
             overflow-y: auto;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            background-color: #f8fafc;
         }
         
         .message {
-            max-width: 80%;
-            padding: 10px 15px;
+            max-width: 85%;
+            padding: 12px 16px;
             margin-bottom: 15px;
             border-radius: 18px;
             line-height: 1.4;
             position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         
         .bot-message {
             align-self: flex-start;
-            background-color: #e9ecef;
+            background-color: white;
+            border: 1px solid #e2e8f0;
             border-bottom-left-radius: 5px;
         }
         
         .user-message {
             align-self: flex-end;
-            background-color: #1a3a6b;
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
             color: white;
             border-bottom-right-radius: 5px;
         }
         
         .chat-input {
             display: flex;
-            padding: 15px;
-            border-top: 1px solid #eee;
+            padding: 15px 20px;
+            border-top: 1px solid #e2e8f0;
+            background-color: white;
         }
         
         .chat-input input {
             flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
             border-radius: 30px;
             outline: none;
             font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .chat-input input:focus {
+            border-color: #1a3a6b;
         }
         
         .chat-input button {
-            background-color: #1a3a6b;
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
             color: white;
             border: none;
             border-radius: 30px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin-left: 10px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: 600;
         }
         
         .chat-input button:hover {
-            background-color: #0d2a52;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(26, 58, 107, 0.3);
         }
         
         .quick-actions {
             display: flex;
             flex-wrap: wrap;
-            padding: 10px 15px;
-            border-top: 1px solid #eee;
+            padding: 15px 20px;
+            border-top: 1px solid #e2e8f0;
+            background-color: #f1f5f9;
         }
         
         .quick-action {
-            background-color: #f0f4f8;
-            border: 1px solid #d0d7de;
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            border: 1px solid #cbd5e0;
             border-radius: 20px;
-            padding: 8px 15px;
+            padding: 8px 16px;
             margin: 5px;
             cursor: pointer;
             font-size: 14px;
             transition: all 0.2s;
+            font-weight: 500;
         }
         
         .quick-action:hover {
-            background-color: #e1e7ed;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            transform: translateY(-2px);
         }
         
         .typing-indicator {
             display: inline-block;
-            padding: 10px 15px;
-            background-color: #e9ecef;
+            padding: 12px 16px;
+            background-color: white;
             border-radius: 18px;
             border-bottom-left-radius: 5px;
             align-self: flex-start;
-        }
-        
-        .typing-dots {
-            display: inline-block;
+            border: 1px solid #e2e8f0;
         }
         
         .typing-dots span {
             height: 8px;
             width: 8px;
-            background-color: #6c757d;
+            background-color: #4a5568;
             border-radius: 50%;
             display: inline-block;
             margin: 0 2px;
@@ -192,18 +214,38 @@
             text-align: center;
             margin-top: 2rem;
             padding: 1rem;
-            color: #666;
+            color: #4a5568;
             font-size: 0.9rem;
         }
         
-        /* Responsive aanpassingen */
+        .legal-reference {
+            font-size: 0.85rem;
+            color: #2d3748;
+            margin-top: 8px;
+            padding-left: 10px;
+            border-left: 3px solid #e53e3e;
+        }
+        
+        .example {
+            background-color: #f7fafc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            border-left: 3px solid #1a3a6b;
+        }
+        
         @media (max-width: 768px) {
             .chat-messages {
-                height: 300px;
+                height: 350px;
             }
             
             .message {
                 max-width: 90%;
+            }
+            
+            .quick-actions {
+                justify-content: center;
             }
         }
     </style>
@@ -212,19 +254,20 @@
     <header>
         <div class="container">
             <h1>Politiegeweld Advies Chatbot</h1>
-            <p>Vraag advies over uw rechten en de te volgen stappen</p>
+            <p>Juridisch advies over uw rechten en procedures</p>
         </div>
     </header>
     
     <div class="container">
         <div class="intro">
-            <h2>Welkom bij de Politiegeweld Advies Chatbot</h2>
-            <p>Deze chatbot kan u adviseren over uw rechten, de te volgen stappen bij politiegeweld, en verwijzen naar relevante wetgeving en rechterlijke uitspraken.</p>
+            <h2>Juridisch Advies bij Politiegeweld</h2>
+            <p>Deze chatbot biedt beknopt juridisch advies over uw rechten, procedures en relevante wetgeving bij politiegeweld.</p>
         </div>
         
         <div class="chatbot-container">
             <div class="chat-header">
-                Politiegeweld Advies Chatbot
+                <div class="chat-header-icon">⚖️</div>
+                Juridisch Adviseur - Politiegeweld
             </div>
             
             <div class="chat-messages" id="chatMessages">
@@ -236,7 +279,7 @@
             </div>
             
             <div class="chat-input">
-                <input type="text" id="userInput" placeholder="Stel uw vraag hier...">
+                <input type="text" id="userInput" placeholder="Stel uw juridische vraag...">
                 <button id="sendButton">Versturen</button>
             </div>
         </div>
@@ -244,78 +287,60 @@
     
     <footer>
         <div class="container">
-            <p>Deze chatbot biedt algemeen advies en is geen vervanging voor juridisch advies van een professional.</p>
-            <p>Voor dringende zaken, neem direct contact op met een juridisch adviseur.</p>
+            <p><strong>Disclaimer:</strong> Dit is algemeen juridisch advies. Voor persoonlijk advies raadpleeg een advocaat.</p>
         </div>
     </footer>
 
     <script>
         // Chatbot data en logica
         const chatbotData = {
-            begroeting: "Hallo! Ik ben de Politiegeweld Advies Chatbot. Ik kan u informatie geven over uw rechten, de te volgen stappen bij politiegeweld, en verwijzen naar relevante wetgeving. Hoe kan ik u helpen?",
+            begroeting: "Hallo. Ik ben uw juridisch adviseur voor kwesties rond politiegeweld. Hoe kan ik u van dienst zijn?",
             
-            stappen: {
-                titel: "Stappenplan bij politiegeweld",
-                stappen: [
-                    "1. Zorg eerst voor uw veiligheid en die van anderen",
-                    "2. Documenteer het incident: noteer tijd, plaats, betrokken politieagenten (kenmerken en badge-nummers)",
-                    "3. Verzamel bewijsmateriaal: foto's, video's, getuigenverklaringen, medische rapporten",
-                    "4. Doe direct een melding op ons actieplatform via de kaartfunctie",
-                    "5. Lever daarna de bewijzen aan via het formulier op onze website",
-                    "6. Overweeg een klacht in te dienen bij de politie zelf of bij de nationale ombudsman",
-                    "7. Raadpleeg eventueel een juridisch adviseur voor verdere stappen"
-                ],
-                afsluiting: "Het is belangrijk om snel te handelen en bewijsmateriaal te verzamelen."
-            },
+            stappen: `Bij vermoeden van politiegeweld: 
+1. Direct melden op het actieplatform
+2. Bewijsmateriaal veiligstellen (foto's, video's, getuigen)
+3. Medisch letsel vastleggen
+4. Juridisch advies inwinnen
+
+<strong class="legal-reference">Gebaseerd op art. 5:20 Awb - Recht op behoorlijke behandeling</strong>
+<div class="example">Voorbeeld: Bij excessief geweld dient u binnen 1 jaar klacht in bij het regionale politiekorps.</div>`,
             
-            rechten: {
-                titel: "Uw rechten bij politiecontrole",
-                rechten: [
-                    "Recht op kennisgeving van de reden van aanhouding",
-                    "Recht om te weten of u vrij bent om te gaan",
-                    "Recht op een advocaat",
-                    "Recht om te zwijgen",
-                    "Recht op medische hulp indien nodig",
-                    "Recht op een tolk als u de taal niet spreekt"
-                ],
-                afsluiting: "Onthoud dat politiegeweld nooit gerechtvaardigd is, behalve in geval van wettelijke uitzonderingen zoals noodweer."
-            },
+            rechten: `Uw rechten bij politieoptreden:
+- Recht op identificatie agent (art. 28 Politiewet)
+- Recht op kennisgeving reden aanhouding (art. 27 Sv)
+- Recht op advocaat (art. 28 Sv)
+- Recht om te zwijgen (art. 29 Sv)
+
+<strong class="legal-reference">Art. 3 EVRM - Verbod op onmenselijke behandeling</strong>
+<div class="example">Voorbeeld: Agenten moeten zich kunnen identificeren bij gebruik van geweld. Anders: procedurefout.</div>`,
             
-            wetgeving: {
-                titel: "Relevante wetgeving",
-                wetten: [
-                    "Artikel 5 EVRM: Recht op vrijheid en veiligheid",
-                    "Artikel 3 EVRM: Verbod van foltering en onmenselijke behandeling",
-                    "Artikel 2 Wetboek van Strafrecht: Strafbaarheid van ambtsmisbruik",
-                    "Politiewet 2012: Regels voor politieoptreden",
-                    "Ambtsinstructie voor politieambtenaren"
-                ],
-                afsluiting: "Deze wetten bieden bescherming tegen misbruik van politiebevoegdheden."
-            },
+            wetgeving: `Relevante wetgeving:
+- <strong>Art. 2 Politiewet</strong>: Proportionaliteit geweldsgebruik
+- <strong>Art. 300 Sr</strong>: Strafbaarheid ambtsmisbruik
+- <strong>Art. 5:20 Awb</strong>: Behoorlijke behandeling
+- <strong>Art. 3 EVRM</strong>: Verbod foltering
+
+<strong class="legal-reference">HR 10-02-2004: Proportionaliteit vereist bij politiegeweld</strong>
+<div class="example">Voorbeeld: Bij verzet mag politie proportioneel geweld gebruiken, niet excessief.</div>`,
             
-            uitspraken: {
-                titel: "Belangrijke rechterlijke uitspraken",
-                uitspraken: [
-                    "HR 10 juli 2018: Over proportionaliteit van politiegeweld",
-                    "Rb. Rotterdam 15 maart 2019: Over het recht op documentatie van geweld",
-                    "Hof Amsterdam 22 november 2020: Over aansprakelijkheid bij excessief geweld",
-                    "ECHR 12 januari 2021 (zaak X vs. Nederland): Over schending van artikel 3 EVRM"
-                ],
-                afsluiting: "Deze uitspraken helpen bij het vaststellen van normen voor politiegedrag."
-            },
+            uitspraken: `Belangrijke jurisprudentie:
+- <strong>HR 10 juli 2018</strong>: Proportionaliteit geweldsmiddelen
+- <strong>ECHR 12 jan 2021</strong>: Schending art. 3 EVRM bij excessief geweld
+- <strong>Rb. Rotterdam 2019</strong>: Documentatieplicht geweldsincident
+
+<strong class="legal-reference">ECHR 12-01-2021: Nederland veroordeeld wegens schending art. 3 EVRM</strong>
+<div class="example">Voorbeeld: Bij onnodig hardhandig optreden kan de staat aansprakelijk zijn.</div>`,
             
-            verdereHulp: {
-                titel: "Verdere hulp en ondersteuning",
-                opties: [
-                    "Juridische bijstand: Neem contact op met het Juridisch Loket",
-                    "Slachtofferhulp: Slachtofferhulp Nederland biedt ondersteuning",
-                    "Meldpunt Discriminatie: Voor gevallen van discriminatie",
-                    "Nationale Ombudsman: Voor klachten over overheidsinstanties"
-                ],
-                afsluiting: "U staat er niet alleen voor. Er zijn verschillende organisaties die u kunnen helpen."
-            },
+            hulp: `Verdere ondersteuning:
+- <strong>Juridisch Loket</strong>: Gratis advies
+- <strong>Slachtofferhulp Nederland</strong>: Ondersteuning
+- <strong>Nationale Ombudsman</strong>: Klachten overheid
+- <strong>Advocaat</strong>: Procedurele bijstand
+
+<strong class="legal-reference">Art. 18 Wet op de Rechtsbijstand - Toegang tot juridische hulp</strong>
+<div class="example">Voorbeeld: Bij beperkte middelen komt u mogelijk in aanmerking voor gesubsidieerde rechtsbijstand.</div>`,
             
-            onbekend: "Ik begrijp uw vraag niet helemaal. Kunt u het anders formuleren? U kunt ook een van de onderstaande opties selecteren voor specifiek advies."
+            onbekend: "Ik begrijp uw vraag niet volledig. Kunt u deze herformuleren of een onderwerp selecteren."
         };
 
         // DOM elementen
@@ -335,7 +360,7 @@
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message');
             messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
-            messageDiv.textContent = text;
+            messageDiv.innerHTML = text;
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -362,11 +387,11 @@
         function showQuickActions() {
             quickActions.innerHTML = '';
             const actions = [
-                { text: 'Stappenplan bij politiegeweld', keyword: 'stappen' },
+                { text: 'Stappenplan', keyword: 'stappen' },
                 { text: 'Mijn rechten', keyword: 'rechten' },
-                { text: 'Relevante wetgeving', keyword: 'wetgeving' },
-                { text: 'Rechterlijke uitspraken', keyword: 'uitspraken' },
-                { text: 'Verdere hulp', keyword: 'hulp' }
+                { text: 'Wetgeving', keyword: 'wetgeving' },
+                { text: 'Jurisprudentie', keyword: 'uitspraken' },
+                { text: 'Juridische hulp', keyword: 'hulp' }
             ];
             
             actions.forEach(action => {
@@ -396,52 +421,22 @@
                 hideTypingIndicator();
                 let response = chatbotData.onbekend;
                 
-                if (input.includes('stap') || input.includes('doen') || input.includes('melden')) {
-                    response = formatResponse(chatbotData.stappen);
-                } else if (input.includes('recht') || input.includes('mag') || input.includes('toegestaan')) {
-                    response = formatResponse(chatbotData.rechten);
-                } else if (input.includes('wet') || input.includes('regel') || input.includes('wetten')) {
-                    response = formatResponse(chatbotData.wetgeving);
-                } else if (input.includes('uitspraak') || input.includes('rechter') || input.includes('zaak')) {
-                    response = formatResponse(chatbotData.uitspraken);
-                } else if (input.includes('hulp') || input.includes('ondersteuning') || input.includes('advocaat')) {
-                    response = formatResponse(chatbotData.verdereHulp);
+                if (input.includes('stap') || input.includes('doen') || input.includes('melden') || input === 'stappen') {
+                    response = chatbotData.stappen;
+                } else if (input.includes('recht') || input.includes('mag') || input === 'rechten') {
+                    response = chatbotData.rechten;
+                } else if (input.includes('wet') || input.includes('regel') || input === 'wetgeving') {
+                    response = chatbotData.wetgeving;
+                } else if (input.includes('uitspraak') || input.includes('rechter') || input === 'uitspraken') {
+                    response = chatbotData.uitspraken;
+                } else if (input.includes('hulp') || input.includes('advocaat') || input === 'hulp') {
+                    response = chatbotData.hulp;
                 } else if (input.includes('hallo') || input.includes('hoi') || input.includes('dag')) {
                     response = chatbotData.begroeting;
                 }
                 
                 addMessage(response, 'bot');
-            }, 1000);
-        }
-
-        // Functie om gestructureerde responses te formatteren
-        function formatResponse(data) {
-            let response = `**${data.titel}**\n\n`;
-            
-            if (data.stappen) {
-                data.stappen.forEach(stap => {
-                    response += `${stap}\n`;
-                });
-            } else if (data.rechten) {
-                data.rechten.forEach(recht => {
-                    response += `${recht}\n`;
-                });
-            } else if (data.wetten) {
-                data.wetten.forEach(wet => {
-                    response += `${wet}\n`;
-                });
-            } else if (data.uitspraken) {
-                data.uitspraken.forEach(uitspraak => {
-                    response += `${uitspraak}\n`;
-                });
-            } else if (data.opties) {
-                data.opties.forEach(optie => {
-                    response += `${optie}\n`;
-                });
-            }
-            
-            response += `\n${data.afsluiting}`;
-            return response;
+            }, 800);
         }
 
         // Event listeners
