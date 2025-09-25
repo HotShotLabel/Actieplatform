@@ -1,47 +1,27 @@
-<nav class="nav">
-  <div class="container nav-inner">
-    <div class="brand">
-      <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
-      <strong>Actieplatform Politiegeweld</strong>
-    </div>
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
-      <a href="meedoen.html">Meedoen</a>
-      <a href="juridisch.html">Juridisch (geschillen)</a>
-      <a href="privacy.html">Privacy</a>
-    </div>
-  </div>
-</nav>
-
-
-
 <!doctype html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f14">
-  <title>Home — Actieplatform Politiegeweld</title>
+  <title>Actieplatform Politiegeweld</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <!-- Navigatie -->
   <nav class="nav">
-    <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
-      <div class="brand" style="display:flex;align-items:center;gap:8px">
-        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="icons/icon-192.png" alt="Logo">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
-        <a href="index.html">Home</a>
+        <a href="home.html">Home</a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="kaart.html">Meldingen & Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
         <a href="juridisch.html">Juridisch (geschillen)</a>
         <a href="privacy.html">Privacy</a>
@@ -49,58 +29,60 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero sectie -->
   <header class="container hero">
     <span class="kicker">Meldpunt & Actie</span>
     <h1>Actieplatform Politiegeweld</h1>
     <p>
-      Er vallen steeds meer doden en gewonden door politiegeweld. De overheid laat de politie grotendeels buiten onafhankelijk toezicht.  
-      Daarom zijn wij opgericht: om feiten te verzamelen, incidenten te documenteren en onze mensenrechten te beschermen.  
+      Er vallen steeds meer doden en gewonden door politiegeweld. 
+      De overheid laat de politie grotendeels buiten onafhankelijk toezicht. 
+      Daarom zijn wij opgericht: om feiten te verzamelen, incidenten te documenteren en onze mensenrechten te beschermen. 
       We bouwen een netwerk om samen onrecht aan te vechten.
     </p>
-    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
       <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen & kaart</a>
+      <a class="btn outline" href="kaart.html">Bekijk meldingen & kaart</a>
     </div>
   </header>
 
-  <!-- Intro secties -->
+  <!-- Inhoud -->
   <main class="container">
     <section class="section grid">
       <div class="card">
         <span class="badge">Waarom dit platform?</span>
         <h2>Collectieve bescherming</h2>
         <p>
-          Het Actieplatform brengt meldingen samen en koppelt deze aan juridische ondersteuning.  
+          Het Actieplatform brengt meldingen samen en koppelt deze aan juridische ondersteuning. 
           Zo zorgen we dat incidenten niet verdwijnen, maar worden gebruikt om verandering af te dwingen.
         </p>
       </div>
-      <aside class="card">
+      <div class="card">
         <h3>Wat je bijdraagt</h3>
         <ul class="list">
           <li>Meld een incident (kort of uitgebreid)</li>
           <li>Upload bewijsmateriaal (foto, video, audio)</li>
           <li>Sluit je aan als vrijwilliger of jurist</li>
         </ul>
-      </aside>
+      </div>
     </section>
 
     <section class="section grid">
       <div class="card">
         <span class="badge">Transparantie</span>
         <h2>Meldingen & Live Kaart</h2>
-        <p class="small">
+        <p>
           Alle meldingen komen samen op de live kaart. Daar kun je zien waar incidenten plaatsvinden en hoe vaak dit voorkomt.
         </p>
-        <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
+        <a class="btn" href="kaart.html">Ga naar kaart</a>
       </div>
-      <aside class="card">
-        <h3>Meedoen</h3>
-        <p class="small">
-          Wil je bijdragen als vrijwilliger, onderzoeker of advocaat?  
-          Ga naar <a href="meedoen.html">de meedoen-pagina</a>.
+      <div class="card">
+        <span class="badge">Samen sterk</span>
+        <h2>Meedoen</h2>
+        <p>
+          Wil jij bijdragen als vrijwilliger, onderzoeker of advocaat? 
+          Ga naar de <a href="meedoen.html">meedoen-pagina</a>.
         </p>
-      </aside>
+      </div>
     </section>
   </main>
 
@@ -110,13 +92,8 @@
     <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js');
-      });
-    }
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
