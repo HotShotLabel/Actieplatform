@@ -95,3 +95,111 @@
   </script>
 </body>
 </html>
+
+<!-- CHAT WIDGET -->
+<button class="chat-launcher" aria-label="Open chat" id="chatOpen">?</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Chat">
+  <div class="chat-header">
+    <strong>AI Chat (pilot)</strong>
+    <button onclick="toggleChat()" style="background:transparent;color:#fff;border:none;font-size:18px;cursor:pointer">×</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">
+      Welkom! Je kunt hier vragen stellen over politiegeweld, melden, en (algemene) info over rechtspraak.<br>
+      <small class="small">Let op: geen persoonlijk juridisch advies. Bij spoed: neem contact op met een advocaat.</small>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Stel je vraag… (bijv. ‘Wat is een klachtprocedure?’)">
+    <button id="chatSend">Stuur</button>
+  </div>
+  <div class="chat-disclaimer">
+    Dit is een hulpmiddel. Geen vervanging van juridisch advies. Deel geen gevoelige persoonsgegevens.
+  </div>
+</div>
+
+<script>
+  const panel = document.getElementById('chatPanel');
+  const openBtn = document.getElementById('chatOpen');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+  const bodyEl = document.getElementById('chatBody');
+
+  function toggleChat(){ panel.style.display = (panel.style.display==='block'?'none':'block'); }
+  openBtn.addEventListener('click', toggleChat);
+
+  // ---- Eenvoudige FAQ (offline) totdat je AI koppelt ----
+  const FAQ = [
+    {
+      q: /klacht|klachtenprocedure|om|politie/i,
+      a: "Klacht over politiegeweld: dien een formele klacht in bij de politie of de Nationale Ombudsman. Verzamel bewijs (video, getuigen, medisch). Overweeg ook melding bij het OM als er strafbaar feit is. Zie ook onze pagina ‘Juridisch (geschillen)’.",
+    },
+    {
+      q: /proces[- ]?verbaal|pv|valse pv|leugen/i,
+      a: "Twijfel aan de juistheid van het proces-verbaal? Vraag dossierinzage, noteer discrepanties, en win advies in bij een strafrechtadvocaat. Bewaar kopieën en tijdlijnen. Meld via ‘Uitgebreid melden’ met zoveel mogelijk bewijs.",
+    },
+    {
+      q: /uitspraak|rechter|veroordeel|jurispru|EHRM/i,
+      a: "We verzamelen uitspraken op onze pagina ‘Rechterlijke uitspraken’. Voor specifieke zaken kun je zoeken op rechtspraak.nl of contact opnemen met een advocaat voor analyse.",
+    },
+    {
+      q: /melden|upload|video|audio|foto/i,
+      a: "Snel melden met locatie? Gebruik ‘Meldingen & Live Kaart’. Uitgebreid melden met bestanden? Ga naar ‘Uitgebreid melden’. Tip: versleutel je bestanden (7-Zip/Cryptomator) en deel wachtwoorden via een apart kanaal.",
+    },
+    {
+      q: /privacy|gegevens|anoniem/i,
+      a: "We hanteren dataminimalisatie en delen niets zonder toestemming of juridische noodzaak. Zie ‘Privacy’. Upload bij voorkeur zónder identificerende persoonsgegevens.",
+    }
+  ];
+
+  // ---- (VOORBEREID) AI endpoint — zet hier later jouw URL neer ----
+  // Voorbeeld: const AI_ENDPOINT = 'https://<jouw-domein>/.netlify/functions/ai-chat';
+  const AI_ENDPOINT = null; // Laat op null voor FAQ-modus
+
+  function addMsg(text, who='bot'){
+    const el = document.createElement('div');
+    el.className = 'chat-msg ' + who;
+    el.innerHTML = text;
+    bodyEl.appendChild(el);
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  }
+
+  async function handleSend(){
+    const text = (input.value || '').trim();
+    if(!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+
+    // 1) Als er een AI endpoint is ingesteld → gebruik dat
+    if (AI_ENDPOINT){
+      try{
+        const r = await fetch(AI_ENDPOINT, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({question: text})
+        });
+        const data = await r.json();
+        addMsg(data.answer || 'Ik kon geen antwoord genereren.');
+      }catch(e){
+        addMsg('Er ging iets mis met de AI-verbinding. Ik probeer het lokaal te beantwoorden…');
+        fallbackAnswer(text);
+      }
+      return;
+    }
+    // 2) FAQ-modus (gratis, offline)
+    fallbackAnswer(text);
+  }
+
+  function fallbackAnswer(text){
+    const hit = FAQ.find(f => f.q.test(text));
+    if (hit){
+      addMsg(hit.a);
+    } else {
+      addMsg("Ik weet dit niet zeker. Probeer je vraag specifieker te maken (bijv. ‘Hoe dien ik een klacht in bij het OM?’) — of kijk op onze pagina’s ‘Uitgebreid melden’, ‘Juridisch (geschillen)’ en ‘Rechterlijke uitspraken’.");
+    }
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleSend(); }});
+</script>
+
