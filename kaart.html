@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaart — Actieplatform Politiegeweld</title>
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    table#incidents{width:100%;border-collapse:collapse}
+    table#incidents th,td{padding:8px;border-bottom:1px solid #222}
+    table#incidents th{border-bottom:1px solid #333;text-align:left}
+    #search{width:100%;padding:10px;border:1px solid #222;border-radius:8px;background:#0f141a;color:#e7eef8}
+    .placeholder{padding:12px;border:1px dashed #333;border-radius:12px;background:#0f141a}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
+    <div class="brand" style="display:flex;align-items:center;gap:8px">
+      <img src="icons/icon-192.png" alt="Logo" style="width:28px;height:28px">
+      <strong>Actieplatform Politiegeweld</strong>
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="melden.html">Melden</a>
+      <a href="vrijwilligers.html">Vrijwilligers</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container section">
+  <div class="card">
+    <span class="badge">Transparantie</span>
+    <h1>Kaart met incidenten</h1>
+    <p class="small">Nieuwe meldingen verschijnen na een korte controle. Ververs de pagina om pins te zien.</p>
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
+      width="100%" height="520" style="border:none;border-radius:12px">
+    </iframe>
+  </div>
+
+  <div class="card" id="lijst">
+    <h2>Incidenten (doorzoekbaar)</h2>
+    <input id="search" placeholder="Zoek op stad / type / omschrijving…">
+    <div id="incWrap" style="overflow:auto;margin-top:8px">
+      <div class="placeholder" id="incPlaceholder">
+        Publiceer je Sheet-tab <em>Gepubliceerd</em> als CSV en plak de link in <code>CSV_URL</code> hieronder.
+      </div>
+      <table id="incidents" class="small" style="display:none"></table>
+    </div>
+  </div>
+</main>
+
+<footer class="container footer">© <span id="y"></span> Actieplatform Politiegeweld</footer>
+
+<script>
+  document.getElementById('y').textContent=new Date().getFullYear();
+
+  // CSV van tab "Gepubliceerd" (Bestand → Publiceren op het web → CSV)
+  const CSV_URL = ''; // <-- PLAK HIER jouw gepubliceerde CSV-link
+
+  async function loadCSV(){
+    if(!CSV_URL) return;
+    const ph=document.getElementById('incPlaceholder');
+    const table=document.getElementById('incidents');
+    const res=await fetch(CSV_URL); const text=await res.text();
+    const rows=text.split(/\r?\n/).map(r=>r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/).map(c=>c.replace(/^"|"$/g,''))).filter(r=>r.length>1);
+    if(!rows.length){return;}
+    const [head,...data]=rows;
+    const thead=`<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>`;
+    const tbody=data.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+    table.innerHTML=thead+tbody; table.style.display='table'; ph.style.display='none';
+    const q=document.getElementById('search'); q.oninput=()=>{
+      const s=q.value.toLowerCase();
+      const f=data.filter(r=>r.join(' ').toLowerCase().includes(s));
+      table.innerHTML=thead+f.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+    };
+  }
+  loadCSV();
+</script>
+</body>
+</html>
