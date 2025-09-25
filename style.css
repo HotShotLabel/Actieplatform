@@ -1,19 +1,55 @@
-<header class="site-header">
-  <div class="container nav-inner">
-    <a class="brand" href="index.html">
-      <img src="images/logo.png" alt="Actieplatform Politiegeweld logo" class="logo">
-      <strong>Actieplatform Politiegeweld</strong>
-    </a>
+/* ==== VASTE BALK BOVENIN MET LOGO ==== */
+.site-header {
+  position: fixed;          /* altijd boven in beeld */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(11, 15, 20, .9);   /* zelfde stijl als .nav */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+  z-index: 1000;
+  padding: 10px 0;          /* verticale ruimte in de balk */
+}
 
-    <nav class="menu" aria-label="Hoofdmenu">
-      <a href="home.html">Home</a>
-      <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
-      <a href="meedoen.html">Meedoen</a>
-      <a href="juridisch.html">Juridisch (geschillen)</a>
-      <a href="uitspraken.html">Rechterlijke uitspraken</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="chatten.html">Chatten</a>
-    </nav>
-  </div>
-</header>
+/* binnenkant van de balk (logo + menu naast elkaar) */
+.site-header .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* merkblok met logo links */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.logo {
+  height: 50px;   /* logo-grootte */
+  width: auto;
+  border-radius: 6px;
+}
+
+/* menu rechts (je bestaande menu-stijl blijft werken) */
+.menu {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.menu a {
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.menu a:hover {
+  background: rgba(255,255,255,0.06);
+  text-decoration: none;
+}
+
+/* ruimte onder de vaste balk, zodat tekst niet eronder valt */
+body { margin-top: 80px; }
+
+/* (optioneel) oude .nav niet meer nodig.
+   Laat staan mag ook, maar hij wordt dan niet gebruikt. */
