@@ -1,110 +1,72 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0f14" />
-  <title>Kaart & Snel melden — Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root{ --bg:#0b0f14; --card:#0f141a; --accent:#d62828; --muted:#9aa3ad; --glass:rgba(255,255,255,.06); }
-    body{ background:var(--bg); color:#fff; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; }
-    .container{ max-width:1100px; margin:0 auto; padding:20px; }
-
-    nav.nav{ position:sticky; top:0; z-index:50; background:rgba(11,15,20,.9); backdrop-filter:blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
-    .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
-    .brand{ display:flex; align-items:center; gap:10px; }
-    .brand img{ width:32px; height:32px; border-radius:6px; }
-    .menu{ display:flex; gap:10px; align-items:center; }
-    .menu a{ color:#fff; text-decoration:none; padding:8px 10px; border-radius:8px; }
-    .menu a:hover{ background:var(--glass); }
-
-    header.subhero{ padding:48px 20px; border-bottom:1px solid rgba(255,255,255,.08); }
-    header.subhero h1{ margin:0 0 8px 0; font-size:2rem; }
-    header.subhero p{ margin:0; color:var(--muted); max-width:760px; }
-
-    .card{ background:#0f141a; padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.6); margin:18px 0; }
-    .badge{ display:inline-block; background:rgba(255,255,255,.06); padding:4px 8px; border-radius:8px; font-size:.85rem; color:#cfd6df; margin-bottom:6px; }
-    .btn{ background:var(--accent); color:#fff; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600; display:inline-block; }
-    .btn.outline{ background:transparent; border:2px solid var(--accent); color:var(--accent); }
-    .small{ color:var(--muted); }
-    a.link{ color:#fff; text-decoration:underline; }
-    footer{ padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Meldingen & Live Kaart — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAV -->
+
+  <!-- Navigatie -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="icons/icon-192.png" alt="Logo">
+        <img src="icons/icon-192.png" alt="Logo" style="width:32px;height:32px;border-radius:6px">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
         <a href="index.html">Home</a>
-        <a href="melden.html">Uitgebreid melden</a>
-        <a href="kaart.html">Kaart</a>
-        <a href="vrijwilligers.html">Meedoen</a>
-        <a href="juridisch.html">Juridisch</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
         <a href="privacy.html">Privacy</a>
       </div>
     </div>
   </nav>
 
-  <!-- Subheader -->
-  <header class="subhero container">
-    <h1>Live kaart & snel melden</h1>
+  <header class="container hero">
+    <span class="kicker">Transparantie</span>
+    <h1>Meldingen & Live Kaart</h1>
     <p>
-      Vul het korte formulier in en jouw melding verschijnt **automatisch op de kaart**.
-      Alleen basisgegevens zijn nodig: datum, plaats en korte omschrijving.
-      Identiteit blijft anoniem.
+      Hier zie je alle meldingen van politiegeweld in realtime.  
+      Vul het formulier in en jouw melding verschijnt direct op de kaart.
     </p>
   </header>
 
-  <!-- Main -->
   <main class="container">
+    <section class="section grid">
+      <div class="card">
+        <span class="badge">Snel melden</span>
+        <h2>Meld incident met locatie</h2>
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform?embedded=true" 
+          width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0"
+          style="border-radius:12px">
+          Laden…
+        </iframe>
+      </div>
 
-    <!-- Formulier -->
-    <section class="card">
-      <span class="badge">Snel melden</span>
-      <h2>Korte melding voor de kaart</h2>
-      <p class="small">Dit formulier is bedoeld om direct een locatie en korte omschrijving toe te voegen aan de kaart.</p>
-
-      <!-- Google Form Embed (jouw snelle formulier) -->
-      <iframe 
-        src="https://docs.google.com/forms/d/e/1FAIpQLScJosC4PCLMA2c92WrUSxt3ty1LMWdLMtDCtSA7ipzuP44q4g/viewform?embedded=true"
-        width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0"
-        style="border:none;border-radius:12px;background:#0b0f14">
-        Laden…
-      </iframe>
+      <div class="card">
+        <span class="badge">Live Kaart</span>
+        <h2>Overzicht incidenten</h2>
+        <iframe 
+          src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1" 
+          width="100%" height="500" style="border-radius:12px">
+        </iframe>
+      </div>
     </section>
-
-    <!-- Kaart -->
-    <section class="card">
-      <span class="badge">Transparantie</span>
-      <h2>Live incidentenkaart</h2>
-      <p class="small">Alle meldingen verschijnen hier automatisch na indienen.</p>
-      <iframe
-        src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
-        width="100%" height="500" style="border:none;border-radius:12px">
-      </iframe>
-    </section>
-
   </main>
 
-  <footer>
-    © <span id="y"></span> Actieplatform Politiegeweld — 
-    <a class="link" href="mailto:label@hot-shot.com">label@hot-shot.com</a>
+  <footer class="container footer">
+    © <span id="y"></span> Actieplatform Politiegeweld
   </footer>
 
-  <script>
-    if ('serviceWorker' in navigator) { 
-      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js'); }); 
-    }
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
