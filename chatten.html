@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Chatten — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/logo.png">
+  <link rel="apple-touch-icon" href="icons/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .chat-container { max-width:800px; margin:20px auto; background:#121821; border-radius:12px; padding:20px; }
+    .messages { max-height:400px; overflow-y:auto; padding:10px; border:1px solid #333; border-radius:8px; background:#0b0f14; white-space:pre-wrap; }
+    .msg { margin:8px 0; }
+    .msg.user { color:#e63946; }
+    .msg.bot { color:#9fb3c8; }
+    .input-area { display:flex; gap:10px; margin-top:10px; }
+    input[type=text] { flex:1; padding:10px; border-radius:8px; border:none; }
+    button { padding:10px 16px; border:none; border-radius:8px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATIE -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="icons/logo.png" alt="Logo" style="width:48px;height:48px;border-radius:6px">
+        <strong>Actieplatform Politiegeweld</strong>
+      </div>
+      <div class="menu">
+        <a href="home.html">Home</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
+        <a href="uitspraken.html">Rechterlijke uitspraken</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="chatten.html"><strong>Chatten</strong></a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container hero">
+    <h1>Chat met de juridische assistent</h1>
+    <p>Stel je vragen over mensenrechten, wetten en procedures. De chatbot probeert menselijk te antwoorden en zoekt in de wetgeving.</p>
+  </header>
+
+  <main class="container">
+    <div class="chat-container">
+      <div id="messages" class="messages"></div>
+      <div class="input-area">
+        <input id="userInput" type="text" placeholder="Typ je vraag..." />
+        <button onclick="sendMessage()">Stuur</button>
+        <button onclick="startVoice()">🎤</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container footer">
+    © <span id="y"></span> Actieplatform Politiegeweld
+  </footer>
+
+  <script>
+    const corpus = `
+
+Verdrag tot bescherming van de rechten van de mens en de fundamentele vrijheden, Rome, 04-11-1950
+Geraadpleegd op 25-09-2025.
+Geldend van 01-08-2021 t/m heden
+
+Verdrag tot bescherming van de rechten van de mens en de fundamentele vrijheden
+
+(authentiek: en)
+
+
+
+Convention for the Protection of Human Rights and Fundamental Freedoms
+
+The Governments signatory hereto, being Members of the Council of Europe,
+
+Considering the Universal Declaration of Human Rights proclaimed by the General Assembly of the United Nations on 10th December 1948;
+
+Considering that this Declaration aims at securing the universal and effective recognition and observance of the Rights therein declared;
+
+Considering that the aim of the Council of Europe is the achievement of greater unity between its Members and that one of the methods by which that aim is to be pursued is the maintenance and further realisation of Human Rights and Fundamental Freedoms;
+
+Reaffirming their profound belief in those Fundamental Freedoms which are the foundation of justice and peace in the world and are best maintained on the one hand by an effective political democracy and on the other by a common understanding and observance of the Human Rights upon which they depend;
+
+Being resolved, as the Governments of European countries which are likeminded and have a common heritage of political traditions, ideals, freedom and the rule of law, to take the first steps for the collective enforcement of certain of the Rights stated in the Universal Declaration;
+
+Affirming that the High Contracting Parties, in accordance with the principle of subsidiarity, have the primary responsibility to secure the rights and freedoms defined in this Convention and the Protocols thereto, and that in doing so they enjoy a margin of appreciation, subject to the supervisory jurisdiction of the European Court of Human Rights established by this Convention,
+
+Have agreed as follows:
+
+Article 1. - Obligation to respect human rights
+
+The High Contracting Parties shall secure to everyone within their jurisdiction the rights and freedoms defined in Section I of this Convention.
+
+SECTION I. Rights and freedoms
+
+Article 2. - Right to life
+
+1.	Everyone's right to life shall be protected by law. No one shall be deprived of his life intentionally save in the execution of a sentence of a court following his conviction of a crime for which this penalty is provided by law.
+
+2.	Deprivation of life shall not be regarded as inflicted in contravention of this Article when it results from the use of force which is no more than absolutely necessary:
+	(a)	in defence of any person from unlawful violence;
+	(b)	in order to effect a lawful arrest or to prevent the escape of a person lawfully detained;
+	(c)	in action lawfully taken for the purpose of quelling a riot or insurrection.
+
+Article 3. - Prohibition of torture
+
+No one shall be subjected to torture or to inhuman or degrading treatment or punishment.
+
+Article 4. - Prohibition of slavery and forced labour
+
+1.	No one shall be held in slavery or servitude.
+
+2.	No one shall be required to perform forced or compulsory labour.
+
+3.	For the purpose of this Article the term “forced or compulsory labour” shall not include:
+	(a)	any work required to be done in the ordinary course of detention imposed according to the provisions of Article 5 of this Convention or during conditional release from such detention;
+	(b)	any service of a military character or, in case of conscientious objectors in countries where they are recognised, service exacted instead of compulsory military service;
+	(c)	any service exacted in case of an emergency or calamity threatening the life or well-being of the community;
+	(d)	any work or service which forms part of normal civic obligations.
+
+Article 5. - Right to liberty and security
+
+1.	Everyone has the right to liberty and security of person. No one shall be deprived of his liberty save in the following cases and in accordance with a procedure prescribed by law:`;
+
+    const faq = {
+      "mag de politie geweld gebruiken": "Goed dat je dit vraagt. De politie mag geweld gebruiken, maar alleen als dat strikt noodzakelijk en proportioneel is. Dit volgt uit de Politiewet en art. 3 EVRM (verbod op onmenselijke behandeling).",
+      "ik ben geslagen door politie": "Dat klinkt heftig. Je hebt het recht om aangifte te doen en een klacht in te dienen bij de politie of het OM. Je kunt ook een art. 12 Sv-procedure starten als het OM niets doet.",
+      "waar kan ik hulp krijgen": "Je staat er niet alleen voor. Je kunt terecht bij Slachtofferhulp Nederland, een mensenrechtenadvocaat, of ons platform via de pagina 'Juridisch (geschillen)'.",
+      "wetgeving": "De belangrijkste wetten zijn het EVRM, de Grondwet en de Politiewet. In dit platform en in deze chatbot vind je teksten en uitleg daarover."
+    };
+
+    const smalltalk = {
+      "hallo": "Hallo! Fijn dat je er bent. Waar wil je het over hebben?",
+      "hoi": "Hoi! Ik luister. Wat houdt je bezig?",
+      "praat met me": "Natuurlijk, ik ben er om je te helpen. Vertel me wat er aan de hand is.",
+      "ik heb je hulp nodig": "Dat snap ik. Wil je dat ik je uitleg wat je rechten zijn of hoe je een klacht kunt indienen?",
+      "dank": "Graag gedaan, ik ben er voor je.",
+      "bedankt": "Geen probleem! Wil je nog iets vragen?"
+    };
+
+    const messagesDiv = document.getElementById('messages');
+    const synth = window.speechSynthesis;
+
+    function addMessage(text, sender) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + sender;
+      div.textContent = (sender==='user'? '👤: ' : '🤖: ') + text;
+      messagesDiv.appendChild(div);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      if(sender==='bot') speak(text);
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if(!text) return;
+      addMessage(text, 'user');
+      input.value='';
+      respond(text);
+    }
+
+    function respond(query) {
+      let q = query.toLowerCase();
+
+      // check smalltalk
+      for (let key in smalltalk) {
+        if (q.includes(key)) {
+          addMessage(smalltalk[key], 'bot');
+          return;
+        }
+      }
+
+      // check FAQ
+      for (let key in faq) {
+        if (q.includes(key)) {
+          addMessage(faq[key], 'bot');
+          return;
+        }
+      }
+
+      // zoek in corpus met woordscore
+      let words = q.split(/\s+/);
+      let lines = corpus.split(/\n+/);
+      let scored = lines.map(line => {
+        let score = words.reduce((acc,w)=> acc + (line.toLowerCase().includes(w)?1:0), 0);
+        return {line, score};
+      });
+      scored.sort((a,b)=> b.score - a.score);
+      let best = scored.filter(s => s.score>0).slice(0,2);
+
+      if(best.length>0) {
+        let answer = "Ik heb iets gevonden dat relevant lijkt:\n\n";
+        best.forEach(b => answer += "- " + b.line.trim() + "\n");
+        answer += "\nWil je dat ik dit verder uitleg of vertaal naar praktische stappen?";
+        addMessage(answer, 'bot');
+      } else {
+        addMessage("Ik begrijp je vraag, maar ik vond geen directe passage. Je kunt bijvoorbeeld vragen: 'Hoe dien ik een klacht in?', 'Wat zegt het EVRM over politiegeweld?', of 'Wat zijn mijn rechten als verdachte?'", 'bot');
+      }
+    }
+
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      synth.speak(utter);
+    }
+
+    function startVoice() {
+      if(!('webkitSpeechRecognition' in window)) {
+        alert('Spraakherkenning wordt niet ondersteund in deze browser.');
+        return;
+      }
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'nl-NL';
+      recognition.start();
+      recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+        document.getElementById('userInput').value = text;
+        sendMessage();
+      };
+    }
+
+    // enter-to-send
+    document.getElementById("userInput").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

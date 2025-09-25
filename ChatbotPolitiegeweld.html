@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politiegeweld Advies Chatbot</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 4px solid #e53e3e;
+        }
+        
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 0 1rem;
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .chatbot-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .chat-header-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+        }
+        
+        .message {
+            max-width: 85%;
+            padding: 12px 16px;
+            margin-bottom: 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .bot-message {
+            align-self: flex-start;
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px 20px;
+            border-top: 1px solid #e2e8f0;
+            background-color: white;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 30px;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .chat-input input:focus {
+            border-color: #1a3a6b;
+        }
+        
+        .chat-input button {
+            background: linear-gradient(135deg, #1a3a6b 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .chat-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(26, 58, 107, 0.3);
+        }
+        
+        .quick-actions {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px 20px;
+            border-top: 1px solid #e2e8f0;
+            background-color: #f1f5f9;
+        }
+        
+        .quick-action {
+            background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+            border: 1px solid #cbd5e0;
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        
+        .quick-action:hover {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            transform: translateY(-2px);
+        }
+        
+        .typing-indicator {
+            display: inline-block;
+            padding: 12px 16px;
+            background-color: white;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .typing-dots span {
+            height: 8px;
+            width: 8px;
+            background-color: #4a5568;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dots span:nth-child(1) {
+            animation-delay: 0s;
+        }
+        
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        
+        .legal-reference {
+            font-size: 0.85rem;
+            color: #2d3748;
+            margin-top: 8px;
+            padding-left: 10px;
+            border-left: 3px solid #e53e3e;
+        }
+        
+        .example {
+            background-color: #f7fafc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            border-left: 3px solid #1a3a6b;
+        }
+        
+        @media (max-width: 768px) {
+            .chat-messages {
+                height: 350px;
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+            
+            .quick-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Politiegeweld Advies Chatbot</h1>
+            <p>Juridisch advies over uw rechten en procedures</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="intro">
+            <h2>Juridisch Advies bij Politiegeweld</h2>
+            <p>Deze chatbot biedt beknopt juridisch advies over uw rechten, procedures en relevante wetgeving bij politiegeweld.</p>
+        </div>
+        
+        <div class="chatbot-container">
+            <div class="chat-header">
+                <div class="chat-header-icon">⚖️</div>
+                Juridisch Adviseur - Politiegeweld
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Berichten worden hier dynamisch toegevoegd -->
+            </div>
+            
+            <div class="quick-actions" id="quickActions">
+                <!-- Snelle actie knoppen worden hier dynamisch toegevoegd -->
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Stel uw juridische vraag...">
+                <button id="sendButton">Versturen</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p><strong>Disclaimer:</strong> Dit is algemeen juridisch advies. Voor persoonlijk advies raadpleeg een advocaat.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Chatbot data en logica
+        const chatbotData = {
+            begroeting: "Hallo. Ik ben uw juridisch adviseur voor kwesties rond politiegeweld. Hoe kan ik u van dienst zijn?",
+            
+            stappen: `Bij vermoeden van politiegeweld: 
+1. Direct melden op het actieplatform
+2. Bewijsmateriaal veiligstellen (foto's, video's, getuigen)
+3. Medisch letsel vastleggen
+4. Juridisch advies inwinnen
+
+<strong class="legal-reference">Gebaseerd op art. 5:20 Awb - Recht op behoorlijke behandeling</strong>
+<div class="example">Voorbeeld: Bij excessief geweld dient u binnen 1 jaar klacht in bij het regionale politiekorps.</div>`,
+            
+            rechten: `Uw rechten bij politieoptreden:
+- Recht op identificatie agent (art. 28 Politiewet)
+- Recht op kennisgeving reden aanhouding (art. 27 Sv)
+- Recht op advocaat (art. 28 Sv)
+- Recht om te zwijgen (art. 29 Sv)
+
+<strong class="legal-reference">Art. 3 EVRM - Verbod op onmenselijke behandeling</strong>
+<div class="example">Voorbeeld: Agenten moeten zich kunnen identificeren bij gebruik van geweld. Anders: procedurefout.</div>`,
+            
+            wetgeving: `Relevante wetgeving:
+- <strong>Art. 2 Politiewet</strong>: Proportionaliteit geweldsgebruik
+- <strong>Art. 300 Sr</strong>: Strafbaarheid ambtsmisbruik
+- <strong>Art. 5:20 Awb</strong>: Behoorlijke behandeling
+- <strong>Art. 3 EVRM</strong>: Verbod foltering
+
+<strong class="legal-reference">HR 10-02-2004: Proportionaliteit vereist bij politiegeweld</strong>
+<div class="example">Voorbeeld: Bij verzet mag politie proportioneel geweld gebruiken, niet excessief.</div>`,
+            
+            uitspraken: `Belangrijke jurisprudentie:
+- <strong>HR 10 juli 2018</strong>: Proportionaliteit geweldsmiddelen
+- <strong>ECHR 12 jan 2021</strong>: Schending art. 3 EVRM bij excessief geweld
+- <strong>Rb. Rotterdam 2019</strong>: Documentatieplicht geweldsincident
+
+<strong class="legal-reference">ECHR 12-01-2021: Nederland veroordeeld wegens schending art. 3 EVRM</strong>
+<div class="example">Voorbeeld: Bij onnodig hardhandig optreden kan de staat aansprakelijk zijn.</div>`,
+            
+            hulp: `Verdere ondersteuning:
+- <strong>Juridisch Loket</strong>: Gratis advies
+- <strong>Slachtofferhulp Nederland</strong>: Ondersteuning
+- <strong>Nationale Ombudsman</strong>: Klachten overheid
+- <strong>Advocaat</strong>: Procedurele bijstand
+
+<strong class="legal-reference">Art. 18 Wet op de Rechtsbijstand - Toegang tot juridische hulp</strong>
+<div class="example">Voorbeeld: Bij beperkte middelen komt u mogelijk in aanmerking voor gesubsidieerde rechtsbijstand.</div>`,
+            
+            onbekend: "Ik begrijp uw vraag niet volledig. Kunt u deze herformuleren of een onderwerp selecteren."
+        };
+
+        // DOM elementen
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+        const quickActions = document.getElementById('quickActions');
+
+        // Toon begroeting bij het laden
+        window.addEventListener('DOMContentLoaded', () => {
+            addMessage(chatbotData.begroeting, 'bot');
+            showQuickActions();
+        });
+
+        // Functie om bericht toe te voegen
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.innerHTML = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Functie om type-indicator te tonen
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('typing-indicator');
+            typingDiv.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+            typingDiv.id = 'typingIndicator';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Functie om type-indicator te verbergen
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Functie om snelle acties te tonen
+        function showQuickActions() {
+            quickActions.innerHTML = '';
+            const actions = [
+                { text: 'Stappenplan', keyword: 'stappen' },
+                { text: 'Mijn rechten', keyword: 'rechten' },
+                { text: 'Wetgeving', keyword: 'wetgeving' },
+                { text: 'Jurisprudentie', keyword: 'uitspraken' },
+                { text: 'Juridische hulp', keyword: 'hulp' }
+            ];
+            
+            actions.forEach(action => {
+                const actionButton = document.createElement('div');
+                actionButton.classList.add('quick-action');
+                actionButton.textContent = action.text;
+                actionButton.addEventListener('click', () => {
+                    userInput.value = action.keyword;
+                    handleUserInput();
+                });
+                quickActions.appendChild(actionButton);
+            });
+        }
+
+        // Functie om gebruikersinvoer te verwerken
+        function handleUserInput() {
+            const input = userInput.value.trim().toLowerCase();
+            if (input === '') return;
+            
+            addMessage(input, 'user');
+            userInput.value = '';
+            
+            showTypingIndicator();
+            
+            // Simuleer verwerkingstijd
+            setTimeout(() => {
+                hideTypingIndicator();
+                let response = chatbotData.onbekend;
+                
+                if (input.includes('stap') || input.includes('doen') || input.includes('melden') || input === 'stappen') {
+                    response = chatbotData.stappen;
+                } else if (input.includes('recht') || input.includes('mag') || input === 'rechten') {
+                    response = chatbotData.rechten;
+                } else if (input.includes('wet') || input.includes('regel') || input === 'wetgeving') {
+                    response = chatbotData.wetgeving;
+                } else if (input.includes('uitspraak') || input.includes('rechter') || input === 'uitspraken') {
+                    response = chatbotData.uitspraken;
+                } else if (input.includes('hulp') || input.includes('advocaat') || input === 'hulp') {
+                    response = chatbotData.hulp;
+                } else if (input.includes('hallo') || input.includes('hoi') || input.includes('dag')) {
+                    response = chatbotData.begroeting;
+                }
+                
+                addMessage(response, 'bot');
+            }, 800);
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', handleUserInput);
+        
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
+            }
+        });
+    </script>
+</body>
+</html>

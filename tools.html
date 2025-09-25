@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Toolkit — Actieplatform Politiegeweld</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/logo.png">
+  <link rel="apple-touch-icon" href="icons/logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- NAVIGATIE -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <a href="home.html" class="logo">
+          <img src="icons/logo.png" alt="Logo" width="28" height="28">
+          <span>Actieplatform Politiegeweld</span>
+        </a>
+      </div>
+      
+      <div class="menu">
+        <a href="home.html">Home</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
+        <a href="uitspraken.html">Rechterlijke uitspraken</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="chatten.html">Chatten</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="container hero">
+    <span class="kicker">Nieuw</span>
+    <h1>Toolkit</h1>
+    <p>Handige scripts, voorbeeldbrieven en hulpmiddelen om meldingen te verwerken en zaken voor te bereiden.</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container">
+    <section class="section grid">
+      <div class="card">
+        <span class="badge">Voorbeeldbrieven</span>
+        <h2>Snelle start</h2>
+        <ul class="list">
+          <li><a href="#">Klacht bij de politie (model)</a></li>
+          <li><a href="#">Artikel 12 Sv-klacht (model)</a></li>
+          <li><a href="#">Wob/Woo-verzoek (model)</a></li>
+          <li><a href="#">Schadeclaim (model)</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge">Automatisering</span>
+        <h2>Scripts</h2>
+        <p>Hier kun je later kleine scripts of embed-widgets toevoegen (bijv. intake-checklist, termijnen-checker, dossiergenerator).</p>
+        <pre class="code"><code>// Voorbeeld: kopieer-plak boilerplate
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(()=>alert('Gekopieerd!'));
+}
+</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    © <span id="y"></span> Actieplatform Politiegeweld • Contact: <a href="mailto:contact@jouwdomein.nl">contact@jouwdomein.nl</a>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(()=>{});
+      });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
