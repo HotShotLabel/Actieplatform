@@ -4,27 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f14">
-  <title>Actieplatform Politiegeweld</title>
+  <title>Actieplatform Politiegeweld — Home</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="assets/style.css">
   <style>
-    body { background:#0b0f14; color:#fff; margin:0; font-family:sans-serif; }
-    .btn { display:inline-block; padding:12px 20px; font-size:1rem; border-radius:8px; background:#d62828; color:#fff; border:none; cursor:pointer; }
-    .btn.outline { background:transparent; border:2px solid #d62828; color:#d62828; }
-    .card { background:#11161d; border-radius:12px; padding:20px; margin:20px 0; }
-    .badge { display:inline-block; background:#222; padding:4px 8px; font-size:0.8rem; border-radius:6px; margin-bottom:6px; }
-    .small { font-size:0.9rem; opacity:0.8; }
-    nav.nav { background:#0b0f14; padding:12px 0; }
-    nav .menu a { color:white; margin:0 8px; text-decoration:none; }
-    footer { padding:20px; font-size:0.85rem; text-align:center; color:#aaa; }
-    .placeholder { background:#222; padding:12px; border-radius:8px; }
-    .code { font-family:monospace; background:#333; padding:2px 4px; border-radius:4px; }
+    .btn{display:inline-block;padding:12px 20px;border-radius:8px;background:#d62828;color:#fff}
+    .btn.outline{background:transparent;border:2px solid #d62828;color:#d62828}
+    .menu a{color:#fff;margin:0 8px;text-decoration:none}
   </style>
 </head>
 <body>
-  <!-- Navigatie -->
   <nav class="nav">
     <div class="container nav-inner" style="display:flex;justify-content:space-between;align-items:center">
       <div class="brand" style="display:flex;align-items:center;gap:8px">
@@ -32,160 +23,47 @@
         <strong>Actieplatform Politiegeweld</strong>
       </div>
       <div class="menu">
-        <a href="#meld">Melden</a>
-        <a href="#kaart">Kaart</a>
-        <a href="#juridisch">Juridische steun</a>
-        <a href="#vrijwilligers">Vrijwilligers</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#install">App</a>
+        <a href="melden.html">Melden</a>
+        <a href="kaart.html">Kaart</a>
+        <a href="juridisch.html">Juridische steun</a>
+        <a href="vrijwilligers.html">Vrijwilligers</a>
+        <a href="privacy.html">Privacy</a>
       </div>
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="container hero" style="padding:40px 20px;text-align:center">
+  <header class="container hero">
     <span class="kicker">Meldpunt & Actie</span>
     <h1>Meldingen omzetten in <em>daadwerkelijke actie</em></h1>
-    <p>We verzamelen veilig bewijsmateriaal van politiegeweld en zorgen voor vervolg: juridische ondersteuning, dossiervorming en publieke verantwoording. Dit platform is bewust eenvoudig en toegankelijk voor jong en oud.</p>
-    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;justify-content:center">
-      <a class="btn" href="#meld">Nu melden</a>
-      <a class="btn outline" href="#kaart">Bekijk kaart</a>
+    <p>Bewijsmateriaal veilig verzamelen, juridisch opvolgen en transparantie via een live kaart. Eenvoudig en toegankelijk voor iedereen.</p>
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+      <a class="btn" href="melden.html">Nu melden</a>
+      <a class="btn outline" href="kaart.html">Bekijk kaart</a>
     </div>
   </header>
 
-  <!-- Main -->
-  <main class="container" style="padding:0 20px">
-
-    <!-- Meldformulier -->
-    <section id="meld" class="section grid">
+  <main class="container">
+    <section class="section grid">
       <div class="card">
-        <span class="badge">Veilig uploaden</span>
-        <h2>Upload je materiaal (video, foto, audio)</h2>
-        <p class="small">Geen namen, adressen of BSN. Dienstnummer van betrokken agent(en) mag je noteren indien bekend. Versleutel bestanden liefst vooraf.</p>
-        <iframe aria-label="Contact with file"
-                frameborder="0"
-                allow="camera;microphone"
-                style="height:600px;width:100%;border:none;border-radius:12px"
-                src="https://forms.zohopublic.eu/hotshotlabel1/form/Contactwithfile/formperma/PhUjahu3aFpcbyqfy3wOXlEWDrF1zsDScgOtcb-fIVA?zf_enablecamera=true">
-        </iframe>
+        <span class="badge">Start</span>
+        <h2>Wat we doen</h2>
+        <ul class="list">
+          <li>Meldingen en bewijs (video, foto, audio) <em>veilig</em> verzamelen</li>
+          <li>Juridische screening & dossiervorming</li>
+          <li>Live incidentenkaart voor publieke verantwoording</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- Kaart -->
-    <section id="kaart" class="section">
-      <div class="card">
-        <span class="badge">Transparantie</span>
-        <h2>Kaart met incidenten</h2>
-        <iframe src="https://www.google.com/maps/d/embed?mid=1iKA2qz3T_DOllyMe25FDpogbR0lp90Y&ehbc=2E312F&noprof=1"
-                width="100%" height="500" style="border:none;border-radius:12px;"></iframe>
-      </div>
-    </section>
-
-    <!-- Vrijwilligers / Advocaten -->
-    <section id="vrijwilligers" class="section">
-      <div class="card">
-        <span class="badge">Meedoen</span>
-        <h2>Vrijwilligers & Advocaten</h2>
-        <p class="small">
-          Meld je hieronder aan. Kies “Vrijwilliger/Professional” of “Advocaat/Jurist”.
-          Gegevens worden verwerkt volgens de <a href="privacy.html">privacyverklaring</a>.
-        </p>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
-          <button id="tab-vol" class="btn" type="button">Vrijwilliger / Professional</button>
-          <button id="tab-law" class="btn outline" type="button">Advocaat / Jurist</button>
-        </div>
-
-        <div id="volWrap" style="margin-top:8px">
-          <div class="placeholder muted" id="volPlaceholder">
-            <strong>Nog instellen:</strong> plak de embed-URL van je vrijwilligersformulier in <span class="code">VOL_FORM_URL</span>.
-          </div>
-          <iframe id="volFrame" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0"
-                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
-        </div>
-
-        <div id="lawWrap" style="margin-top:8px;display:none">
-          <div class="placeholder muted" id="lawPlaceholder">
-            <strong>Nog instellen:</strong> plak de embed-URL van je advocatenformulier in <span class="code">LAW_FORM_URL</span>.
-          </div>
-          <iframe id="lawFrame" width="100%" height="980" frameborder="0" marginheight="0" marginwidth="0"
-                  style="border:none;border-radius:12px;background:#0b0f14;display:none"></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Juridische steun -->
-    <section id="juridisch" class="section grid">
-      <div class="card">
-        <span class="badge">Actie & steun</span>
-        <h2>Juridische opvolging</h2>
-        <p>We helpen bij strafzaken waarin geweld is gebruikt tegen burgers en waar mogelijk in het proces-verbaal onjuist is gerapporteerd.</p>
-      </div>
-    </section>
-
-    <!-- Installatie -->
-    <section id="install" class="section">
-      <div class="card">
-        <span class="badge">App zonder kosten</span>
-        <h2>Installeer als app (PWA)</h2>
-        <p class="small">Deze site is een Progressive Web App. Op Android verschijnt een "Installeren"-prompt, op iOS via "Zet op beginscherm".</p>
-      </div>
-    </section>
-
-    <!-- Privacy -->
-    <section id="privacy" class="section">
-      <div class="card">
-        <span class="badge">Beleid</span>
-        <h2>Privacy & Verantwoord gebruik</h2>
-        <p class="small">We verzamelen zo min mogelijk gegevens, gebruiken encryptie waar mogelijk en delen pas na toestemming of juridische noodzaak.</p>
-      </div>
+      <aside class="card">
+        <h3>Snel naar</h3>
+        <p><a class="btn" href="melden.html">Meldformulier</a></p>
+        <p><a class="btn outline" href="vrijwilligers.html">Meedoen (vrijwilliger/advocaat)</a></p>
+      </aside>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="container footer">
     © <span id="y"></span> Actieplatform Politiegeweld — <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
-
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Vrijwilligers & Advocaten tab
-  const VOL_FORM_URL = ''; // <-- plak hier embed-URL van vrijwilligersformulier
-  const LAW_FORM_URL = ''; // <-- plak hier embed-URL van advocatenformulier
-
-  const btnVol = document.getElementById('tab-vol');
-  const btnLaw = document.getElementById('tab-law');
-  const volWrap = document.getElementById('volWrap');
-  const lawWrap = document.getElementById('lawWrap');
-  const volFrame = document.getElementById('volFrame');
-  const lawFrame = document.getElementById('lawFrame');
-  const volPh = document.getElementById('volPlaceholder');
-  const lawPh = document.getElementById('lawPlaceholder');
-
-  function setActive(which){
-    if(which==='vol'){
-      btnVol.classList.remove('outline'); btnLaw.classList.add('outline');
-      volWrap.style.display='block'; lawWrap.style.display='none';
-    } else {
-      btnLaw.classList.remove('outline'); btnVol.classList.add('outline');
-      lawWrap.style.display='block'; volWrap.style.display='none';
-    }
-  }
-  btnVol.addEventListener('click', ()=>setActive('vol'));
-  btnLaw.addEventListener('click', ()=>setActive('law'));
-  setActive('vol');
-
-  if (VOL_FORM_URL) {
-    volFrame.src = VOL_FORM_URL;
-    volFrame.style.display='block';
-    volPh.style.display='none';
-  }
-  if (LAW_FORM_URL) {
-    lawFrame.src = LAW_FORM_URL;
-    lawFrame.style.display='block';
-    lawPh.style.display='none';
-  }
-</script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
