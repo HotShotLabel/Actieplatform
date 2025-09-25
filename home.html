@@ -202,4 +202,173 @@
   sendBtn.addEventListener('click', handleSend);
   input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleSend(); }});
 </script>
+<!-- CHAT WIDGET (overlay) -->
+<button class="chat-launcher" aria-label="Open chat" id="chatOpen">?</button>
+<div class="chat-backdrop" id="chatBackdrop"></div>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI Chat">
+  <div class="chat-header">
+    <div class="chat-title">
+      <img src="icons/logo.png" alt="logo">
+      <strong>AI Chat (pilot)</strong>
+    </div>
+    <div>
+      <button id="chatClear" title="Nieuw gesprek" style="background:transparent;color:#9fb3c8;border:none;margin-right:8px;cursor:pointer">↺</button>
+      <button id="chatClose" title="Sluiten" style="background:transparent;color:#fff;border:none;font-size:18px;cursor:pointer">×</button>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg bot">
+      Welkom! Stel je vraag over politiegeweld, melden of (algemene) rechtspraak. 
+      <div class="small" style="margin-top:6px;color:#9fb3c8">
+        Let op: dit is géén persoonlijk juridisch advies. Deel geen persoonsgegevens.
+      </div>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Bijv. ‘Hoe dien ik aangifte in?’">
+    <button id="chatSend">Stuur</button>
+  </div>
+  <div class="chat-disclaimer">
+    Hulpfunctie, geen vervanging van juridisch advies. Bij spoed: bel je advocaat.
+  </div>
+</div>
+
+<script>
+  // Elements
+  const openBtn = document.getElementById('chatOpen');
+  const panel = document.getElementById('chatPanel');
+  const backdrop = document.getElementById('chatBackdrop');
+  const closeBtn = document.getElementById('chatClose');
+  const clearBtn = document.getElementById('chatClear');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+  const bodyEl = document.getElementById('chatBody');
+
+  function openChat(){
+    panel.style.display = 'block';
+    backdrop.style.display = 'block';
+    document.body.classList.add('body-nosroll');
+    input.focus();
+  }
+  function closeChat(){
+    panel.style.display = 'none';
+    backdrop.style.display = 'none';
+    document.body.classList.remove('body-nosroll');
+  }
+  function addMsg(text, who='bot'){
+    const el = document.createElement('div');
+    el.className = 'chat-msg ' + who;
+    el.innerHTML = text;
+    bodyEl.appendChild(el);
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  }
+  function clearChat(){
+    bodyEl.innerHTML = '<div class="chat-msg bot">Nieuw gesprek gestart. Hoe kan ik helpen?</div>';
+  }
+
+  openBtn.addEventListener('click', openChat);
+  closeBtn.addEventListener('click', closeChat);
+  backdrop.addEventListener('click', closeChat);
+  clearBtn.addEventListener('click', clearChat);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeChat(); });
+
+  // ====== Slimmere FAQ (NL) tot je AI koppelt ======
+  const FAQ = [
+    {
+      // "Hoe dien ik aangifte in", "aangifte doen"
+      q: /(hoe\s*(doe|dien)\s*ik\s*een?\s*aangifte)|(^aangifte\s*doen)|\baangifte\b/i,
+      a: `
+      <strong>Aangifte doen (strafbaar feit door politie):</strong><br>
+      1) Verzamel bewijs: tijdlijn, locatie, getuigen, medische info, beeldmateriaal.<br>
+      2) Ga naar het politiebureau of bel 0900-8844 voor een afspraak. Je hebt recht op het doen van aangifte.<br>
+      3) Vraag om een <em>aangiftebevestiging</em> en <em>proces-verbaalnummer</em> en bewaar kopieën.<br>
+      4) Stuur aanvullend bewijs later na onder vermelding van je kenmerk/zaaknummer.<br>
+      5) Krijg je geen gehoor of wordt aangifte geweigerd? Noteer namen/tijden en overweeg klacht of een art. 12 Sv-klacht bij het hof (zie ‘Juridisch’).<br>
+      <em>Let op:</em> voor persoonlijk advies: neem contact op met een strafrechtadvocaat.
+      `
+    },
+    {
+      q: /(klacht\s*OM)|(klacht\s*politie)|ombudsman|klachtenprocedure/i,
+      a: `
+      <strong>Klacht indienen:</strong><br>
+      • <u>Politieklacht</u>: dien in bij de politieorganisatie (klachtenregeling), bewaar ontvangstbevestiging.<br>
+      • <u>Nationale Ombudsman</u>: als je niet tevreden bent over de afhandeling van je klacht door de overheid.<br>
+      • <u>OM</u>: als het gaat om strafrechtelijke beoordeling, doe aangifte; bij sepot kun je art. 12 Sv overwegen.<br>
+      Tip: voeg bewijs toe en houd een tijdlijn bij.
+      `
+    },
+    {
+      q: /art(ikel)?\s*12\s*sv|artikel\s*12|art\.\s*12/i,
+      a: `
+      <strong>Art. 12 Sv-klacht (klacht tegen sepot):</strong><br>
+      1) Je vraagt het gerechtshof om vervolging te bevelen als het OM niet vervolgt.<br>
+      2) Dien een gemotiveerd klaagschrift in (feiten, bewijs, waarom vervolging nodig is).<br>
+      3) Het hof kan een zitting houden; je kunt stukken toelichten.<br>
+      Overweeg hulp van een advocaat.
+      `
+    },
+    {
+      q: /v(al|alse)\s*pv|leugen\s*(in\s*)?pv|proces[- ]?verbaal/i,
+      a: `
+      <strong>Twijfel aan proces-verbaal:</strong><br>
+      • Vraag volledige dossierinzage (inclusief bodycam/radio/verslagen).<br>
+      • Leg tegenstrijdigheden vast en verzamel onafhankelijk bewijs (video, getuigen).<br>
+      • Vraag je advocaat om gerichte onderzoekswensen in te dienen.<br>
+      • Meld uitgebreid via onze pagina ‘Uitgebreid melden’.
+      `
+    },
+    {
+      q: /video|audio|foto|bewijs|upload/i,
+      a: `
+      <strong>Bewijs aanleveren:</strong> Snel melden met locatie via ‘Meldingen & Live Kaart’. Uitgebreide melding met bestanden via ‘Uitgebreid melden’. 
+      Tip: versleutel bestanden vooraf (7-Zip/Cryptomator); deel wachtwoorden via een apart kanaal.
+      `
+    },
+    {
+      q: /privacy|anoniem|gegevens/i,
+      a: `
+      <strong>Privacy:</strong> we hanteren dataminimalisatie en delen niets zonder toestemming of juridische noodzaak. 
+      Zie onze pagina ‘Privacy’. Deel geen BSN of andere gevoelige persoonsgegevens in de chat.
+      `
+    }
+  ];
+
+  // (Later) Zet hier je AI endpoint als je hem hebt:
+  const AI_ENDPOINT = null; // bv. 'https://<jouw-worker>.workers.dev/ai-chat'
+
+  function replyLocal(text){
+    const hit = FAQ.find(f => f.q.test(text));
+    if (hit){ addMsg(hit.a, 'bot'); }
+    else {
+      addMsg("Ik weet dit niet zeker. Probeer je vraag specifieker te maken (bijv. ‘Hoe dien ik aangifte in?’) — of bekijk ‘Uitgebreid melden’, ‘Meldingen & Live Kaart’, ‘Juridisch (geschillen)’ en ‘Rechterlijke uitspraken’.", 'bot');
+    }
+  }
+
+  async function handleSend(){
+    const text = (input.value||'').trim();
+    if(!text) return;
+    addMsg(text, 'user');
+    input.value = '';
+
+    // AI modus (optioneel, later)
+    if (AI_ENDPOINT){
+      try{
+        const r = await fetch(AI_ENDPOINT, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({question: text})
+        });
+        const data = await r.json();
+        addMsg(data.answer || 'Ik kon geen AI-antwoord genereren.', 'bot');
+        return;
+      }catch(e){
+        addMsg('AI-verbinding faalde. Ik probeer lokaal te antwoorden…', 'bot');
+      }
+    }
+    // Lokale FAQ
+    replyLocal(text);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ handleSend(); }});
+</script>
 
