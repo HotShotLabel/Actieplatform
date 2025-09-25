@@ -5,26 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0f14">
   <title>Home — Actieplatform Politiegeweld</title>
-
-  <!-- PWA / icons -->
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/logo.png">
-  <link rel="apple-touch-icon" href="icons/logo.png">
-
-  <!-- Site styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATIE (zelfde op alle pagina's houden) -->
   <nav class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <img src="icons/logo.png" alt="Logo" style="width:50px;height:50px;border-radius:6px">
+        <img src="icons/logo.png" alt="Logo" style="width:48px;height:48px;border-radius:6px; margin-right:8px; vertical-align:middle;">
         <strong>Actieplatform Politiegeweld</strong>
       </div>
-      
       <div class="menu">
-        <a href="home.html">Home</a>
+        <a href="home.html"><strong>Home</strong></a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
         <a href="meldingen-live-kaart.html">Meldingen & Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
@@ -33,100 +24,9 @@
         <a href="privacy.html">Privacy</a>
         <a href="chatten.html">Chatten</a>
       </div>
-
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="container hero">
-    <span class="kicker">Meldpunt & Actie</span>
-    <h1>Actieplatform Politiegeweld</h1>
-    <p>
-      Er vallen steeds meer doden en gewonden door politiegeweld, terwijl onafhankelijk toezicht tekortschiet.
-      Daarom zijn wij opgericht: om feiten te verzamelen, incidenten te documenteren en onze mensenrechten te beschermen.
-      We bouwen een netwerk om samen onrecht aan te vechten.
-    </p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-      <a class="btn" href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a class="btn outline" href="meldingen-live-kaart.html">Bekijk meldingen & kaart</a>
-    </div>
-  </header>
-
-  <!-- INHOUD -->
-  <main class="container">
-    <section class="section grid">
-      <div class="card">
-        <span class="badge">Waarom dit platform?</span>
-        <h2>Collectieve bescherming</h2>
-        <p>
-          We brengen meldingen samen en zetten ze om in actie: dossiervorming, juridische opvolging
-          en publieke verantwoording. Zo zorgen we dat incidenten niet verdwijnen, maar worden
-          gebruikt om verandering af te dwingen.
-        </p>
-      </div>
-      <aside class="card">
-        <h3>Wat jij kunt doen</h3>
-        <ul class="list">
-          <li>Meld een incident (kort of uitgebreid)</li>
-          <li>Upload bewijsmateriaal (video/foto/audio)</li>
-          <li><a href="meedoen.html">Sluit je aan als vrijwilliger of jurist</a></li>
-        </ul>
-      </aside>
-    </section>
-
-    <section class="section grid">
-      <div class="card">
-        <span class="badge">Transparantie</span>
-        <h2>Meldingen & Live Kaart</h2>
-        <p class="small">
-          Zie waar incidenten plaatsvinden en hoe vaak — meldingen verschijnen live op de kaart
-          zodra ze via het formulier zijn verstuurd.
-        </p>
-        <a class="btn" href="meldingen-live-kaart.html">Ga naar kaart</a>
-      </div>
-      <aside class="card">
-        <h3>Privacy</h3>
-        <p class="small">
-          We volgen dataminimalisatie en delen niets zonder juridische noodzaak of toestemming.
-          Bekijk onze <a href="privacy.html">privacyverklaring</a>.
-        </p>
-      </aside>
-    </section>
-
-    <section class="section grid">
-      <div class="card">
-        <span class="badge">Rechtspraak</span>
-        <h2>Rechterlijke uitspraken</h2>
-        <p class="small">
-          We verzamelen (publieke) uitspraken waarin agenten zijn onderzocht of veroordeeld. Dit helpt
-          slachtoffers, advocaten en onderzoekers bij vergelijkbare zaken.
-        </p>
-        <a class="btn outline" href="uitspraken.html">Bekijk uitspraken</a>
-      </div>
-      <aside class="card">
-        <h3>Juridische steun</h3>
-        <p class="small">
-          Hulp nodig? Lees meer over klacht- en rechtsgangen, art. 12 Sv, en het veilig aanleveren
-          van bewijsmateriaal op de pagina <a href="juridisch.html">Juridisch (geschillen)</a>.
-        </p>
-      </aside>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="container footer">
-    © <span id="y"></span> Actieplatform Politiegeweld — 
-    <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
-  </footer>
-
-  <script>
-    // PWA service worker (optioneel, laat staan als je sw.js gebruikt)
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(()=>{});
-      });
-    }
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+    <h1>Welkom bij het Actieplatform Politiegeweld</h1>
+    <p>Dit platform helpt slachtoffers en betrokkenen van politiegeweld hun stem te laten horen
