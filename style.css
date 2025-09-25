@@ -177,3 +177,23 @@ iframe {
   border-radius: 12px;
   background: rgba(255,255,255,.04);
 }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0a0a0a; /* zwarte balk */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+header .logo {
+  height: 60px; /* pas grootte naar wens aan */
+  width: auto;
+}
+
+body {
+  margin-top: 80px; /* zodat tekst niet achter het logo valt */
+}
