@@ -37,3 +37,14 @@ a:hover{text-decoration:underline}
 iframe{width:100%;border:0;border-radius:12px;min-height:420px;background:#0b0f14}
 .code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#0a1118;border:1px solid rgba(255,255,255,.08);padding:10px;border-radius:10px;overflow:auto}
 .notice{padding:12px 14px;border:1px dashed rgba(255,255,255,.2);border-radius:12px;background:rgba(77,163,255,.06)}
+/* Link-styling overal consistent */
+a { color: #fff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navigatie links */
+.menu a { color: #fff; text-decoration: none; padding: 8px 10px; border-radius: 8px; }
+.menu a:hover { background: rgba(255,255,255,0.06); text-decoration: none; }
+
+/* Zorg dat knoppen niet blauw worden bij focus */
+.btn:focus, .menu a:focus { outline: none; }
+
