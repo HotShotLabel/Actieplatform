@@ -1,26 +1,66 @@
+ 1) Algemeen contact / introductie
 
-# Actieplatform Politiegeweld — Starter
+**Onderwerp:** Samenwerking of perscontact — Actieplatform Politiegeweld
+**Aan:** [Label@hot-shot.com](mailto:Label@hot-shot.com)
 
-Gratis website + PWA om meldingen van politiegeweld te verzamelen en direct op te volgen met juridische actie.
+Geachte heer/mevrouw,
 
-## Snelstart
-1. **Download dit project** (of de zip) en plaats de inhoud in een nieuwe GitHub-repository.
-2. Ga naar **Settings → Pages** en zet GitHub Pages op **Deploy from branch** (main) en **/ (root)**.
-3. Wacht even; je site staat live op `https://<jouw-gebruikersnaam>.github.io/<repo>`.
+Mijn naam is [jouw naam], namens **Actieplatform Politiegeweld**. Wij beheren een publiek overzicht van rechterlijke uitspraken over politiegeweld en gerelateerde misstanden.
+Graag kom ik in contact om kort kennis te maken en te verkennen of er raakvlakken zijn voor samenwerking, persvragen of datadeling.
 
-## Stel je formulier en kaart in
-- Vervang in `index.html`:
-  - `EMBED_FORM_URL` met de embed-URL van je uploadformulier (Zoho/Jotform/Google Forms).
-  - `UMAP_EMBED_URL` met de uMap-embedlink van jouw incidentenkaart.
-- Pas het e-mailadres in `index.html` en `privacy.html` aan (`contact@jouwdomein.nl`).
+Kunt u aangeven wie binnen uw organisatie het juiste aanspreekpunt is?
 
-## PWA (app) installeren
-- Android: krijg een installatieprompt of kies **Toevoegen aan startscherm** in Chrome.
-- iOS (Safari): Deel-icoon → **Zet op beginscherm**.
-- Play Store publiceren kan later via een Trusted Web Activity (TWA), maar vereist een betaald ontwikkelaarsaccount.
+Met vriendelijke groet,
+[jouw naam]
+[functie, indien van toepassing]
+[telefoon] — [website] — [eventuele socials]
 
-## Belangrijk (veiligheid)
-- Vraag geen namen/adressen. Laat uploaders bestanden **vooraf versleutelen** en het wachtwoord apart sturen.
-- Publiceer identificerende info alleen na juridische toetsing.
+---
 
-Veel succes!
+### 2) Auteursrechten/gebruik (informeel toestemmingsverzoek)
+
+**Onderwerp:** Toestemmingsverzoek gebruik content — Actieplatform Politiegeweld
+**Aan:** [Label@hot-shot.com](mailto:Label@hot-shot.com)
+
+Geachte heer/mevrouw,
+
+Wij hebben recent materiaal ontwikkeld binnen **Actieplatform Politiegeweld** (teksten, HTML/CSS en samengestelde data).
+Mocht u interesse hebben in (her)gebruik, dan kan dat uitsluitend na voorafgaande **schriftelijke toestemming**.
+Laat u weten of u specifieke onderdelen wilt gebruiken? Dan bekijken we de mogelijkheden en voorwaarden.
+
+Bij voorbaat dank.
+
+Met vriendelijke groet,
+[jouw naam]
+[contactgegevens]
+
+---
+
+3) Waarschuwing/notice (cease & desist-stijl)
+
+**Onderwerp:** Inbreukmelding en sommatie — Actieplatform Politiegeweld
+**Aan:** [Label@hot-shot.com](mailto:Label@hot-shot.com)
+
+Geachte heer/mevrouw,
+
+Namens **Actieplatform Politiegeweld** meld ik dat onderdelen van onze website/content (teksten, code, structuur en/of databestanden) zonder toestemming lijken te zijn gekopieerd of hergebruikt.
+Wij wijzen u erop dat op dit materiaal **auteursrecht** en mogelijk **databankenrecht** rust en hergebruik zonder schriftelijke toestemming is verboden.
+
+Wij sommeren u om binnen **7 dagen** na dagtekening:
+
+1. het betreffende materiaal offline te halen en verdere publicatie te staken; en
+2. schriftelijk te bevestigen dat u iedere (verdere) inbreuk staakt.
+
+Bij uitblijven van bovenstaande behouden wij ons het recht voor om passende (juridische) stappen te ondernemen.
+
+Graag zie ik uw bevestiging tegemoet.
+
+Hoogachtend,
+
+Hot-Shot Label 
+[functie, indien van toepassing]
+[contactgegevens]
+
+---
+
+Wil je dat ik één van deze versies personaliseer met jouw naam/telefoon/URL en specifieke urls of ECLI’s die mogelijk zijn overgenomen?
