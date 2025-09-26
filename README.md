@@ -5,15 +5,14 @@
 
 Geachte heer/mevrouw,
 
-Mijn naam is [jouw naam], namens **Actieplatform Politiegeweld**. Wij beheren een publiek overzicht van rechterlijke uitspraken over politiegeweld en gerelateerde misstanden.
+Namens **Actieplatform Politiegeweld**. Wij beheren een publiek overzicht van rechterlijke uitspraken over politiegeweld en gerelateerde misstanden.
 Graag kom ik in contact om kort kennis te maken en te verkennen of er raakvlakken zijn voor samenwerking, persvragen of datadeling.
 
 Kunt u aangeven wie binnen uw organisatie het juiste aanspreekpunt is?
 
 Met vriendelijke groet,
-[jouw naam]
-[functie, indien van toepassing]
-[telefoon] — [website] — [eventuele socials]
+
+Hot-Shot Label 
 
 ---
 
@@ -31,8 +30,8 @@ Laat u weten of u specifieke onderdelen wilt gebruiken? Dan bekijken we de mogel
 Bij voorbaat dank.
 
 Met vriendelijke groet,
-[jouw naam]
-[contactgegevens]
+
+Hot-Shot Label 
 
 ---
 
