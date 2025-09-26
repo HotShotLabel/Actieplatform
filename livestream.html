@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Live melden — Actieplatform Politiegeweld</title>
+  <title>Livestream — Actieplatform Politiegeweld</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* kleine extra stijl voor deze pagina */
+    /* extra stijl specifiek voor livestream-pagina */
     .live-hero { text-align:center; padding:40px 20px; }
     .live-btn { display:inline-block; padding:14px 22px; border-radius:12px;
       background:linear-gradient(135deg,#e63946,#457b9d); color:white; font-weight:700;
@@ -17,56 +17,60 @@
   </style>
 </head>
 <body>
-  <!-- hergebruik je navigatie bovenaan -->
+  <!-- Navigatie (zelfde als andere pagina’s) -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="Logo" style="height:40px"> <strong>Actieplatform Politiegeweld</strong></a>
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Logo" style="height:40px">
+        <strong>Actieplatform Politiegeweld</strong>
+      </a>
       <div class="menu">
         <a href="index.html">Home</a>
         <a href="uitgebreid-melden.html">Meld</a>
         <a href="meldingen-live-kaart.html">Kaart</a>
         <a href="meedoen.html">Meedoen</a>
+        <a href="livestream.html">Livestream</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
     <section class="live-hero">
-      <h1>Direct live melden</h1>
+      <h1>Direct livestream starten</h1>
       <p class="note">
-        Belangrijk: gebruik live alleen als je jezelf en anderen niet in gevaar brengt. Verberg
-        identiteiten en geef geen precieze locatie als dat risicovol is. Door te starten ga je akkoord met onze <a href="privacy.html">privacyregels</a>.
+        Belangrijk: gebruik livestream alleen als je jezelf en anderen niet in gevaar brengt.
+        Verberg identiteiten indien nodig en deel geen precieze locatie tenzij dat bewust is.
+        Door te starten ga je akkoord met onze <a href="privacy.html">privacyregels</a>.
       </p>
 
-      <!-- START knop -->
-      <a id="startLive" class="live-btn">Start Live (open camera)</a>
+      <!-- START-knop -->
+      <a id="startLive" class="live-btn">Start livestream (open camera)</a>
 
       <p class="note">
-        Werkt niet in sommige oudere browsers. Tip: gebruik Chrome of Firefox op mobiel. Als stream niet lukt,
-        gebruik de upload-knop onderaan om direct een foto/video te sturen.
+        Werkt niet in sommige oudere browsers. Tip: gebruik Chrome of Firefox op mobiel.
+        Als livestream niet lukt, gebruik de upload-knop hieronder om direct foto/video te sturen.
       </p>
 
-      <!-- embedded ruimte (Jitsi) -->
+      <!-- embedded livestream -->
       <div id="jitsiWrap" class="embed-wrap">
-        <!-- iframe wordt door JS toegevoegd -->
+        <!-- iframe komt hier via JavaScript -->
       </div>
 
       <div style="margin-top:18px">
-        <a href="https://forms.gle/YOUR_FORM_LINK" class="btn outline" target="_blank">Snelle upload (foto/video)</a>
+        <a href="https://forms.gle/YOUR_FORM_LINK" class="btn outline" target="_blank">
+          Snelle upload (foto/video)
+        </a>
       </div>
-
     </section>
   </main>
 
   <script>
-    // Eenvoudige Jitsi embed flow — vervang ROOM_NAME met iets unieks/veiligs of genereer
+    // Jitsi embed – maakt een unieke kamer per sessie
     const startBtn = document.getElementById('startLive');
     const jitsiWrap = document.getElementById('jitsiWrap');
 
     startBtn.addEventListener('click', () => {
-      // Maak een unieke kamernaam (kort) — je kunt dit vervangen door servergegenereerde token later
       const room = 'actieplatform-' + Math.random().toString(36).substring(2,9);
-      // Jitsi embed via iframe (werkt zonder API-key)
       const iframe = document.createElement('iframe');
       iframe.src = 'https://meet.jit.si/' + room + '#userInfo.displayName="Meldpunt"';
       iframe.allow = 'camera; microphone; fullscreen; display-capture';
@@ -76,7 +80,6 @@
       jitsiWrap.innerHTML = '';
       jitsiWrap.appendChild(iframe);
       jitsiWrap.style.display = 'block';
-      // scroll naar de embed (mobiel vriendelijk)
       iframe.scrollIntoView({behavior:'smooth', block:'center'});
     });
   </script>
