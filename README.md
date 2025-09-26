@@ -57,9 +57,3 @@ Graag zie ik uw bevestiging tegemoet.
 Hoogachtend,
 
 Hot-Shot Label 
-[functie, indien van toepassing]
-[contactgegevens]
-
----
-
-Wil je dat ik één van deze versies personaliseer met jouw naam/telefoon/URL en specifieke urls of ECLI’s die mogelijk zijn overgenomen?
