@@ -3,8 +3,8 @@
   --card: #121821;
   --text: #eaf2ff;
   --muted: #9fb3c8;
-  --accent: #e63946;
-  --accent-2: #457b9d;
+  --accent: #e63946;       /* rood */
+  --accent-2: #457b9d;     /* blauw */
 }
 
 * { box-sizing: border-box; }
@@ -31,7 +31,7 @@ a:hover { text-decoration: underline; }
 .nav {
   position: sticky;
   top: 0;
-  background: rgba(11, 15, 20, .9);
+  background: rgba(11, 15, 20, .95);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255, 255, 255, .06);
   z-index: 1000;
@@ -47,8 +47,8 @@ a:hover { text-decoration: underline; }
   gap: 12px;
 }
 .brand img {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   border-radius: 6px;
 }
 .brand strong {
@@ -68,6 +68,45 @@ a:hover { text-decoration: underline; }
 .menu a:hover {
   background: rgba(255,255,255,0.06);
   text-decoration: none;
+}
+
+/* HAMBURGER KNOP */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+.hamburger div {
+  width: 24px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* MOBIEL MENU */
+@media(max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu a {
+    display: block;
+    padding: 12px;
+    text-align: left;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+  }
+  .hamburger {
+    display: flex;
+  }
 }
 
 /* BUTTONS */
@@ -133,7 +172,7 @@ a:hover { text-decoration: underline; }
 .small { font-size: 13px; color: var(--muted); }
 
 /* SECTION + FOOTER */
-.section { padding: 36px 0; }
+.section { padding: 24px 0; } /* minder ruimte */
 .kicker {
   letter-spacing: .2em;
   font-size: 12px;
