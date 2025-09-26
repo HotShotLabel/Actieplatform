@@ -1,98 +1,113 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0f14">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0f14" />
   <title>Rechterlijke uitspraken — Actieplatform Politiegeweld</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/logo.png">
-  <link rel="apple-touch-icon" href="icons/logo.png">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons / styles -->
+  <link rel="icon" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Uitspraken: extra tabel-styles -->
+  <style>
+    /* Mobiel-vriendelijke tabel */
+    .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .data-table{width:100%;border-collapse:collapse;min-width:700px;}
+    .data-table th,.data-table td{
+      padding:8px; text-align:left; vertical-align:top;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .data-table th{font-weight:700;}
+  </style>
 </head>
 <body>
-  <!-- NAVIGATIE -->
-<nav class="nav">
-  <div class="container nav-inner">
-    <!-- Merk/Logo -->
-    <a class="brand" href="index.html" aria-label="Ga naar home">
-      <img src="images/logo.png" alt="Logo">
-      <strong>Actieplatform Politiegeweld</strong>
-    </a>
 
-    <!-- Hamburger-knop (voor mobiel) -->
-    <div class="hamburger" aria-label="Open menu" aria-expanded="false" role="button" tabindex="0">
-      <div></div><div></div><div></div>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Ga naar home">
+        <img src="images/logo.png" alt="Logo" />
+        <strong>Actieplatform Politiegeweld</strong>
+      </a>
+
+      <div class="hamburger" aria-label="Open menu" aria-expanded="false" role="button" tabindex="0">
+        <div></div><div></div><div></div>
+      </div>
+
+      <div class="menu" role="navigation" aria-label="Hoofdmenu">
+        <a href="home.html">Home</a>
+        <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+        <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+        <a href="juridisch.html">Juridisch (geschillen)</a>
+        <a href="uitspraken.html">Rechterlijke uitspraken</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="chatten.html">Chatten</a>
+        <a href="livestream.html">Livestream</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Menu-links -->
-    <div class="menu" role="navigation" aria-label="Hoofdmenu">
-      <a href="home.html">Home</a>
-      <a href="uitgebreid-melden.html">Uitgebreid melden</a>
-      <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
-      <a href="meedoen.html">Meedoen</a>
-      <a href="juridisch.html">Juridisch (geschillen)</a>
-      <a href="uitspraken.html">Rechterlijke uitspraken</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="chatten.html">Chatten</a>
-      <a href="livestream.html">Livestream</a>
-    </div>
-  </div>
-</nav>
-
-
-  <!-- HEADER -->
+  <!-- HERO -->
   <header class="container hero">
     <span class="kicker">Rechtspraak</span>
     <h1>Rechterlijke uitspraken tegen politieagenten</h1>
     <p>
-      Hier vind je een overzicht van bekende zaken waarin politieagenten in Nederland zijn veroordeeld
-      wegens buitensporig geweld of ander wangedrag. Dit overzicht wordt aangevuld naarmate er meer zaken bekend worden.
+      Hier vind je een overzicht van bekende zaken waarin politieagenten in Nederland zijn
+      veroordeeld wegens buitensporig geweld of ander wangedrag. Dit overzicht wordt aangevuld
+      naarmate er meer zaken bekend worden.
     </p>
   </header>
 
-  <!-- INHOUD -->
+  <!-- MAIN -->
   <main class="container">
     <section class="section">
-      <div class="card">
-        <span class="badge">Voorbeelden</span>
-        <h2>Uitspraken</h2>
-        <table style="width:100%;border-collapse:collapse">
+      <span class="badge">Voorbeelden</span>
+      <h2>Uitspraken</h2>
+
+      <div class="table-wrapper">
+        <table class="data-table" aria-label="Overzicht rechterlijke uitspraken">
           <thead>
             <tr>
-              <th style="text-align:left;padding:8px;border-bottom:1px solid #333">Datum</th>
-              <th style="text-align:left;padding:8px;border-bottom:1px solid #333">Rechtbank</th>
-              <th style="text-align:left;padding:8px;border-bottom:1px solid #333">Zaak</th>
-              <th style="text-align:left;padding:8px;border-bottom:1px solid #333">Uitspraak</th>
-              <th style="text-align:left;padding:8px;border-bottom:1px solid #333">Bron</th>
+              <th>Datum</th>
+              <th>Rechtbank</th>
+              <th>Zaak</th>
+              <th>Uitspraak</th>
+              <th>Bron</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style="padding:8px;border-bottom:1px solid #222">2021</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Rechtbank Den Haag</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Dood door politiegeweld Den Haag</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Agent veroordeeld voor mishandeling</td>
-              <td style="padding:8px;border-bottom:1px solid #222"><a href="https://www.rechtspraak.nl/" target="_blank">Rechtspraak</a></td>
+              <td>2021</td>
+              <td>Rechtbank Den Haag</td>
+              <td>Dood door politiegeweld Den Haag</td>
+              <td>Agent veroordeeld voor mishandeling</td>
+              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
             </tr>
             <tr>
-              <td style="padding:8px;border-bottom:1px solid #222">2016</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Hof Arnhem-Leeuwarden</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Mishandeling arrestant</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Taakstraf en voorwaardelijke straf</td>
-              <td style="padding:8px;border-bottom:1px solid #222"><a href="https://www.rechtspraak.nl/" target="_blank">Rechtspraak</a></td>
+              <td>2016</td>
+              <td>Hof Arnhem-Leeuwarden</td>
+              <td>Mishandeling arrestant</td>
+              <td>Taakstraf en voorwaardelijke straf</td>
+              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
             </tr>
             <tr>
-              <td style="padding:8px;border-bottom:1px solid #222">2013</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Rechtbank Amsterdam</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Dood door politiegeweld in cel</td>
-              <td style="padding:8px;border-bottom:1px solid #222">Schuldig bevonden aan mishandeling</td>
-              <td style="padding:8px;border-bottom:1px solid #222"><a href="https://www.rechtspraak.nl/" target="_blank">Rechtspraak</a></td>
+              <td>2013</td>
+              <td>Rechtbank Amsterdam</td>
+              <td>Dood door politiegeweld in cel</td>
+              <td>Schuldig bevonden aan mishandeling</td>
+              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
             </tr>
           </tbody>
         </table>
-        <p class="small">* Dit is een startlijst. Je kunt deze uitbreiden met concrete bronnen en nieuwe zaken.</p>
       </div>
+
+      <p class="small" style="margin-top:10px">
+        * Dit is een startlijst. Je kunt deze uitbreiden met concrete bronnen en nieuwe zaken.
+      </p>
     </section>
   </main>
 
@@ -101,8 +116,17 @@
     © <span id="y"></span> Actieplatform Politiegeweld
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-  <script src="menu.js?v=1" defer></script>
+  <!-- Service worker + jaartal -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(()=>{});
+      });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 
+  <!-- Hamburger-menu script (zorg dat menu.js in je repo staat) -->
+  <script src="menu.js?v=1" defer></script>
 </body>
 </html>
