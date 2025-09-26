@@ -8,23 +8,23 @@
 
   <!-- PWA / icons -->
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/logo.png">
-  <link rel="apple-touch-icon" href="icons/logo.png">
+  <link rel="icon" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
 
   <!-- Site styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- NAVIGATIE (zelfde op alle pagina's houden) -->
+  <!-- NAVIGATIE -->
   <nav class="nav">
     <div class="container nav-inner">
-      <div class="brand">
-        <!-- Logo linksboven (gebruik icons/logo.png) -->
-        <img src="icons/logo.png" alt="Logo" />
+      <a class="brand" href="index.html" aria-label="Ga naar home">
+        <!-- BELANGRIJK: juiste pad naar jouw logo -->
+        <img src="images/logo.png" alt="Actieplatform Politiegeweld logo">
         <strong>Actieplatform Politiegeweld</strong>
-      </div>
-      
-      <div class="menu">
+      </a>
+
+      <div class="menu" role="navigation" aria-label="Hoofdmenu">
         <a href="home.html">Home</a>
         <a href="uitgebreid-melden.html">Uitgebreid melden</a>
         <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
@@ -119,6 +119,7 @@
     <a href="mailto:label@hot-shot.com">label@hot-shot.com</a>
   </footer>
 
+  <!-- PWA + jaartal -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
