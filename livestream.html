@@ -20,21 +20,34 @@
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <img src="images/logo.png" alt="Logo" style="height:60px">
-        <strong>Actieplatform Politiegeweld</strong>
-      </a>
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="uitgebreid-melden.html">Meld</a>
-        <a href="meldingen-live-kaart.html">Kaart</a>
-        <a href="meedoen.html">Meedoen</a>
-        <a href="livestream.html">Livestream</a>
-      </div>
+ <nav class="nav">
+  <div class="container nav-inner">
+    <!-- Merk/Logo -->
+    <a class="brand" href="index.html" aria-label="Ga naar home">
+      <img src="images/logo.png" alt="Logo">
+      <strong>Actieplatform Politiegeweld</strong>
+    </a>
+
+    <!-- Hamburger-knop (voor mobiel) -->
+    <div class="hamburger" aria-label="Open menu" aria-expanded="false" role="button" tabindex="0">
+      <div></div><div></div><div></div>
     </div>
-  </nav>
+
+    <!-- Menu-links -->
+    <div class="menu" role="navigation" aria-label="Hoofdmenu">
+      <a href="home.html">Home</a>
+      <a href="uitgebreid-melden.html">Uitgebreid melden</a>
+      <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
+      <a href="meedoen.html">Meedoen</a>
+      <a href="juridisch.html">Juridisch (geschillen)</a>
+      <a href="uitspraken.html">Rechterlijke uitspraken</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="chatten.html">Chatten</a>
+      <a href="livestream.html">Livestream</a>
+    </div>
+  </div>
+</nav>
+
 
   <main class="container">
     <section class="live-hero">
