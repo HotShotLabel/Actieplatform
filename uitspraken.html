@@ -21,6 +21,7 @@
       border-bottom:1px solid rgba(255,255,255,.1);
     }
     .data-table th{font-weight:700;}
+    .small{opacity:.8}
   </style>
 </head>
 <body>
@@ -43,7 +44,7 @@
         <a href="meldingen-live-kaart.html">Meldingen &amp; Live Kaart</a>
         <a href="meedoen.html">Meedoen</a>
         <a href="juridisch.html">Juridisch (geschillen)</a>
-        <a href="uitspraken.html">Rechterlijke uitspraken</a>
+        <a href="uitspraken.html" aria-current="page">Rechterlijke uitspraken</a>
         <a href="privacy.html">Privacy</a>
         <a href="chatten.html">Chatten</a>
         <a href="livestream.html">Livestream</a>
@@ -56,17 +57,16 @@
     <span class="kicker">Rechtspraak</span>
     <h1>Rechterlijke uitspraken tegen politieagenten</h1>
     <p>
-      Hier vind je een overzicht van bekende zaken waarin politieagenten in Nederland zijn
-      veroordeeld wegens buitensporig geweld of ander wangedrag. Dit overzicht wordt aangevuld
-      naarmate er meer zaken bekend worden.
+      Overzicht van zaken waarin politieagenten in Nederland zijn veroordeeld wegens buitensporig geweld,
+      vals (delen van) proces-verbaal, meineed of misbruik van gezag. Dit overzicht wordt aangevuld zodra er meer bekend wordt.
     </p>
   </header>
 
   <!-- MAIN -->
   <main class="container">
     <section class="section">
-      <span class="badge">Voorbeelden</span>
-      <h2>Uitspraken</h2>
+      <span class="badge">Uitspraken</span>
+      <h2>Geselecteerde zaken (met bron/ECLI)</h2>
 
       <div class="table-wrapper">
         <table class="data-table" aria-label="Overzicht rechterlijke uitspraken">
@@ -80,33 +80,59 @@
             </tr>
           </thead>
           <tbody>
+            <!-- Mitch Henriquez – cassatie bevestigd -->
             <tr>
-              <td>2021</td>
-              <td>Rechtbank Den Haag</td>
-              <td>Dood door politiegeweld Den Haag</td>
-              <td>Agent veroordeeld voor mishandeling</td>
-              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
+              <td>16-02-2021</td>
+              <td>Hoge Raad</td>
+              <td>Mitch Henriquez (2015, Den Haag)</td>
+              <td>Veroordeling wegens mishandeling met de dood tot gevolg blijft in stand (6 mnd vvw).</td>
+              <td><a href="https://www.hogeraad.nl/actueel/nieuwsoverzicht/2021/februari/veroordeling-agent-zaak-mitch-henriquez-blijft-stand/" target="_blank" rel="noopener">Hoge Raad</a></td>
             </tr>
+
+            <!-- Vals proces-verbaal / meineed door politieambtenaren (Limburg) -->
             <tr>
-              <td>2016</td>
-              <td>Hof Arnhem-Leeuwarden</td>
-              <td>Mishandeling arrestant</td>
-              <td>Taakstraf en voorwaardelijke straf</td>
-              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
+              <td>13-05-2025</td>
+              <td>Rb Zeeland-West-Brabant (Breda)</td>
+              <td>Vier agenten Eenheid Limburg: misbruik van gezag, (o.a.) vals PV/meineed</td>
+              <td>Veroordelingen: taakstraffen (100–240 u) en 3 mnd gevangenisstraf + 240 u taakstraf voor één verdachte.</td>
+              <td>
+                <a href="https://www.rechtspraak.nl/Organisatie-en-contact/Organisatie/Rechtbanken/Rechtbank-Zeeland-West-Brabant/Nieuws/Paginas/Veroordelingen-voor-politieagenten-die-misbruik-maakten-van-hun-gezag.aspx" target="_blank" rel="noopener">Rechtspraak nieuws</a>
+                &middot; <a href="https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBZWB:2025:2885" target="_blank" rel="noopener">ECLI:NL:RBZWB:2025:2885</a>
+              </td>
             </tr>
+
+            <!-- Valselijk opmaken proces-verbaal (Midden-Nederland) -->
             <tr>
-              <td>2013</td>
-              <td>Rechtbank Amsterdam</td>
-              <td>Dood door politiegeweld in cel</td>
-              <td>Schuldig bevonden aan mishandeling</td>
-              <td><a href="https://www.rechtspraak.nl/" target="_blank" rel="noopener">Rechtspraak</a></td>
+              <td>26-03-2025</td>
+              <td>Rb Midden-Nederland</td>
+              <td>Politieambtenaar valselijk opmaken proces-verbaal</td>
+              <td>Schuldig aan valsheid in geschrift t.a.v. PV dat in strafdossier is gevoegd.</td>
+              <td><a href="https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBMNE:2025:1356" target="_blank" rel="noopener">ECLI:NL:RBMNE:2025:1356</a></td>
+            </tr>
+
+            <!-- Meineed + valsheid door politieambtenaar (Amsterdam) -->
+            <tr>
+              <td>22-07-2022</td>
+              <td>Rb Amsterdam</td>
+              <td>Politieambtenaar: meineed en valsheid in geschrift</td>
+              <td>Taakstraf 180 uur en voorwaardelijke ontzetting uit ambt.</td>
+              <td><a href="https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBAMS:2022:4302" target="_blank" rel="noopener">ECLI:NL:RBAMS:2022:4302</a></td>
+            </tr>
+
+            <!-- Mishandeling door agent (Midden-Nederland) -->
+            <tr>
+              <td>23-08-2024</td>
+              <td>Rb Midden-Nederland (politierechter)</td>
+              <td>Mishandeling bij aanhouding</td>
+              <td>Agent veroordeeld tot 60 uur taakstraf (30 uur vvw); strijd met geweldsinstructie.</td>
+              <td><a href="https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:RBMNE:2024:5045" target="_blank" rel="noopener">ECLI:NL:RBMNE:2024:5045</a></td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <p class="small" style="margin-top:10px">
-        * Dit is een startlijst. Je kunt deze uitbreiden met concrete bronnen en nieuwe zaken.
+        Laatste update: 26-09-2025. Voeg gerust meer zaken toe (met ECLI-link) zodra die bekend zijn.
       </p>
     </section>
   </main>
