@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Live melden — Actieplatform Politiegeweld</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* kleine extra stijl voor deze pagina */
+    .live-hero { text-align:center; padding:40px 20px; }
+    .live-btn { display:inline-block; padding:14px 22px; border-radius:12px;
+      background:linear-gradient(135deg,#e63946,#457b9d); color:white; font-weight:700;
+      cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,.25); text-decoration:none;}
+    .note { max-width:820px; margin:18px auto; color:var(--muted); text-align:left; }
+    .embed-wrap { margin-top:18px; display:none; width:100%; height:520px; }
+    @media(max-width:700px){ .embed-wrap{height:420px} }
+  </style>
+</head>
+<body>
+  <!-- hergebruik je navigatie bovenaan -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="Logo" style="height:40px"> <strong>Actieplatform Politiegeweld</strong></a>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="uitgebreid-melden.html">Meld</a>
+        <a href="meldingen-live-kaart.html">Kaart</a>
+        <a href="meedoen.html">Meedoen</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="live-hero">
+      <h1>Direct live melden</h1>
+      <p class="note">
+        Belangrijk: gebruik live alleen als je jezelf en anderen niet in gevaar brengt. Verberg
+        identiteiten en geef geen precieze locatie als dat risicovol is. Door te starten ga je akkoord met onze <a href="privacy.html">privacyregels</a>.
+      </p>
+
+      <!-- START knop -->
+      <a id="startLive" class="live-btn">Start Live (open camera)</a>
+
+      <p class="note">
+        Werkt niet in sommige oudere browsers. Tip: gebruik Chrome of Firefox op mobiel. Als stream niet lukt,
+        gebruik de upload-knop onderaan om direct een foto/video te sturen.
+      </p>
+
+      <!-- embedded ruimte (Jitsi) -->
+      <div id="jitsiWrap" class="embed-wrap">
+        <!-- iframe wordt door JS toegevoegd -->
+      </div>
+
+      <div style="margin-top:18px">
+        <a href="https://forms.gle/YOUR_FORM_LINK" class="btn outline" target="_blank">Snelle upload (foto/video)</a>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // Eenvoudige Jitsi embed flow — vervang ROOM_NAME met iets unieks/veiligs of genereer
+    const startBtn = document.getElementById('startLive');
+    const jitsiWrap = document.getElementById('jitsiWrap');
+
+    startBtn.addEventListener('click', () => {
+      // Maak een unieke kamernaam (kort) — je kunt dit vervangen door servergegenereerde token later
+      const room = 'actieplatform-' + Math.random().toString(36).substring(2,9);
+      // Jitsi embed via iframe (werkt zonder API-key)
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://meet.jit.si/' + room + '#userInfo.displayName="Meldpunt"';
+      iframe.allow = 'camera; microphone; fullscreen; display-capture';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = '0';
+      jitsiWrap.innerHTML = '';
+      jitsiWrap.appendChild(iframe);
+      jitsiWrap.style.display = 'block';
+      // scroll naar de embed (mobiel vriendelijk)
+      iframe.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  </script>
+</body>
+</html>
